@@ -9,7 +9,9 @@ Simple single-page app demonstrating fetch API calls
 This is a general mock-up of a car sales site designed to demonstrate fetch API calls (GET, POST, PATCH, and DELETE). There is an internal database (db.json) and a connection to a third-party API that renders images on demand based on vehicle values sent to the server.
 
 ## Getting Started
+
 Make sure you have an APIKEY from Imagin Studio
+
 ### Dependencies
 
 - [json-server](https://www.npmjs.com/package/json-server)
@@ -33,22 +35,29 @@ Files to be modified include:
 ```
 npm install
 ```
+
 to start the Tailwind watcher
+
 ```
 npm run watch
 ```
+
 to run PostCSS after changes
+
 ```
 npm run build
 ```
+
 ### Executing program
 
 From the main package directory run:
 
 ```
-json-server --watch ./assets/db.json
+json-server --watch .dist/assets/db.json
 ```
+
 Then start up Live Server or other method of viewing the page.
+
 ### Help
 
 If there is an error with the json-server, check that the db.json is in the right place and that there is nothing else running on port 3000
@@ -57,7 +66,7 @@ If there is an error with the json-server, check that the db.json is in the righ
 
 - Katie Smith
 - Vahan Nadjarian
-- Matthew Brouwer  
+- Matthew Brouwer
 - Jenson Thottathil
 - Michael Loomis
 
