@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      src="https://kit.fontawesome.com/25eac191ac.js"
+      crossorigin="anonymous"></script>
+    <script src="./assets/config.js"></script>
+    <title>Click It To Ride</title>
+  </head>
+  <body>
+    <!--navbar-->
+    <header>
+      <nav class="container nav">
+        <!--HIDDEN HAMBURGER-->
+        <i class="bx bx-menu" id="menu-icon"></i>
+        <!--LOGO-->
+        <a href="#" class="logo">
+          <i class="fa-solid fa-car"></i>
+          <span class="logo-text">CLICK IT TO RIDE</span></a
+        >
+
+        <!--NAVLINKS-->
+        <ul class="navbar">
+          <li class="active"><a href="#home">Home</a></li>
+          <li><a href="#cars">Cars</a></li>
+          <li><a href="#about">Our Story</a></li>
+        </ul>
+        <!--search-->
+        <i class="bx bx-search" id="search-icon"></i>
+        <div class="search-box container">
+          <form action="#" id="search-form">
+            <input
+              type="search"
+              name="search"
+              id="search"
+              placeholder="search for your dream car..." />
+          </form>
+        </div>
+      </nav>
+    </header>
+    <!--the good stuff-->
+    <section class="home" id="home">
+      <div class="home-text">
+        <h1>From classic to classy</h1>
+        <p></p>
+        <!-- Home Button -->
+        <a href="#" class="button">Find it now</a>
+      </div>
+      <figcaption>
+        Photo by
+        <a
+          href="https://unsplash.com/@hansonluu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          >Hanson Lu</a
+        >
+        on
+        <a
+          href="https://unsplash.com/photos/956EmlIRARQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          >Unsplash</a
+        >
+      </figcaption>
+    </section>
+    <!-- Cars Section -->
+    <section class="cars" id="cars">
+      <div class="cars-heading">
+        <span>On sale now!</span>
+        <h2>We have what you need</h2>
+        <p>Come and see our beautiful showroom today!</p>
+      </div>
+      <div class="cars-filter">
+        <fieldset class="filters">
+          <label for="year">Year</label
+          ><select name="year" id="year">
+            <option value=""></option>
+          </select>
+
+          <label for="make">Make</label
+          ><select name="make" id="make">
+            <option value=""></option></select
+          ><label for="model">Model</label
+          ><select name="model" id="model">
+            <option value=""></option>
+          </select>
+        </fieldset>
+      </div>
+      <!-- Cars Container -->
+      <div class="cars-container container" id="cars-container"></div>
+    </section>
+    <!-- About -->
+    <section class="about container" id="about">
+      <div class="about-image">
+        <img src="assets/car_blue.png" alt="" />
+      </div>
+      <div class="about-text">
+        <span>About Us</span>
+        <h2>The Best Prices <br />The Highest Quality</h2>
+        <p>I hate the Lorem text</p>
+        <!-- About Button -->
+        <a href="#" class="button">Learn More</a>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container container">
+        <div class="footer-box">
+          <a href="#" class="logo">Click It To Ride</a>
+          <div class="social">
+            <a href="#"><i class="bx bxl-facebook"></i></a>
+            <a href="#"><i class="bx bxl-discord"></i></a>
+            <a href="#"><i class="bx bxl-instagram"></i></a>
+            <a href="#"><i class="bx bxl-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-box">
+          <a href="#">Home</a>
+          <a href="#">Cars</a>
+          <a href="#">Our Story</a>
+        </div>
+      </div>
+    </footer>
+    <script src="./assets/index.js"></script>
+  </body>
+</html>

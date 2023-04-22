@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  @apply m-0 p-0 scroll-pt-4 scroll-smooth list-none box-border no-underline;
+  font-family: 'Poppins', sans-serif;
+}
+/* html::-webkit-scrollbar {
+  @apply w-2 bg-transparent;
+}
+html::-webkit-scrollbar-thumb {
+  @apply rounded-[5rem];
+} */
+body {
+  @apply text-[#2E282A];
+}
+header {
+  @apply w-full block top-0 left-0 fixed z-10;
+}
+/* header .shadow {
+  @apply bg-[#2E282A] shadow-[4px_4px_20px_rgb(15,54,55/10%)] duration-500 ease-in-out;
+}
+.shadow #search-icon {
+  @apply text-[#2E282A];
+} */
+.nav {
+  @apply flex justify-between md:px-[10px] md:py-0 lg:px-[15px] lg:py-[20px] px-[20px] py-[30px] mx-0;
+}
+section {
+  @apply lg:pt-12 lg:pb-4 pt-16 pb-8;
+}
+
+img {
+  @apply w-full;
+}
+.container {
+  @apply lg:mx-4 mx-auto max-w-[1280px];
+}
+#menu-icon {
+  @apply text-[24px] cursor-pointer hidden md:inline;
+}
+.logo {
+  @apply text-[1.2rem] font-bold text-[#2E282A];
+}
+.logo-text {
+  @apply ml-4;
+}
+.navbar {
+  @apply flex gap-8 md:absolute md:top-full md:right-0 md:left-0 md:flex-col  md:gap-y-2 md:text-center md:shadow-[4px_4px_20px_rgb(15,54,55,0.2)] md:duration-500;
+}
+.navbar a {
+  @apply text-[#2E282A] text-[1rem] uppercase font-medium md:block md:p-[15px];
+}
+.navbar .active,
+.navbar a:hover {
+  @apply border-b-2 border-solid border-[#072AC8] md:border-b-0;
+}
+
+#search-icon {
+  @apply text-[24px] cursor-pointer;
+}
+
+.search-box {
+  @apply absolute top-[80%] right-0 left-0 shadow-[4px_4px_20px_rgba(15,54,55,0.1)] border-solid border-2 rounded-[0.5rem];
+  clip-path: circle(0% at 100% 0%);
+}
+
+.search-box.active {
+  clip-path: circle(144% at 100% 0%);
+  transition: 0.4s;
+}
+
+#search {
+  @apply w-full md:p-[15px] p-[20px] border-none outline-none bg-transparent text-[1rem] xs:p-[11px];
+}
+
+.home {
+  @apply m-auto w-full min-h-[640px] flex bg-no-repeat bg-cover bg-left xs:min-h-[500px] relative;
+  background-image: url('assets/image-unsplash.jpg');
+}
+
+.home-text {
+  @apply lg:pl-8 pl-[90px] pt-[90px];
+}
+.home-text h1 {
+  @apply lg:text-[2.1rem] text-[2.4rem] xs:text-[2rem];
+}
+
+.home-text p {
+  @apply font-light text-[1.2rem] m-[0.5rem_0_1.2rem];
+}
+.home-text p br {
+  @apply xs:contents;
+}
+figcaption {
+  @apply absolute bottom-0 left-[65%] text-[.85rem];
+}
+.button {
+  @apply px-[10px] py-[16px] font-normal bg-slate-300 rounded-lg text-[1.3rem] hover:bg-[#2E282A] hover:text-slate-100;
+}
+
+.cars-heading {
+  @apply text-center;
+}
+
+.cars-heading span {
+  @apply font-medium text-[#072AC8] md:text-[0.9rem];
+}
+.cars-heading p {
+  @apply font-light text-[0.9rem];
+}
+.cars-filter {
+  @apply mt-4;
+}
+.filters {
+  @apply flex gap-4;
+}
+.filters select {
+  @apply border-2 w-fit;
+}
+.cars {
+  @apply grid grid-flow-row place-items-center;
+}
+.cars-container {
+  @apply grid grid-cols-3 grid-flow-row lg:grid-cols-2 md:grid-cols-1 px-[20px] gap-[2rem] mt-[2rem];
+}
+
+.cars-container .card {
+  @apply flex-grow flex-shrink basis-64 relative;
+}
+
+.cars-container .car-image {
+  @apply w-full  object-cover overflow-hidden hover:scale-105 hover:duration-500;
+}
+
+.cars-container .cars-text {
+  @apply absolute top-8 text-[1rem] p-2 rounded-lg bg-slate-100 text-[#2E282A] hover:text-slate-100 hover:bg-[#072AC8];
+}
+.car-title {
+  @apply text-center text-[1.5rem];
+}
+.card .details {
+  @apply flex flex-col;
+}
+
+.sub-details {
+  @apply flex justify-between border-b-[1px] border-slate-300 py-1 text-[0.9rem];
+}
+.contact-us-button {
+  @apply text-white w-full bg-[#072AC8] hover:bg-[#070AC8] focus:outline-none focus:ring-4 focus:ring-[#073AC8] font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mt-2 dark:focus:ring-[#1407C8];
+}
+.about {
+  @apply flex flex-wrap items-center justify-center gap-6 md:flex-col-reverse;
+}
+
+.about-image {
+  @apply flex-grow flex-shrink basis-80;
+}
+
+.about-text {
+  @apply flex-grow flex-shrink basis-80 md:text-center;
+}
+.about-text span {
+  @apply font-medium text-[#2E282A];
+}
+
+.about-text h2 {
+  @apply text-[1.75rem] md:text-[1.4rem];
+}
+
+.about-text p {
+  @apply text-[0.9rem] mx-0 mt-[0.5rem] mb-[1.5rem];
+}
+
+.footer {
+  @apply bg-[#2E282A] text-[#f6f6f6] border-t-2 border-solid border-[#072AC8];
+}
+
+.footer-container {
+  @apply flex justify-between gap-4 sm:grid sm:grid-cols-1;
+}
+
+.footer-container .logo {
+  @apply text-[#2E282A] mb-4;
+}
+
+.footer-container .footer-box {
+  @apply flex sm:flex-col gap-4 sm:gap-2 items-center text-[1.25rem] sm:text-[1rem];
+}
+
+.social {
+  @apply flex items-center;
+}
+
+.social a {
+  @apply text-[24px] text-[#2E8282A] mr-4 hover:text-[#072AC8];
+}
+
+.footer-box h3 {
+  @apply text-[1.1rem] font-normal mb-4;
+}
+
+.footer-box a,
+.footer-box p {
+  @apply text-slate-300 mb-2;
+}
+
+.footer-box a {
+  @apply hover:text-white hover:font-bold;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    clip-path: circle(0% at 0% 0%);
+  }
+  .navbar .active {
+    clip-path: circle(144% at 0% 0%);
+  }
+}
