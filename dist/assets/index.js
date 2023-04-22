@@ -90,7 +90,7 @@ search.addEventListener('submit', (event) => handleForm(event));
 //handle input from search form
 function handleForm(event) {
   event.preventDefault();
-  console.log(event);
+
   rover.fetch(`${carsUrl}?q=${event.target['search'].value}`).then((cars) => {
     garbageCollector(carsContainer);
     for (let i = 0; i < 9; i++) {
