@@ -37,11 +37,11 @@ If there is an error with the json-server, check that the db.json is in the righ
 
 ## Authors
 
-Katie Smith
-Vahan Nadjarian
-Matthew Brouwer  
-Jenson Thottathil
-Michael Loomis
+- Katie Smith
+- Vahan Nadjarian
+- Matthew Brouwer  
+- Jenson Thottathil
+- Michael Loomis
 
 ## Version History
 
