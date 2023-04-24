@@ -33,6 +33,8 @@ const imagin = {
   },
 };
 
+  
+
 // good ol Rover will fetch whatever you need
 const rover = {
   fetch: function getJSON(url) {
@@ -46,6 +48,17 @@ const rover = {
       })
       .catch(error => console.log(error.message));
   },
+
+  post: function postJson(url, data) {
+    return  fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body: JSON.stringify(data)
+    })
+    .then(resp => resp.json())
+  }
 };
 /** ********FETCH REQUESTS END*****************/
 
