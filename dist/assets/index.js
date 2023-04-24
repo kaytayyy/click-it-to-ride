@@ -58,6 +58,17 @@ const rover = {
       body: JSON.stringify(data)
     })
     .then(resp => resp.json())
+  },
+
+  patch: function patchJson(url, data) {
+    return  fetch(url, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body: JSON.stringify(data)
+    })
+    .then(resp => resp.json())
   }
 };
 /** ********FETCH REQUESTS END*****************/
