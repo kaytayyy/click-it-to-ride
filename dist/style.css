@@ -522,10 +522,6 @@ video {
   width: 100%;
 }
 
-.visible{
-  visibility: visible;
-}
-
 .hidden{
   display: none;
 }
