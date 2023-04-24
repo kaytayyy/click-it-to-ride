@@ -54,7 +54,7 @@ npm run build
 From the main package directory run:
 
 ```
-json-server --watch .dist/assets/db.json
+json-server --watch ./dist/assets/db.json
 ```
 
 Then start up Live Server or other method of viewing the page.
