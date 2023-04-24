@@ -130,8 +130,8 @@ addEventListener("DOMContentLoaded", () => {
   }
 
   //editing functionality
-  function handleEdit(car) {
-    console.log(car);
+  function handleEdit(car,event) {
+    
   }
   //delete functionality
   function handleDelete(car) {}
