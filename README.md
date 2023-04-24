@@ -1,3 +1,4 @@
+
 # click-it-to-ride
 
 # Click It To Ride
@@ -88,3 +89,9 @@ Inspiration, code snippets, etc.
 - [imagin.studio](https://www.imagin.studio/)
 - [Hanson Lu on Unsplash](https://unsplash.com/photos/956EmlIRARQ?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
 -
+=======
+Welcome to Click It to Ride!
+We all have to search for a car at some point in our lives, possibly multiple times.
+Why not make it a simple search?
+With Click It to Ride, all you have to do is enter in your preferences and Boom! You have a car fitting your needs.
+
