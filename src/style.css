@@ -210,7 +210,8 @@ figcaption {
   @apply text-[#2E282A] mb-4;
 }
 
-.footer-container .footer-box {
+.footer-container .footer-box,
+#login-btn {
   @apply flex sm:flex-col gap-4 sm:gap-2 items-center text-[1.25rem] sm:text-[1rem];
 }
 
@@ -222,19 +223,25 @@ figcaption {
   @apply text-[24px] text-[#2E8282A] mr-4 hover:text-[#072AC8];
 }
 
-.footer-box h3 {
+.footer-box h3,
+#login-btn {
   @apply text-[1.1rem] font-normal mb-4;
 }
 
 .footer-box a,
-.footer-box p {
+.footer-box p,
+#login-btn {
   @apply text-slate-300 mb-2;
 }
 
-.footer-box a {
+.footer-box a,
+#login-btn {
   @apply hover:text-white hover:font-bold;
 }
 
+.hide-this {
+  @apply hidden;
+}
 @media (max-width: 768px) {
   .navbar {
     clip-path: circle(0% at 0% 0%);

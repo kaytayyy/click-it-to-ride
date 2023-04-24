@@ -1,4 +1,3 @@
-
 # click-it-to-ride
 
 # Click It To Ride
@@ -54,7 +53,7 @@ npm run build
 From the main package directory run:
 
 ```
-json-server --watch .dist/assets/db.json
+json-server --watch ./dist/assets/db.json
 ```
 
 Then start up Live Server or other method of viewing the page.
@@ -88,10 +87,8 @@ Inspiration, code snippets, etc.
 - [code bless you](https://www.skillshare.com/en/profile/Code-Bless-You/450612786)
 - [imagin.studio](https://www.imagin.studio/)
 - [Hanson Lu on Unsplash](https://unsplash.com/photos/956EmlIRARQ?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
--
-=======
-Welcome to Click It to Ride!
-We all have to search for a car at some point in our lives, possibly multiple times.
-Why not make it a simple search?
-With Click It to Ride, all you have to do is enter in your preferences and Boom! You have a car fitting your needs.
-
+- =======
+  Welcome to Click It to Ride!
+  We all have to search for a car at some point in our lives, possibly multiple times.
+  Why not make it a simple search?
+  With Click It to Ride, all you have to do is enter in your preferences and Boom! You have a car fitting your needs.
