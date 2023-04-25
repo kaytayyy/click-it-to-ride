@@ -151,12 +151,11 @@ addEventListener("DOMContentLoaded", () => {
 
   // next page button
   document.querySelector("#next-cars").addEventListener("click", event => {
-    console.log(event, currentCar.id);
     rover
       .fetch(`${carsUrl}?_start=${currentCar.id}&_end=${currentCar.id + 9}`)
       .then(cars => {
         garbageCollector(carsContainer);
-        console.log(cars);
+
         const maxResults = cars.length >= 9 ? 9 : cars.length;
         for (let i = 0; i < maxResults; i++) {
           currentCar = cars[i];
@@ -168,18 +167,17 @@ addEventListener("DOMContentLoaded", () => {
   // previous page button
   document.querySelector("#prev-cars").addEventListener("click", event => {
     console.log(event, currentCar.id);
-    let startAt = currentCar.id - 18 < 0 ? 18 - currentCar.id : currentCar.id;
-    rover
-      .fetch(`${carsUrl}?_end=${currentCar.id - 9}&_start=${startAt}`)
-      .then(cars => {
-        garbageCollector(carsContainer);
-        console.log(cars);
-        const maxResults = cars.length >= 9 ? 9 : cars.length;
-        for (let i = 0; i < maxResults; i++) {
-          currentCar = cars[i];
-          renderCarCards(cars[i]);
-        }
-      });
+    let startAt = currentCar.id - 18 < 0 ? 0 : currentCar.id - 18;
+    let endAt = startAt + 9;
+    rover.fetch(`${carsUrl}?_end=${endAt}&_start=${startAt}`).then(cars => {
+      garbageCollector(carsContainer);
+      console.log(cars);
+      const maxResults = cars.length >= 9 ? 9 : cars.length;
+      for (let i = 0; i < maxResults; i++) {
+        currentCar = cars[i];
+        renderCarCards(cars[i]);
+      }
+    });
   });
   /** ********EVENT LISTENERS END****************/
 
@@ -206,7 +204,11 @@ addEventListener("DOMContentLoaded", () => {
         : event.target.id === "make"
         ? "car_make"
         : "car_model";
-    const params = `?${filter}=${event.target.value}`;
+    console.log(filter);
+
+    const params =
+      event.target.value === "" ? "" : `?${filter}=${event.target.value}`;
+    console.log(params);
     // grab the filtered cars array and render the first 9
     rover.fetch(`${carsUrl}${params}`).then(cars => {
       garbageCollector(carsContainer);
@@ -220,14 +222,37 @@ addEventListener("DOMContentLoaded", () => {
 
   // editing functionality
   function handleEdit(card, car) {
+    // console.log(car, card);
+
     const functionsArray = [
-      priceInput(car.price),
+      priceInput(
+        document.querySelector(`.card[data-id="${car.id}"] .price`).textContent,
+      ),
       yearMakeModelInputs(car.car_model_year, car.car_make, car.car_model),
-      conditionOptions(car.condition),
-      mileageInput(car.mileage),
-      transmissionOptions(car.transmission),
-      fuelOptions(car.fuel_type),
-      colorInput(car.color),
+      conditionOptions(
+        document.querySelector(
+          `.card[data-id="${car.id}"]> .condition >.fox-socks`,
+        ).textContent,
+      ),
+      mileageInput(
+        document.querySelector(
+          `.card[data-id="${car.id}"]> .mileage> .fox-socks`,
+        ).textContent,
+      ),
+      transmissionOptions(
+        document.querySelector(
+          `.card[data-id="${car.id}"]>.transmission>.fox-socks`,
+        ).textContent,
+      ),
+      fuelOptions(
+        document.querySelector(
+          `.card[data-id="${car.id}"]> .fuel-type> .fox-socks`,
+        ).textContent,
+      ),
+      colorInput(
+        document.querySelector(`.card[data-id="${car.id}"]> .color> .fox-socks`)
+          .textContent,
+      ),
     ];
     // there is no significance to fox socks except that it's something I remember and my daughter has been saying it
     const detailsToHide = document.querySelectorAll(
@@ -238,8 +263,14 @@ addEventListener("DOMContentLoaded", () => {
     // render the input elements for update
     // price
     document
-      .querySelector("img")
-      .insertAdjacentElement("afterend", priceInput(car.price));
+      .querySelector(`.card[data-id="${car.id}"] img`)
+      .insertAdjacentElement(
+        "afterend",
+        priceInput(
+          document.querySelector(`.card[data-id="${car.id}"] .price`)
+            .textContent,
+        ),
+      );
 
     // year make model
     const yearMakeModelDiv = document.querySelector(
@@ -254,23 +285,53 @@ addEventListener("DOMContentLoaded", () => {
     // condition
     document
       .querySelector(`.card[data-id="${car.id}"] .condition`)
-      .append(conditionOptions(car.condition));
+      .append(
+        conditionOptions(
+          document.querySelector(
+            `.card[data-id="${car.id}"]> .condition >.fox-socks`,
+          ).textContent,
+        ),
+      );
     // mileage
     document
       .querySelector(`.card[data-id="${car.id}"] .mileage`)
-      .append(mileageInput(car.mileage));
+      .append(
+        mileageInput(
+          document.querySelector(
+            `.card[data-id="${car.id}"]> .mileage >.fox-socks`,
+          ).textContent,
+        ),
+      );
     // transmission
     document
       .querySelector(`.card[data-id="${car.id}"] .transmission`)
-      .append(transmissionOptions(car.transmission));
+      .append(
+        transmissionOptions(
+          document.querySelector(
+            `.card[data-id="${car.id}"]> .transmission >.fox-socks`,
+          ).textContent,
+        ),
+      );
     // fueltype
     document
       .querySelector(`.card[data-id="${car.id}"] .fuel-type`)
-      .append(fuelOptions(car.fuel_type));
+      .append(
+        fuelOptions(
+          document.querySelector(
+            `.card[data-id="${car.id}"]> .fuel-type >.fox-socks`,
+          ).textContent,
+        ),
+      );
     // color
     document
       .querySelector(`.card[data-id="${car.id}"] .color`)
-      .append(colorInput(car.color));
+      .append(
+        colorInput(
+          document.querySelector(
+            `.card[data-id="${car.id}"]> .color >.fox-socks`,
+          ).textContent,
+        ),
+      );
 
     // update text on edit button to say "Save"
     document.querySelector(
@@ -288,20 +349,14 @@ addEventListener("DOMContentLoaded", () => {
   }
   // PATCH func
   function handleSave(carCard, car) {
-    const card = document.querySelector(
-      `.card[data-id="${carCard.getAttribute("data-id")}"]`,
-    );
+    const card = document.querySelector(`.card[data-id="${car.id}"]`);
 
     // hide the input
-    card.querySelectorAll(".edit-inputs").forEach(input => {
-      input.classList.toggle("hide-this");
-    });
 
     // unhide all the details sections
     document
       .querySelectorAll(`.card[data-id="${car.id}"] .fox-socks`)
       .forEach(detail => {
-        console.log(detail);
         detail.classList.toggle("hide-this");
       });
 
@@ -331,6 +386,11 @@ addEventListener("DOMContentLoaded", () => {
         `.card[data-id="${car.id}"] #select-condition`,
       ).value,
     };
+    document
+      .querySelectorAll(`.card[data-id="${car.id}"] .edit-inputs`)
+      .forEach(input => {
+        input.classList.toggle("hide-this");
+      });
     // destroy the inputs
     document
       .querySelectorAll(`.card[data-id="${car.id}"] .edit-inputs`)
@@ -342,7 +402,7 @@ addEventListener("DOMContentLoaded", () => {
     rover
       .patch(`${carsUrl}/${car.id}`, data)
       .then(car => {
-        console.log(car);
+        currentCar = car;
         updateCard(car);
       })
       .catch(err => {
@@ -361,19 +421,31 @@ addEventListener("DOMContentLoaded", () => {
   }
 
   function updateCard(car) {
-    const card = document.querySelector(`.card[data-id="${car.id}"]`);
     // price lives in an h2 with class fox-socks
-    card.querySelector("h2.fox-socks").textContent = car.price;
+    document.querySelector(
+      `.card[data-id="${car.id}"] h2.fox-socks`,
+    ).textContent = car.price;
     // year make model live ni the car-title
-    card.querySelector(
-      ".car-title",
+    document.querySelector(
+      `.card[data-id="${car.id}"] .car-title`,
     ).textContent = `${car.car_model_year} ${car.car_make} ${car.car_model} `;
     // condition
-    card.querySelector(".condition > h4").textContent = car.condition;
+    document.querySelector(
+      `.card[data-id="${car.id}"] >.condition > h4`,
+    ).textContent = car.condition;
 
-    card.querySelector(".mileage > h4").textContent = car.mileage;
+    document.querySelector(
+      `.card[data-id="${car.id}"] .mileage > h4`,
+    ).textContent = car.mileage;
 
-    card.querySelector(".transmission > h4").textContent = car.transmission;
+    document.querySelector(
+      `.card[data-id="${car.id}"] .transmission > h4`,
+    ).textContent = car.transmission;
+
+    document.querySelector(
+      `.card[data-id="${car.id}"] .fuel-type > h4`,
+    ).textContent = car.fuel_type;
+    currentCar = car;
   }
 
   function renderCarCards(car) {
@@ -395,7 +467,7 @@ addEventListener("DOMContentLoaded", () => {
     //  <!-- price container
     const carPrice = document.createElement("h2");
     carPrice.classList.add("cars-text", "price", "fox-socks");
-    carPrice.textContent = `$${car.price}`;
+    carPrice.textContent = `${car.price}`;
 
     // <!-- DETAILS SECTION
     // year | make | model
@@ -552,7 +624,7 @@ addEventListener("DOMContentLoaded", () => {
   }
 
   // build select with options for fuel type of car being edited
-  const fuelOptions = currentFuelTyle => {
+  const fuelOptions = currentFuelType => {
     const fuelList = ["Gasoline", "Diesel", "Electric", "Hybrid"];
     // select element for fuelOptions
     const selectFuelType = document.createElement("select");
@@ -560,6 +632,9 @@ addEventListener("DOMContentLoaded", () => {
       let option = document.createElement("option");
       option.value = fuel;
       option.textContent = fuel;
+      currentFuelType === fuel
+        ? option.setAttribute("selected", "selected")
+        : "";
       selectFuelType.append(option);
     });
     selectFuelType.id = "select-fuel-type";
@@ -576,6 +651,9 @@ addEventListener("DOMContentLoaded", () => {
       let option = document.createElement("option");
       option.value = transmission;
       option.textContent = transmission;
+      currentTransmission === transmission
+        ? option.setAttribute("selected", "selected")
+        : "";
       selectTransmission.append(option);
     });
     selectTransmission.id = "select-transmission";
@@ -654,6 +732,7 @@ addEventListener("DOMContentLoaded", () => {
       let option = document.createElement("option");
       option.value = condition;
       option.textContent = condition;
+
       currentCondition === condition
         ? option.setAttribute("selected", "selected")
         : "";
