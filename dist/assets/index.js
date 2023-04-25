@@ -230,17 +230,21 @@ addEventListener("DOMContentLoaded", () => {
       colorInput(car.color),
     ];
     // there is no significance to fox socks except that it's something I remember and my daughter has been saying it
-    const detailsToHide = document.querySelectorAll(".fox-socks");
+    const detailsToHide = document.querySelectorAll(
+      `.card[data-id="${car.id}"] .fox-socks`,
+    );
     // hide all the details sections
     detailsToHide.forEach(detail => detail.classList.add("hide-this"));
     // render the input elements for update
     // price
-    card
+    document
       .querySelector("img")
       .insertAdjacentElement("afterend", priceInput(car.price));
 
     // year make model
-    const yearMakeModelDiv = card.querySelector(".car-title-div");
+    const yearMakeModelDiv = document.querySelector(
+      `.card[data-id="${car.id}"] .car-title-div`,
+    );
     Array.from(
       yearMakeModelInputs(car.car_model_year, car.car_make, car.car_model),
     ).forEach(input => {
@@ -248,20 +252,30 @@ addEventListener("DOMContentLoaded", () => {
     });
 
     // condition
-    card.querySelector(".condition").append(conditionOptions(car.condition));
+    document
+      .querySelector(`.card[data-id="${car.id}"] .condition`)
+      .append(conditionOptions(car.condition));
     // mileage
-    card.querySelector(".mileage").append(mileageInput(car.mileage));
+    document
+      .querySelector(`.card[data-id="${car.id}"] .mileage`)
+      .append(mileageInput(car.mileage));
     // transmission
-    card
-      .querySelector(".transmission")
+    document
+      .querySelector(`.card[data-id="${car.id}"] .transmission`)
       .append(transmissionOptions(car.transmission));
     // fueltype
-    card.querySelector(".fuel-type").append(fuelOptions(car.fuel_type));
+    document
+      .querySelector(`.card[data-id="${car.id}"] .fuel-type`)
+      .append(fuelOptions(car.fuel_type));
     // color
-    card.querySelector(".color").append(colorInput(car.color));
+    document
+      .querySelector(`.card[data-id="${car.id}"] .color`)
+      .append(colorInput(car.color));
 
     // update text on edit button to say "Save"
-    card.querySelector("#edit-button").textContent = "Save";
+    document.querySelector(
+      `.card[data-id="${car.id}"] #edit-button`,
+    ).textContent = "Save";
   }
   // delete functionality
   function handleDelete(car) {
@@ -277,30 +291,63 @@ addEventListener("DOMContentLoaded", () => {
     const card = document.querySelector(
       `.card[data-id="${carCard.getAttribute("data-id")}"]`,
     );
-    console.log(card.querySelectorAll(".edit-inputs"));
+
     // hide the input
     card.querySelectorAll(".edit-inputs").forEach(input => {
-      input.remove();
+      input.classList.toggle("hide-this");
     });
 
     // unhide all the details sections
     document
-      .querySelectorAll(".fox-socks")
-      .forEach(detail => detail.classList.toggle("hide-this"));
+      .querySelectorAll(`.card[data-id="${car.id}"] .fox-socks`)
+      .forEach(detail => {
+        console.log(detail);
+        detail.classList.toggle("hide-this");
+      });
 
     const data = {
-      car_make: card.querySelector("#make-input").value,
-      car_model: card.querySelector("#model-input").value,
-      car_model_year: card.querySelector("#year-input").value,
-      color: card.querySelector("#color-input").value,
-      mileage: card.querySelector("#mileage-input").value,
-      price: card.querySelector("#price-input").value,
-      transmission: card.querySelector("#select-transmission").value,
-      fuel_type: card.querySelector("#select-fuel-type").value,
-      condition: card.querySelector("#select-condition").value,
+      car_make: document.querySelector(`.card[data-id="${car.id}"] #make-input`)
+        .value,
+      car_model: document.querySelector(
+        `.card[data-id="${car.id}"] #model-input`,
+      ).value,
+      car_model_year: document.querySelector(
+        `.card[data-id="${car.id}"] #year-input`,
+      ).value,
+      color: document.querySelector(`.card[data-id="${car.id}"] #color-input`)
+        .value,
+      mileage: document.querySelector(
+        `.card[data-id="${car.id}"] #mileage-input`,
+      ).value,
+      price: document.querySelector(`.card[data-id="${car.id}"] #price-input`)
+        .value,
+      transmission: document.querySelector(
+        `.card[data-id="${car.id}"] #select-transmission`,
+      ).value,
+      fuel_type: document.querySelector(
+        `.card[data-id="${car.id}"] #select-fuel-type`,
+      ).value,
+      condition: document.querySelector(
+        `.card[data-id="${car.id}"] #select-condition`,
+      ).value,
     };
+    // destroy the inputs
+    document
+      .querySelectorAll(`.card[data-id="${car.id}"] .edit-inputs`)
+      .forEach(input => {
+        input.remove();
+      });
     card.querySelector("#edit-button").textContent = "Edit";
     // WRITE PATCH FUNCTION HERE:
+    rover
+      .patch(`${carsUrl}/${car.id}`, data)
+      .then(car => {
+        console.log(car);
+        updateCard(car);
+      })
+      .catch(err => {
+        console.log(err);
+      });
     // send the response from the patch to updateCard()
   }
   /** ********FORM PROCESSING END****************/
@@ -322,11 +369,11 @@ addEventListener("DOMContentLoaded", () => {
       ".car-title",
     ).textContent = `${car.car_model_year} ${car.car_make} ${car.car_model} `;
     // condition
-    card.querySelector(".condition  h4").textContent = car.condition;
+    card.querySelector(".condition > h4").textContent = car.condition;
 
-    card.querySelector(".mileage  h4").textContent = car.mileage;
+    card.querySelector(".mileage > h4").textContent = car.mileage;
 
-    card.querySelector(".transmission  h4").textContent = car.transmission;
+    card.querySelector(".transmission > h4").textContent = car.transmission;
   }
 
   function renderCarCards(car) {
@@ -364,8 +411,8 @@ addEventListener("DOMContentLoaded", () => {
     const carConditionText = document.createElement("h3");
     const carConditionResult = document.createElement("h4");
     carConditionDiv.classList.add("sub-details", "condition");
-    carConditionText.classList.add("fox-socks");
     carConditionText.textContent = "Condition:";
+    carConditionResult.classList.add("fox-socks");
     carConditionResult.textContent = car.condition;
     carConditionDiv.append(carConditionText, carConditionResult);
 
@@ -374,7 +421,7 @@ addEventListener("DOMContentLoaded", () => {
     const carMileageText = document.createElement("h3");
     const carMileageResult = document.createElement("h4");
     carMileageDiv.classList.add("sub-details", "mileage");
-    carMileageText.classList.add("fox-socks");
+    carMileageResult.classList.add("fox-socks");
     carMileageText.textContent = "Mileage:";
     carMileageResult.textContent = car.mileage;
     carMileageDiv.append(carMileageText, carMileageResult);
@@ -384,7 +431,7 @@ addEventListener("DOMContentLoaded", () => {
     const carTransmissionText = document.createElement("h3");
     const carTransmissionResult = document.createElement("h4");
     carTransmissionDiv.classList.add("sub-details", "transmission");
-    carTransmissionText.classList.add("fox-socks");
+    carTransmissionResult.classList.add("fox-socks");
     carTransmissionText.textContent = "Transmission:";
     carTransmissionResult.textContent = car.transmission;
     carTransmissionDiv.append(carTransmissionText, carTransmissionResult);
@@ -394,7 +441,7 @@ addEventListener("DOMContentLoaded", () => {
     const carColorText = document.createElement("h3");
     const carColorResult = document.createElement("h4");
     carColorDiv.classList.add("sub-details", "color");
-    carColorText.classList.add("fox-socks");
+    carColorResult.classList.add("fox-socks");
     carColorText.textContent = "Color:";
     carColorResult.textContent = car.color;
     carColorDiv.append(carColorText, carColorResult);
@@ -404,8 +451,8 @@ addEventListener("DOMContentLoaded", () => {
     const carFuelTypeText = document.createElement("h3");
     const carFuelTypeResult = document.createElement("h4");
     carFuelTypeDiv.classList.add("sub-details", "fuel-type");
-    carFuelTypeText.classList.add("fox-socks");
     carFuelTypeText.textContent = "Fuel Type:";
+    carFuelTypeResult.classList.add("fox-socks");
     carFuelTypeResult.textContent = car.fuel_type;
     carFuelTypeDiv.append(carFuelTypeText, carFuelTypeResult);
 
