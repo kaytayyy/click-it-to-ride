@@ -67,11 +67,28 @@ addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(data),
       }).then(resp => resp.json());
     },
+    //DELETE URL
+    sell: function deleteJSON(url) {
+      return fetch(url, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw response.statusText;
+          }
+        })
+        .catch(error => console.log(error.message));
+    },
   };
   /** ********FETCH REQUESTS END*****************/
 
   /** ********EVENT LISTENERS START**************/
-//search icon click
+  //search icon click
   document.querySelector("#search-icon").addEventListener("click", () => {
     search.classList.toggle("active");
     menu.classList.remove("active");
@@ -106,7 +123,7 @@ addEventListener("DOMContentLoaded", () => {
   modelSelector.addEventListener("change", event => {
     filterList(event);
   });
-//menu icon click
+  //menu icon click
   document.querySelector("#menu-icon").addEventListener("click", () => {
     menu.classList.toggle("active");
     search.classList.remove("active");
@@ -260,10 +277,10 @@ addEventListener("DOMContentLoaded", () => {
     const card = document.querySelector(
       `.card[data-id="${carCard.getAttribute("data-id")}"]`,
     );
-
+    console.log(card.querySelectorAll(".edit-inputs"));
     // hide the input
     card.querySelectorAll(".edit-inputs").forEach(input => {
-      input.classList.toggle("hide-this");
+      input.remove();
     });
 
     // unhide all the details sections
@@ -305,11 +322,11 @@ addEventListener("DOMContentLoaded", () => {
       ".car-title",
     ).textContent = `${car.car_model_year} ${car.car_make} ${car.car_model} `;
     // condition
-    card.querySelector(".condition > h4").textContent = car.condition;
+    card.querySelector(".condition  h4").textContent = car.condition;
 
-    card.querySelector(".mileage > h4").textContent = car.mileage;
+    card.querySelector(".mileage  h4").textContent = car.mileage;
 
-    card.querySelector(".transmission > h4").textContent = car.transmission;
+    card.querySelector(".transmission  h4").textContent = car.transmission;
   }
 
   function renderCarCards(car) {
