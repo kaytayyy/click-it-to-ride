@@ -284,8 +284,16 @@ addEventListener("DOMContentLoaded", () => {
     };
     card.querySelector("#edit-button").textContent = "Edit";
     // WRITE PATCH FUNCTION HERE:
+    rover.patch(`${carsUrl}/${car.id}`, data)
+    .then(car => {
+        console.log(car)
+        updateCard(car);
+      })
+    .catch(err => {
+        console.log(err);
+      });
     // send the response from the patch to updateCard()
-  }
+    }
   /** ********FORM PROCESSING END****************/
 
   /** ********DOM RENDER FUNCTIONS START*********/
