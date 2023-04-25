@@ -86,32 +86,36 @@ addEventListener("DOMContentLoaded", () => {
     },
   };
   /** ********FETCH REQUESTS END*****************/
-/** ********SALE FORM************************/
-const saleForm = document.getElementById('sale-form')
+  /** ********SALE FORM************************/
+  const saleForm = document.getElementById("sale-form");
 
-saleForm.addEventListener('submit', (e) =>{
-  e.preventDefault()
-        let sellCar = {
-          year: e.target.year.value,
-          make: e.target.make.value,
-          model: e.target.model.value,
-          mileage: e.target.mileage.value,
-          transmission: e.target.transmission.value,
-          color: e.target.color.value
-        }
-        function sendListing(sellCar) {
-          fetch(carsUrl,{
-            method: 'POST',
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(sellCar)
-
-          })
-        } sendListing(sellCar)
-        
-
-})
+  saleForm.addEventListener("submit", e => {
+    e.preventDefault();
+    let sellCar = {
+      car_model_year: e.target.year.value,
+      car_make: e.target.make.value,
+      car_model: e.target.model.value,
+      mileage: e.target.mileage.value,
+      transmission: e.target.transmission.value,
+      color: e.target.color.value,
+      price: e.target.price.value,
+      condition: e.target.condition.value,
+      fuel_type: e.target.fuel_type.value,
+    };
+    function sendListing(sellCar) {
+      fetch(carsUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sellCar),
+      })
+        .then(resp => resp.json())
+        .then(newCar => renderCarCards(newCar));
+    }
+    sendListing(sellCar);
+    saleForm.reset();
+  });
 
   /** ********EVENT LISTENERS START**************/
   //search icon click
@@ -119,22 +123,6 @@ saleForm.addEventListener('submit', (e) =>{
     search.classList.toggle("active");
     menu.classList.remove("active");
   });
-
-  // document.querySelector("#menu-icon").addEventListener("click", () => {
-  //   menu.classList.toggle("active");
-  //   search.classList.remove("active");
-  // });
-
-  // // Hide Menu And Search Box On Scroll
-  // window.addEventListener("scroll", () => {
-  //   menu.classList.remove("active");
-  //   search.classList.remove("active");
-  // });
-
-  // // Header - ensure shadow stays away
-  // window.addEventListener("scroll", () => {
-  //   header.classList.remove("shadow", window.scrollY > 0);
-  // });
 
   // check for changes in the <SELECT> filter elements
   const yearSelector = document.querySelector("#year");

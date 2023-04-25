@@ -14001,13 +14001,24 @@
       "id": 1000
     },
     {
-      "year": "",
-      "make": "",
-      "model": "",
-      "mileage": "",
+      "year": "2013",
+      "make": "Audi",
+      "model": "A4",
+      "mileage": "55000",
       "transmission": "Automatic",
-      "color": "fsdsdf",
-      "id": 1001
+      "color": "Gray",
+      "id": 1002
+    },
+    {
+      "car_model_year": "2021",
+      "car_make": "Cadillac",
+      "car_model": "CT4",
+      "mileage": "18000",
+      "transmission": "Automatic",
+      "color": "Blue",
+      "price": "75000",
+      "condition": "Certified Pre-Owned",
+      "id": 1003
     }
   ]
 }

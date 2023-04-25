@@ -1188,6 +1188,77 @@ figcaption{
   --tw-ring-color: rgb(234 233 233 / var(--tw-ring-opacity));
 }
 
+#sale-form{
+  max-width: 28rem;
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+#sale-form .row{
+  margin-left: 0px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+#sale-form .row .left{
+  margin-bottom: 0.25rem;
+  width: 33.333333%;
+}
+
+#sale-form .row .right{
+  display: flex;
+  width: 66.666667%;
+  flex-grow: 1;
+}
+
+#sale-form .row input,
+#sale-form .row select{
+  height: 2.5rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+#sale-form .row input::-moz-placeholder, #sale-form .row select::-moz-placeholder{
+  --tw-placeholder-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-placeholder-opacity));
+}
+
+#sale-form .row input::placeholder,
+#sale-form .row select::placeholder{
+  --tw-placeholder-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-placeholder-opacity));
+}
+
+#sale-form .row label{
+  margin-bottom: 0.5rem;
+  display: inline;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+#sale-form .row #submit-btn{
+  margin-left: auto;
+  margin-right: auto;
+  --tw-bg-opacity: 1;
+  background-color: rgb(46 40 42 / var(--tw-bg-opacity));
+  font-size: 1.3rem;
+  --tw-text-opacity: 1;
+  color: rgb(241 245 249 / var(--tw-text-opacity));
+}
+
 .about{
   display: flex;
   flex-wrap: wrap;
