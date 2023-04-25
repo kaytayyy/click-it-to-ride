@@ -35,80 +35,78 @@ addEventListener("DOMContentLoaded", () => {
     },
   };
 
-// good ol Rover will fetch whatever you need
-const rover = {
-  fetch: function getJSON(url) {
-    return fetch(url)
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw response.statusText;
-        }
-      })
-      .catch(error => console.log(error.message));
-  },
+  // good ol Rover will fetch whatever you need
+  const rover = {
+    fetch: function getJSON(url) {
+      return fetch(url)
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw response.statusText;
+          }
+        })
+        .catch(error => console.log(error.message));
+    },
 
-  post: function postJson(url, data) {
-    return  fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      },
-      body: JSON.stringify(data)
-    })
-    .then(resp => resp.json())
-  },
-  patch: function patchJson(url, data) {
-    return  fetch(url, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      },
-      body: JSON.stringify(data)
-    })
-    .then(resp => resp.json())
-  }
-};
-/** ********FETCH REQUESTS END*****************/
+    post: function postJson(url, data) {
+      return fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify(data),
+      }).then(resp => resp.json());
+    },
+    patch: function patchJson(url, data) {
+      return fetch(url, {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify(data),
+      }).then(resp => resp.json());
+    },
+  };
+  /** ********FETCH REQUESTS END*****************/
 
-/** ********EVENT LISTENERS START**************/
-document.querySelector("#search-icon").addEventListener("click", () => {
-  search.classList.toggle("active");
-  menu.classList.remove("active");
-});
+  /** ********EVENT LISTENERS START**************/
+//search icon click
+  document.querySelector("#search-icon").addEventListener("click", () => {
+    search.classList.toggle("active");
+    menu.classList.remove("active");
+  });
 
-document.querySelector("#menu-icon").addEventListener("click", () => {
-  menu.classList.toggle("active");
-  search.classList.remove("active");
-});
+  // document.querySelector("#menu-icon").addEventListener("click", () => {
+  //   menu.classList.toggle("active");
+  //   search.classList.remove("active");
+  // });
 
-// Hide Menu And Search Box On Scroll
-window.addEventListener("scroll", () => {
-  menu.classList.remove("active");
-  search.classList.remove("active");
-});
+  // // Hide Menu And Search Box On Scroll
+  // window.addEventListener("scroll", () => {
+  //   menu.classList.remove("active");
+  //   search.classList.remove("active");
+  // });
 
-// Header - ensure shadow stays away
-window.addEventListener("scroll", () => {
-  header.classList.remove("shadow", window.scrollY > 0);
-});
+  // // Header - ensure shadow stays away
+  // window.addEventListener("scroll", () => {
+  //   header.classList.remove("shadow", window.scrollY > 0);
+  // });
 
-// check for changes in the <SELECT> filter elements
-const yearSelector = document.querySelector("#year");
-yearSelector.addEventListener("change", event => {
-  filterList(event);
-});
-const makeSelector = document.querySelector("#make");
-makeSelector.addEventListener("change", event => {
-  filterList(event);
-});
-const modelSelector = document.querySelector("#model");
-modelSelector.addEventListener("change", event => {
-  filterList(event);
-});
-
-
+  // check for changes in the <SELECT> filter elements
+  const yearSelector = document.querySelector("#year");
+  yearSelector.addEventListener("change", event => {
+    filterList(event);
+  });
+  const makeSelector = document.querySelector("#make");
+  makeSelector.addEventListener("change", event => {
+    filterList(event);
+  });
+  const modelSelector = document.querySelector("#model");
+  modelSelector.addEventListener("change", event => {
+    filterList(event);
+  });
+//menu icon click
   document.querySelector("#menu-icon").addEventListener("click", () => {
     menu.classList.toggle("active");
     search.classList.remove("active");
@@ -130,24 +128,11 @@ modelSelector.addEventListener("change", event => {
       ? header.classList.add("bg-white")
       : header.classList.remove("bg-white");
   });
-  // check for changes in the <SELECT> filter elements
-  const yearSelector = document.querySelector("#year");
-  yearSelector.addEventListener("change", event => {
-    filterList(event);
-  });
-  const makeSelector = document.querySelector("#make");
-  makeSelector.addEventListener("change", event => {
-    filterList(event);
-  });
-  const modelSelector = document.querySelector("#model");
-  modelSelector.addEventListener("change", event => {
-    filterList(event);
-  });
 
   // look for the search form
   search.addEventListener("submit", event => handleSearch(event));
 
-  //next page button
+  // next page button
   document.querySelector("#next-cars").addEventListener("click", event => {
     console.log(event, currentCar.id);
     rover
@@ -163,7 +148,7 @@ modelSelector.addEventListener("change", event => {
       });
   });
 
-  //previous page button
+  // previous page button
   document.querySelector("#prev-cars").addEventListener("click", event => {
     console.log(event, currentCar.id);
     let startAt = currentCar.id - 18 < 0 ? 18 - currentCar.id : currentCar.id;
