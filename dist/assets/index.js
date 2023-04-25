@@ -16,6 +16,7 @@ addEventListener("DOMContentLoaded", () => {
   const carsPerPage = 9;
   // let isLoggedIn = false;
   const carsContainer = document.querySelector("#cars-container");
+
   /** ********VARIABLE DECLARATION END***********/
 
   /** ********FETCH REQUESTS START***************/
@@ -38,6 +39,24 @@ addEventListener("DOMContentLoaded", () => {
   const rover = {
     fetch: function getJSON(url) {
       return fetch(url)
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw response.statusText;
+          }
+        })
+        .catch(error => console.log(error.message));
+    },
+    //PATCH URL
+    patch: function patchJSON(url, data) {
+      return fetch(url, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
         .then(response => {
           if (response.ok) {
             return response.json();
@@ -71,7 +90,12 @@ addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", () => {
     header.classList.remove("shadow", window.scrollY > 0);
   });
-
+  //once header gets below the car, make the background white so you can see the text
+  document.addEventListener("scroll", () => {
+    window.pageYOffset > 640
+      ? header.classList.add("bg-white")
+      : header.classList.remove("bg-slate-50");
+  });
   // check for changes in the <SELECT> filter elements
   const yearSelector = document.querySelector("#year");
   yearSelector.addEventListener("change", event => {
@@ -130,11 +154,65 @@ addEventListener("DOMContentLoaded", () => {
   }
 
   //editing functionality
-  function handleEdit(car,event) {
-    
+  function handleEdit(card, car) {
+    const functionsArray = [
+      priceInput(car.price),
+      yearMakeModelInputs(car.car_model_year, car.car_make, car.car_model),
+      conditionOptions(car.condition),
+      mileageInput(car.mileage),
+      transmissionOptions(car.transmission),
+      fuelOptions(car.fuel_type),
+      colorInput(car.color),
+    ];
+
+    for (let i = 0; i <= 6; i++) {
+      if (i === 0) {
+        card.childNodes[i + 1].classList.add("hide-this");
+        card.childNodes[i].insertAdjacentElement("afterend", functionsArray[i]);
+      } else if (i === 1) {
+        card.childNodes[i + 2].childNodes[0].classList.add("hide-this");
+        functionsArray[i].forEach(input =>
+          card.childNodes[i + 2].append(input),
+        );
+      } else {
+        card.childNodes[i + 2].childNodes[1].classList.add("hide-this");
+        card.childNodes[i + 2].childNodes[0].insertAdjacentElement(
+          "afterend",
+          functionsArray[i],
+        );
+      }
+    }
+    // const carEditButton = document.querySelector("#edit-button");
+    card.childNodes[10].childNodes[0].textContent = "Save";
+
+    //on click edit
+    //expose the select element
+    //show the same drop down options that exist with add new car
   }
   //delete functionality
-  function handleDelete(car) {}
+  function handleDelete(car) {
+    //WRITE THE DELETE FUNCTION HERE
+  }
+
+  //PATCH func
+  function handleSave(carCard, car) {
+    const element = document.querySelector(
+      `.card[data-id="${carCard.getAttribute("data-id")}"]`,
+    );
+
+    const data = {
+      car_make: element.querySelector("#make-input").value,
+      car_model: element.querySelector("#model-input").value,
+      car_model_year: element.querySelector("#year-input").value,
+      color: element.querySelector("#color-input").value,
+      mileage: element.querySelector("#mileage-input").value,
+      price: element.querySelector("#price-input").value,
+      transmission: element.querySelector("#select-transmission").value,
+      fuel_type: element.querySelector("#select-fuel-type").value,
+      condition: element.querySelector("#select-condition").value,
+    };
+    //WRITE PATCH FUNCTION HERE:
+  }
   /** ********FORM PROCESSING END****************/
 
   /** ********DOM RENDER FUNCTIONS START*********/
@@ -172,6 +250,7 @@ addEventListener("DOMContentLoaded", () => {
     // year
     const carYearMakeModelDiv = document.createElement("div");
     const carYearMakeModelText = document.createElement("h2");
+    carYearMakeModelDiv.classList.add("car-title-div");
     carYearMakeModelText.classList.add("car-title");
     carYearMakeModelText.textContent = `${car.car_model_year} ${car.car_make} ${car.car_model} `;
     carYearMakeModelDiv.append(carYearMakeModelText);
@@ -180,6 +259,7 @@ addEventListener("DOMContentLoaded", () => {
     const carConditionDiv = document.createElement("div");
     const carConditionText = document.createElement("h3");
     const carConditionResult = document.createElement("h4");
+
     carConditionDiv.classList.add("sub-details");
     carConditionText.textContent = "Condition:";
     carConditionResult.textContent = car.condition;
@@ -203,7 +283,7 @@ addEventListener("DOMContentLoaded", () => {
     carTransmissionResult.textContent = car.transmission;
     carTransmissionDiv.append(carTransmissionText, carTransmissionResult);
 
-    //       <!-- fuel type -->
+    //       <!-- color-->
     const carColorDiv = document.createElement("div");
     const carColorText = document.createElement("h3");
     const carColorResult = document.createElement("h4");
@@ -211,6 +291,15 @@ addEventListener("DOMContentLoaded", () => {
     carColorText.textContent = "Color:";
     carColorResult.textContent = car.color;
     carColorDiv.append(carColorText, carColorResult);
+
+    //      <!-- fuel type-->
+    const carFuelTypeDiv = document.createElement("div");
+    const carFuelTypeText = document.createElement("h3");
+    const carFuelTypeResult = document.createElement("h4");
+    carFuelTypeDiv.classList.add("sub-details");
+    carFuelTypeText.textContent = "Fuel Type:";
+    carFuelTypeResult.textContent = car.fuel_type;
+    carFuelTypeDiv.append(carFuelTypeText, carFuelTypeResult);
 
     //       <!-- contact us button -->
     const carContactUsDiv = document.createElement("div");
@@ -222,20 +311,27 @@ addEventListener("DOMContentLoaded", () => {
     carContactUsDiv.append(carContactUsLink);
     //     </div>
     //       <!-- edit/delete buttons -->
+    //create
     const carAdminDiv = document.createElement("div");
     const carEditButton = document.createElement("button");
     const carDeleteButton = document.createElement("button");
+    //populate
     carAdminDiv.classList.add("admin-button-div");
     carEditButton.id = "edit-button";
     carDeleteButton.id = "delete-button";
     carEditButton.classList.add("admin-btn");
     carDeleteButton.classList.add("admin-btn");
-    carEditButton.textContent = "Edit listing";
+    carEditButton.textContent = "Edit";
     carDeleteButton.textContent = "Delete listing";
+    //tracking and event listeners
     currentCar = car;
     carDeleteButton.addEventListener("click", () => handleDelete(car));
-    carEditButton.addEventListener("click", () => handleEdit(car));
-
+    carEditButton.addEventListener("click", () => {
+      carEditButton.textContent === "Edit"
+        ? handleEdit(carCard, car)
+        : handleSave(carCard, car);
+    });
+    //append
     carAdminDiv.append(carEditButton, carDeleteButton);
     // append to DOM
 
@@ -246,11 +342,17 @@ addEventListener("DOMContentLoaded", () => {
       carConditionDiv,
       carMileageDiv,
       carTransmissionDiv,
+      carFuelTypeDiv,
       carColorDiv,
       carContactUsDiv,
       carAdminDiv,
     );
+    // carCard.addEventListener("change", () => console.log(car, carCard));
     carsContainer.appendChild(carCard);
+  }
+
+  function handleClick(card, element) {
+    console.log(element);
   }
   /** ********DOM RENDER FUNCTIONS END***********/
 
@@ -292,18 +394,122 @@ addEventListener("DOMContentLoaded", () => {
       modelFilter.append(modelOption);
     });
   }
+
+  //build select with options for fuel type of car being edited
+  const fuelOptions = currentFuelTyle => {
+    const fuelList = ["Gasoline", "Diesel", "Electric", "Hybrid"];
+    //select element for fuelOPtions
+    const selectFuelType = document.createElement("select");
+    const fuelOptions = fuelList.map(fuel => {
+      let option = document.createElement("option");
+      option.value = fuel;
+      option.textContent = fuel;
+      selectFuelType.append(option);
+    });
+    selectFuelType.id = "select-fuel-type";
+    return selectFuelType;
+  };
+
+  //built select with transmission options for car being edited
+  const transmissionOptions = currentTransmission => {
+    const transmissionList = ["Automatic", "Manual"];
+    //select element for transmission
+    const selectTransmission = document.createElement("select");
+    const transmissionOptions = transmissionList.map(transmission => {
+      let option = document.createElement("option");
+      option.value = transmission;
+      option.textContent = transmission;
+      selectTransmission.append(option);
+    });
+    selectTransmission.id = "select-transmission";
+    return selectTransmission;
+  };
+
+  //built a new input for editing mileage
+  const mileageInput = currentMileage => {
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = currentMileage;
+    input.id = "mileage-input";
+    return input;
+  };
+
+  //built a new input for editing price
+  const priceInput = currentPrice => {
+    const input = document.createElement("input");
+    input.type = "text";
+    input.classList.add("cars-text", "price");
+    input.textContent = currentPrice;
+    input.value = currentPrice;
+    input.id = "price-input";
+    return input;
+  };
+
+  //built a new input for editing color
+  const colorInput = currentColor => {
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = currentColor;
+    input.id = "color-input";
+    return input;
+  };
+
+  const yearMakeModelInputs = (currentYear, currentMake, currentModel) => {
+    const yearInput = document.createElement("input");
+    yearInput.classList.add("car-title");
+    yearInput.type = "text";
+    yearInput.textContent = currentYear;
+    yearInput.value = currentYear;
+    yearInput.id = "year-input";
+
+    const makeInput = document.createElement("input");
+    makeInput.classList.add("car-title");
+    makeInput.type = "text";
+    makeInput.value = currentMake;
+    makeInput.textContent = currentMake;
+    makeInput.id = "make-input";
+
+    const modelInput = document.createElement("input");
+    modelInput.classList.add("car-title");
+    modelInput.type = "text";
+    modelInput.value = currentModel;
+    modelInput.textContent = currentModel;
+    modelInput.id = "model-input";
+    return [yearInput, makeInput, modelInput];
+  };
+
+  //built select with condition options for car being edited
+  const conditionOptions = currentCondition => {
+    const conditionList = ["New", "Used", "Certified Pre-Owned"];
+    // select element for conditions
+    const selectCondition = document.createElement("select");
+
+    const conditionOptions = conditionList.map(condition => {
+      let option = document.createElement("option");
+      option.value = condition;
+      option.textContent = condition;
+      currentCondition === condition
+        ? option.setAttribute("selected", "selected")
+        : "";
+      selectCondition.append(option);
+    });
+    selectCondition.id = "select-condition";
+    return selectCondition;
+  };
   // oscar the grouch cleaning up
   function garbageCollector(parent) {
     while (parent.hasChildNodes()) {
       parent.removeChild(parent.firstChild);
     }
   }
+
   /** *********GENERAL FUNCTIONS END*************/
 
   // start the car sales party
   function initialize() {
     rover.fetch(`${carsUrl}`).then(cars => {
       garbageCollector(carsContainer);
+
       const currentPage = 1;
       const maxResults = cars.length >= 9 ? 9 : cars.length;
       for (let i = 0; i < maxResults; i++) {
@@ -314,6 +520,7 @@ addEventListener("DOMContentLoaded", () => {
       buildYearFilter(cars);
       buildMakeFilter(cars);
       buildModelFilter(cars);
+
       document.querySelector("#result_number").textContent = cars.length;
     });
   }

@@ -155,15 +155,30 @@ figcaption {
 .cars-container .cars-text {
   @apply absolute top-8 text-[1rem] p-2 rounded-lg bg-slate-100 text-[#2E282A] hover:text-slate-100 hover:bg-[#072AC8];
 }
+.cars-container input.cars-text {
+  @apply absolute top-8 text-[1rem] p-2 rounded-lg bg-slate-100 text-[#2E282A] border-solid border-2 border-[#2E282A] hover:bg-slate-100 hover:text-[#2E282A];
+}
+.car-title-div {
+  @apply flex justify-between;
+}
+.car-title-div input {
+  @apply text-[1rem] w-[100px] text-right border-solid border-2 border-[#2E282A];
+}
 .car-title {
   @apply text-center text-[1.5rem];
 }
+
 .card .details {
   @apply flex flex-col;
 }
 
 .sub-details {
-  @apply flex justify-between border-b-[1px] border-slate-300 py-1 text-[0.9rem];
+  @apply flex flex-nowrap justify-between border-b-[1px] border-slate-300 py-1 text-[0.9rem];
+}
+
+.sub-details select,
+.sub-details input {
+  @apply text-right border-[#2E282A] border-solid border-2;
 }
 .contact-us-button {
   @apply text-white w-full bg-[#072AC8] hover:bg-[#070AC8] focus:outline-none focus:ring-4 focus:ring-[#073AC8] font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mt-2 dark:focus:ring-[#1407C8];
