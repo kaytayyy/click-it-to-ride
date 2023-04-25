@@ -13999,6 +13999,15 @@
       "condition": "Used",
       "location": "Seattle",
       "id": 1000
+    },
+    {
+      "year": "",
+      "make": "",
+      "model": "",
+      "mileage": "",
+      "transmission": "Automatic",
+      "color": "fsdsdf",
+      "id": 1001
     }
   ]
 }
