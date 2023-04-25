@@ -67,7 +67,7 @@ addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(data),
       }).then(resp => resp.json());
     },
-    //DELETE URL
+    // DELETE URL
     sell: function deleteJSON(url) {
       return fetch(url, {
         method: "DELETE",
@@ -91,7 +91,7 @@ addEventListener("DOMContentLoaded", () => {
 
   saleForm.addEventListener("submit", e => {
     e.preventDefault();
-    let sellCar = {
+    const sellCar = {
       car_model_year: e.target.year.value,
       car_make: e.target.make.value,
       car_model: e.target.model.value,
@@ -110,7 +110,13 @@ addEventListener("DOMContentLoaded", () => {
         },
         body: JSON.stringify(sellCar),
       })
-        .then(resp => resp.json())
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw response.statusText;
+          }
+        })
         .then(newCar => renderCarCards(newCar));
     }
     sendListing(sellCar);
@@ -118,7 +124,7 @@ addEventListener("DOMContentLoaded", () => {
   });
 
   /** ********EVENT LISTENERS START**************/
-  //search icon click
+  // search icon click
   document.querySelector("#search-icon").addEventListener("click", () => {
     search.classList.toggle("active");
     menu.classList.remove("active");
@@ -137,7 +143,7 @@ addEventListener("DOMContentLoaded", () => {
   modelSelector.addEventListener("change", event => {
     filterList(event);
   });
-  //menu icon click
+  // menu icon click
   document.querySelector("#menu-icon").addEventListener("click", () => {
     menu.classList.toggle("active");
     search.classList.remove("active");
@@ -180,12 +186,11 @@ addEventListener("DOMContentLoaded", () => {
 
   // previous page button
   document.querySelector("#prev-cars").addEventListener("click", event => {
-    console.log(event, currentCar.id);
-    let startAt = currentCar.id - 18 < 0 ? 0 : currentCar.id - 18;
-    let endAt = startAt + 9;
+    const startAt = currentCar.id - 18 < 0 ? 0 : currentCar.id - 18;
+    const endAt = startAt + 9;
     rover.fetch(`${carsUrl}?_end=${endAt}&_start=${startAt}`).then(cars => {
       garbageCollector(carsContainer);
-      console.log(cars);
+
       const maxResults = cars.length >= 9 ? 9 : cars.length;
       for (let i = 0; i < maxResults; i++) {
         currentCar = cars[i];
@@ -218,11 +223,10 @@ addEventListener("DOMContentLoaded", () => {
         : event.target.id === "make"
         ? "car_make"
         : "car_model";
-    console.log(filter);
 
     const params =
       event.target.value === "" ? "" : `?${filter}=${event.target.value}`;
-    console.log(params);
+
     // grab the filtered cars array and render the first 9
     rover.fetch(`${carsUrl}${params}`).then(cars => {
       garbageCollector(carsContainer);
@@ -236,38 +240,6 @@ addEventListener("DOMContentLoaded", () => {
 
   // editing functionality
   function handleEdit(card, car) {
-    // console.log(car, card);
-
-    const functionsArray = [
-      priceInput(
-        document.querySelector(`.card[data-id="${car.id}"] .price`).textContent,
-      ),
-      yearMakeModelInputs(car.car_model_year, car.car_make, car.car_model),
-      conditionOptions(
-        document.querySelector(
-          `.card[data-id="${car.id}"]> .condition >.fox-socks`,
-        ).textContent,
-      ),
-      mileageInput(
-        document.querySelector(
-          `.card[data-id="${car.id}"]> .mileage> .fox-socks`,
-        ).textContent,
-      ),
-      transmissionOptions(
-        document.querySelector(
-          `.card[data-id="${car.id}"]>.transmission>.fox-socks`,
-        ).textContent,
-      ),
-      fuelOptions(
-        document.querySelector(
-          `.card[data-id="${car.id}"]> .fuel-type> .fox-socks`,
-        ).textContent,
-      ),
-      colorInput(
-        document.querySelector(`.card[data-id="${car.id}"]> .color> .fox-socks`)
-          .textContent,
-      ),
-    ];
     // there is no significance to fox socks except that it's something I remember and my daughter has been saying it
     const detailsToHide = document.querySelectorAll(
       `.card[data-id="${car.id}"] .fox-socks`,
@@ -643,7 +615,7 @@ addEventListener("DOMContentLoaded", () => {
     // select element for fuelOptions
     const selectFuelType = document.createElement("select");
     const fuelBuilder = fuelList.map(fuel => {
-      let option = document.createElement("option");
+      const option = document.createElement("option");
       option.value = fuel;
       option.textContent = fuel;
       currentFuelType === fuel
@@ -662,7 +634,7 @@ addEventListener("DOMContentLoaded", () => {
     // select element for transmission
     const selectTransmission = document.createElement("select");
     const transmissionBuilder = transmissionList.map(transmission => {
-      let option = document.createElement("option");
+      const option = document.createElement("option");
       option.value = transmission;
       option.textContent = transmission;
       currentTransmission === transmission
@@ -743,7 +715,7 @@ addEventListener("DOMContentLoaded", () => {
     const selectCondition = document.createElement("select");
 
     const conditionBuilder = conditionList.map(condition => {
-      let option = document.createElement("option");
+      const option = document.createElement("option");
       option.value = condition;
       option.textContent = condition;
 
