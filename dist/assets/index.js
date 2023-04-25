@@ -35,62 +35,79 @@ addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  // good ol Rover will fetch whatever you need
-  const rover = {
-    fetch: function getJSON(url) {
-      return fetch(url)
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw response.statusText;
-          }
-        })
-        .catch(error => console.log(error.message));
-    },
-    // PATCH URL
-    patch: function patchJSON(url, data) {
-      return fetch(url, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+// good ol Rover will fetch whatever you need
+const rover = {
+  fetch: function getJSON(url) {
+    return fetch(url)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw response.statusText;
+        }
       })
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw response.statusText;
-          }
-        })
-        .catch(error => console.log(error.message));
-    },
-    // DELETE URL
-    sell: function deleteJSON(url) {
-      return fetch(url, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw response.statusText;
-          }
-        })
-        .catch(error => console.log(error.message));
-    },
-  };
-  /** ********FETCH REQUESTS END*****************/
+      .catch(error => console.log(error.message));
+  },
 
-  /** ********EVENT LISTENERS START**************/
-  document.querySelector("#search-icon").addEventListener("click", () => {
-    search.classList.toggle("active");
-    menu.classList.remove("active");
-  });
+  post: function postJson(url, data) {
+    return  fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body: JSON.stringify(data)
+    })
+    .then(resp => resp.json())
+  },
+  patch: function patchJson(url, data) {
+    return  fetch(url, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body: JSON.stringify(data)
+    })
+    .then(resp => resp.json())
+  }
+};
+/** ********FETCH REQUESTS END*****************/
+
+/** ********EVENT LISTENERS START**************/
+document.querySelector("#search-icon").addEventListener("click", () => {
+  search.classList.toggle("active");
+  menu.classList.remove("active");
+});
+
+document.querySelector("#menu-icon").addEventListener("click", () => {
+  menu.classList.toggle("active");
+  search.classList.remove("active");
+});
+
+// Hide Menu And Search Box On Scroll
+window.addEventListener("scroll", () => {
+  menu.classList.remove("active");
+  search.classList.remove("active");
+});
+
+// Header - ensure shadow stays away
+window.addEventListener("scroll", () => {
+  header.classList.remove("shadow", window.scrollY > 0);
+});
+
+// check for changes in the <SELECT> filter elements
+const yearSelector = document.querySelector("#year");
+yearSelector.addEventListener("change", event => {
+  filterList(event);
+});
+const makeSelector = document.querySelector("#make");
+makeSelector.addEventListener("change", event => {
+  filterList(event);
+});
+const modelSelector = document.querySelector("#model");
+modelSelector.addEventListener("change", event => {
+  filterList(event);
+});
+
 
   document.querySelector("#menu-icon").addEventListener("click", () => {
     menu.classList.toggle("active");
