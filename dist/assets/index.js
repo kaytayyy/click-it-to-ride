@@ -620,7 +620,7 @@ addEventListener("DOMContentLoaded", () => {
       buildYearFilter(cars);
       buildMakeFilter(cars);
       buildModelFilter(cars);
-      document.querySelector("#prev-cars").disabled = true;
+      // document.querySelector("#prev-cars").disabled = true;
     });
   }
 
