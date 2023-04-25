@@ -72,6 +72,32 @@ const rover = {
   }
 };
 /** ********FETCH REQUESTS END*****************/
+/** ********SALE FORM************************/
+const saleForm = document.getElementById('sale-form')
+
+saleForm.addEventListener('submit', (e) =>{
+  e.preventDefault()
+        let sellCar = {
+          year: e.target.year.value,
+          make: e.target.make.value,
+          model: e.target.model.value,
+          mileage: e.target.mileage.value,
+          transmission: e.target.transmission.value,
+          color: e.target.color.value
+        }
+        function sendListing(sellCar) {
+          fetch(carsUrl,{
+            method: 'POST',
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(sellCar)
+
+          })
+        } sendListing(sellCar)
+        
+
+})
 
 /** ********EVENT LISTENERS START**************/
 document.querySelector("#search-icon").addEventListener("click", () => {
