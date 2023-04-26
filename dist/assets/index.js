@@ -199,7 +199,18 @@ addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  
+  const form_image_url = document.querySelector("#image_url_row");
+  const form_image_upload = document.querySelector("#image_upload_row");
+  const image_method = document.querySelectorAll(
+    "#sale-form input[name='image-upload-method']",
+  );
+
+  Array.from(image_method).forEach(button => {
+    button.addEventListener("click", event => {
+      console.log(event);
+    });
+  });
+
   /** ********EVENT LISTENERS END****************/
 
   /** ********FORM PROCESSING START**************/
