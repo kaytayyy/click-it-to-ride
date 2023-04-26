@@ -183,7 +183,40 @@
               <input type="text" name="color" id="color-form" />
             </div>
           </div>
+          <div class="row">
+            <div class="left">
+              <label for="image_upload_method">IMAGE UPLOAD</label>
+            </div>
+            <div class="right">
+              <input
+                type="radio"
+                name="image_upload_method"
+                id="image_url_btn"
+                checked />URL
+              <input
+                type="radio"
+                name="image_upload_method"
+                id="image_upload_btn" />FILE
+            </div>
+          </div>
+          <div class="row" id="image_url_row">
+            <div class="left"><label for="image_url">IMAGE URL</label></div>
+            <div class="right">
+              <input type="text" name="image_url" id="image_url" />
+            </div>
+          </div>
+          <div class="row" id="image_upload_row">
+            <div class="left">
+              <label for="image_upload">IMAGE UPLOAD</label>
+            </div>
 
+            <div class="right">
+              <input
+                class="block file:left-0 file:bg-[#2E282A]"
+                id="file_input"
+                type="file" />
+            </div>
+          </div>
           <div class="row">
             <input type="submit" id="submit-btn" value="LIST IT" />
           </div>

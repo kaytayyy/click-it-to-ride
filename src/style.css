@@ -213,6 +213,9 @@ figcaption {
 #sale-form .row #submit-btn {
   @apply mx-auto bg-[#2E282A] text-slate-100 text-[1.3rem];
 }
+#sale-form .row .right #file_input {
+  @apply block text-sm ml-0 pl-0 file:h-full file:text-slate-50 rounded-lg cursor-pointer focus:outline-none;
+}
 .about {
   @apply flex flex-wrap items-center justify-center gap-6 md:flex-col-reverse;
 }
