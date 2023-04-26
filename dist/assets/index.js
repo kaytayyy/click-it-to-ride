@@ -167,7 +167,10 @@ addEventListener("DOMContentLoaded", () => {
   });
 
   // look for the search form
-  search.addEventListener("submit", event => handleSearch(event));
+  search.addEventListener("submit", event => {
+    window.location.href="#cars"
+    handleSearch(event)
+    });
 
   // next page button
   document.querySelector("#next-cars").addEventListener("click", event => {
