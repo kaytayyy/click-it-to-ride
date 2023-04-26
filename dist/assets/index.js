@@ -101,6 +101,7 @@ addEventListener("DOMContentLoaded", () => {
       price: e.target.price.value,
       condition: e.target.condition.value,
       fuel_type: e.target.fuel_type.value,
+      user_image_url: e.target.user_image_url.value,
     };
     function sendListing(sellCar) {
       fetch(carsUrl, {
@@ -201,8 +202,6 @@ addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-
-
 
   /** ********EVENT LISTENERS END****************/
 
@@ -425,15 +424,15 @@ addEventListener("DOMContentLoaded", () => {
     document.querySelector(
       `.card[data-id="${car.id}"] >.condition > h4`,
     ).textContent = car.condition;
-
+    //mileage
     document.querySelector(
       `.card[data-id="${car.id}"] .mileage > h4`,
     ).textContent = car.mileage;
-
+    //transmission
     document.querySelector(
       `.card[data-id="${car.id}"] .transmission > h4`,
     ).textContent = car.transmission;
-
+    //fuel type
     document.querySelector(
       `.card[data-id="${car.id}"] .fuel-type > h4`,
     ).textContent = car.fuel_type;
@@ -452,9 +451,21 @@ addEventListener("DOMContentLoaded", () => {
     carImage.classList.add("car-image");
 
     // use imagin API to generate image for the car based on parameters
-    getImage(car.car_model_year, car.car_make, car.car_model, car.color).then(
-      image => (carImage.src = image.url),
-    );
+    if (car.user_image_url && car.user_image_url !== "") {
+      carImage.src = car.user_image_url;
+    } else if (car.image) {
+      carImage.src = car.image;
+    } else {
+      getImage(car.car_model_year, car.car_make, car.car_model, car.color).then(
+        image => {
+          carImage.src = image.url;
+          let data = {image: image.url};
+          rover
+            .patch(`${carsUrl}/${car.id}`, data)
+            .then(updated => console.log(updated));
+        },
+      );
+    }
 
     //  <!-- price container
     const carPrice = document.createElement("h2");
@@ -524,7 +535,7 @@ addEventListener("DOMContentLoaded", () => {
     const carContactUsDiv = document.createElement("div");
     const carContactUsLink = document.createElement("a");
     const carContactUsButton = document.createElement("input");
-    carContactUsLink.href = "#footer"
+    carContactUsLink.href = "#footer";
     carContactUsButton.classList.add("contact-us-button");
     carContactUsButton.value = "Contact us today!";
     carContactUsLink.append(carContactUsButton);

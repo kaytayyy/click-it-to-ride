@@ -145,8 +145,8 @@ figcaption {
   @apply flex-grow flex-shrink basis-64 relative;
 }
 
-.cars-container .car-image {
-  @apply w-full  object-cover overflow-hidden hover:scale-105 hover:duration-500;
+#cars-container .card .car-image {
+  @apply w-auto h-auto max-h-[245px] object-cover overflow-hidden hover:scale-105 hover:duration-500;
 }
 
 .cars-container .cars-text {
@@ -178,7 +178,7 @@ figcaption {
   @apply text-right border-[#2E282A] border-solid border-2;
 }
 .contact-us-button {
-  @apply text-white w-full bg-[#2E282A] hover:bg-[#2F282A] focus:outline-none focus:ring-4 focus:ring-[#6c6869] font-medium rounded-md text-sm px-5 py-2.5 text-center mr-2 mt-2 dark:focus:ring-[#eae9e9];
+  @apply text-white w-full bg-[#2E282A] hover:bg-[#2F282A] focus:outline-none focus:ring-4 focus:ring-[#6c6869] font-medium rounded-md text-sm px-5 py-2.5 text-center mr-2 mt-2 dark:focus:ring-[#eae9e9] cursor-pointer;
 }
 
 .admin-button-div {
@@ -213,6 +213,10 @@ figcaption {
 #sale-form .row #submit-btn {
   @apply mx-auto bg-[#2E282A] text-slate-100 text-[1.3rem];
 }
+#sale-form .row .right #file_input {
+  @apply block text-sm ml-0 pl-0 file:h-full file:text-slate-50 rounded-lg cursor-pointer focus:outline-none;
+}
+
 .about {
   @apply flex flex-wrap items-center justify-center gap-6 md:flex-col-reverse;
 }
@@ -244,8 +248,11 @@ figcaption {
   @apply flex justify-between gap-4 sm:grid sm:grid-cols-1;
 }
 
-.footer-container .logo { 
-  @apply text-[#2E282A] mb-4 w-10;
+.footer-container .logo {
+  @apply text-[#2E282A] mb-4;
+}
+.footer-box .logo img {
+  @apply w-14;
 }
 
 .footer-container .footer-box,
@@ -258,7 +265,7 @@ figcaption {
 }
 
 .social a {
-  @apply text-[24px] text-[#2E8282A] mr-4 hover:text-[#072AC8];
+  @apply text-[24px] text-[#2E282A] mr-4 hover:text-[#072AC8];
 }
 
 .footer-box h3,
