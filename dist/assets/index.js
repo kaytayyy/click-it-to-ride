@@ -545,7 +545,7 @@ addEventListener("DOMContentLoaded", () => {
     const carContactUsDiv = document.createElement("div");
     const carContactUsLink = document.createElement("a");
     const carContactUsButton = document.createElement("input");
-    carContactUsLink.href = "#footer"
+    carContactUsLink.href = "#footer";
     carContactUsButton.classList.add("contact-us-button");
     carContactUsButton.value = "Contact us today!";
     carContactUsLink.append(carContactUsButton);
