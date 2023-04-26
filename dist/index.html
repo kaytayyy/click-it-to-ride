@@ -114,7 +114,53 @@
           <div class="row">
             <div class="left"><label for="year">YEAR</label></div>
             <div class="right">
-              <input type="text" name="year" id="year-form" />
+              <select name="year" id="year-input">
+                <option value=""></option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+                <option value="2009">2009</option>
+                <option value="2008">2008</option>
+                <option value="2007">2007</option>
+                <option value="2006">2006</option>
+                <option value="2005">2005</option>
+                <option value="2004">2004</option>
+                <option value="2003">2003</option>
+                <option value="2002">2002</option>
+                <option value="2001">2001</option>
+                <option value="2000">2000</option>
+                <option value="1999">1999</option>
+                <option value="1998">1998</option>
+                <option value="1997">1997</option>
+                <option value="1996">1996</option>
+                <option value="1995">1995</option>
+                <option value="1994">1994</option>
+                <option value="1993">1993</option>
+                <option value="1992">1992</option>
+                <option value="1991">1991</option>
+                <option value="1990">1990</option>
+                <option value="1989">1989</option>
+                <option value="1988">1988</option>
+                <option value="1987">1987</option>
+                <option value="1986">1986</option>
+                <option value="1985">1985</option>
+                <option value="1984">1984</option>
+                <option value="1983">1983</option>
+                <option value="1982">1982</option>
+                <option value="1981">1981</option>
+                <option value="1980">1980</option>
+              </select>
             </div>
           </div>
           <div class="row">
@@ -183,7 +229,40 @@
               <input type="text" name="color" id="color-form" />
             </div>
           </div>
+          <!-- <div class="row" id="image-upload-method-row">
+            <div class="left">
+              <label for="image_upload_method">IMAGE UPLOAD</label>
+            </div>
+            <div class="right">
+              <input
+                type="radio"
+                name="image_upload_method"
+                id="image_url_btn"
+                checked />URL
+              <input
+                type="radio"
+                name="image_upload_method"
+                id="image_upload_btn" />FILE
+            </div>
+          </div> -->
+          <div class="row" id="image_url_row">
+            <div class="left"><label for="user_image_url">IMAGE URL</label></div>
+            <div class="right">
+              <input type="text" name="user_image_url" id="image_url" />
+            </div>
+          </div>
+          <!-- <div class="row" id="image_upload_row">
+            <div class="left">
+              <label for="image_upload">IMAGE UPLOAD</label>
+            </div>
 
+            <div class="right">
+              <input
+                class="block file:left-0 file:bg-[#2E282A]"
+                id="file_input"
+                type="file" />
+            </div>
+          </div> -->
           <div class="row">
             <input type="submit" id="submit-btn" value="LIST IT" />
           </div>
@@ -191,16 +270,22 @@
       </div>
     </section>
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" id="footer">
       <div class="footer-container container">
         <div class="footer-box">
-          <a href="#" class="logo">Click It To Ride</a>
+          <a href="#" class="logo">
+            <img src="./assets/ClickItToRide2.png" />
+          </a>
           <div class="social">
             <a href="#"><i class="bx bxl-facebook"></i></a>
             <a href="#"><i class="bx bxl-discord"></i></a>
             <a href="#"><i class="bx bxl-instagram"></i></a>
             <a href="#"><i class="bx bxl-youtube"></i></a>
           </div>
+        </div>
+        <div class="footer-box">
+          <p>Phone #: 1-800-carsnow</p>
+          <p>Email: clickittoride@gmail.com</p>
         </div>
         <div class="footer-box">
           <a href="#">Home</a>

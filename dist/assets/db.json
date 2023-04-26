@@ -13,6 +13,7 @@
       "condition": "Certified Pre-Owned",
       "location": "Dallas",
       "id": 1,
+      "user_image_url": "https://lh3.googleusercontent.com/pw/AJFCJaXiQ65VowsIvUbhckeDTSK477nuj5vw4D2euThtU4M1H9NMQTh-Sz0NitCSwYgtvTnM3ejJ-WEfcEjT-32UCag5kUpL5Uqd0cAMq_TCD043g_pJx5HyC7RBKrbHfuf7EP4ZJ3MLYcEUMx_D-WRyWReu=w2366-h1774-s-no?authuser=0",
       "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2018&make=Toyota&modelFamily=Camry&paintDescription=Black"
     },
     {
@@ -24,7 +25,7 @@
       "mileage": "25500",
       "price": "15394.15",
       "transmission": "Automatic",
-      "fuel_type": "Hybrid",
+      "fuel_type": "Electric",
       "condition": "Used",
       "location": "Boston",
       "id": 2,
@@ -64,13 +65,13 @@
       "registration": "0692-BNR",
       "car_make": "Mazda",
       "car_model": "Miata MX-5",
-      "car_model_year": 2014,
+      "car_model_year": "2014",
       "color": "Indigo",
-      "mileage": 35004,
-      "price": 47106.77,
-      "transmission": "Manual",
-      "fuel_type": "Diesel",
-      "condition": "Certified Pre-Owned",
+      "mileage": "35004",
+      "price": "39999",
+      "transmission": "Automatic",
+      "fuel_type": "Hybrid",
+      "condition": "Used",
       "location": "Seattle",
       "id": 5,
       "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2014&make=Mazda&modelFamily=Miata%20MX-5&paintDescription=Indigo"
@@ -79,10 +80,10 @@
       "registration": "3651-NBJ",
       "car_make": "Hyundai",
       "car_model": "Sonata",
-      "car_model_year": 2008,
+      "car_model_year": "2008",
       "color": "Goldenrod",
-      "mileage": 43779,
-      "price": 24328.16,
+      "mileage": "43779",
+      "price": "24328.16",
       "transmission": "Automatic",
       "fuel_type": "Diesel",
       "condition": "Certified Pre-Owned",
@@ -14053,6 +14054,32 @@
       "price": "75000",
       "condition": "Certified Pre-Owned",
       "id": 1003
+    },
+    {
+      "car_model_year": "2019",
+      "car_make": "audi",
+      "car_model": "a4",
+      "mileage": "10000",
+      "transmission": "Automatic",
+      "color": "Green",
+      "price": "25000",
+      "condition": "New",
+      "fuel_type": "Gasoline",
+      "id": 1004,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2019&make=audi&modelFamily=a4&paintDescription=Green"
+    },
+    {
+      "car_model_year": "2018",
+      "car_make": "Toyota",
+      "car_model": "Camry",
+      "mileage": "35000",
+      "transmission": "Automatic",
+      "color": "Black",
+      "price": "29000",
+      "condition": "Certified Pre-Owned",
+      "fuel_type": "Gasoline",
+      "user_image_url": "https://lh3.googleusercontent.com/pw/AJFCJaXiQ65VowsIvUbhckeDTSK477nuj5vw4D2euThtU4M1H9NMQTh-Sz0NitCSwYgtvTnM3ejJ-WEfcEjT-32UCag5kUpL5Uqd0cAMq_TCD043g_pJx5HyC7RBKrbHfuf7EP4ZJ3MLYcEUMx_D-WRyWReu=w2366-h1774-s-no?authuser=0",
+      "id": 1005
     }
   ]
 }
