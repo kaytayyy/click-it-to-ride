@@ -199,18 +199,21 @@ addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const form_image_url = document.querySelector("#image_url_row");
-  const form_image_upload = document.querySelector("#image_upload_row");
-  const image_method = document.querySelectorAll(
-    "#sale-form input[name='image-upload-method']",
+  const form_image_url = document.querySelector("#sale-form #image_url_row");
+
+  const form_image_upload = document.querySelector(
+    "#sale-form #image_upload_row.row",
   );
 
-  Array.from(image_method).forEach(button => {
-    button.addEventListener("click", event => {
-      console.log(event);
-    });
-  });
-
+  const imageMethod = document.querySelector(
+    "#sale-form #image-upload-method-row",
+  );
+  // imageMethod.addEventListener("click", event => {
+  //   if (event.target.id === "image_upload_btn") {
+  //     form_image_upload.classList.remove("hidden");
+  //     form.image
+  //   }
+  // });
   /** ********EVENT LISTENERS END****************/
 
   /** ********FORM PROCESSING START**************/

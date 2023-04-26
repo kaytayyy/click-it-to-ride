@@ -178,7 +178,7 @@ figcaption {
   @apply text-right border-[#2E282A] border-solid border-2;
 }
 .contact-us-button {
-  @apply text-white w-full bg-[#2E282A] hover:bg-[#2F282A] focus:outline-none focus:ring-4 focus:ring-[#6c6869] font-medium rounded-md text-sm px-5 py-2.5 text-center mr-2 mt-2 dark:focus:ring-[#eae9e9];
+  @apply text-white w-full bg-[#2E282A] hover:bg-[#2F282A] focus:outline-none focus:ring-4 focus:ring-[#6c6869] font-medium rounded-md text-sm px-5 py-2.5 text-center mr-2 mt-2 dark:focus:ring-[#eae9e9] cursor-pointer;
 }
 
 .admin-button-div {
@@ -216,6 +216,10 @@ figcaption {
 #sale-form .row .right #file_input {
   @apply block text-sm ml-0 pl-0 file:h-full file:text-slate-50 rounded-lg cursor-pointer focus:outline-none;
 }
+
+#sale-form #image_upload_row.row {
+  @apply hidden;
+}
 .about {
   @apply flex flex-wrap items-center justify-center gap-6 md:flex-col-reverse;
 }
@@ -248,7 +252,7 @@ figcaption {
 }
 
 .footer-container .logo {
-  @apply text-[#2E282A] mb-4;
+  @apply text-[#2E282A] mb-4 w-10;
 }
 
 .footer-container .footer-box,
@@ -261,7 +265,7 @@ figcaption {
 }
 
 .social a {
-  @apply text-[24px] text-[#2E8282A] mr-4 hover:text-[#072AC8];
+  @apply text-[24px] text-[#2E282A] mr-4 hover:text-[#072AC8];
 }
 
 .footer-box h3,
