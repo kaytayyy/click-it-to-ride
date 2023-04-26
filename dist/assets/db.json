@@ -20,41 +20,13 @@
       "car_model": "Lancer",
       "car_model_year": "2014",
       "color": "Yellow",
-      "mileage": "25000",
+      "mileage": "25500",
       "price": "15394.15",
       "transmission": "Automatic",
-      "fuel_type": "Hybrid",
-      "condition": "Certified Pre-Owned",
+      "fuel_type": "Electric",
+      "condition": "Used",
       "location": "Boston",
       "id": 2
-    },
-    {
-      "registration": "8488-HQY",
-      "car_make": "Ford",
-      "car_model": "Ranger",
-      "car_model_year": "2005",
-      "color": "Crimson",
-      "mileage": "92732",
-      "price": "49482.6",
-      "transmission": "Automatic",
-      "fuel_type": "Gasoline",
-      "condition": "Used",
-      "location": "Atlanta",
-      "id": 3
-    },
-    {
-      "registration": "1071-BEM",
-      "car_make": "GMC",
-      "car_model": "Sierra 3500HD",
-      "car_model_year": 2006,
-      "color": "Pink",
-      "mileage": 53988,
-      "price": 92688.25,
-      "transmission": "Automatic",
-      "fuel_type": "Electric",
-      "condition": "New",
-      "location": "Dallas",
-      "id": 4
     },
     {
       "registration": "0692-BNR",
@@ -74,10 +46,10 @@
       "registration": "3651-NBJ",
       "car_make": "Hyundai",
       "car_model": "Sonata",
-      "car_model_year": 2008,
+      "car_model_year": "2008",
       "color": "Goldenrod",
-      "mileage": 43779,
-      "price": 24328.16,
+      "mileage": "43779",
+      "price": "24328.16",
       "transmission": "Automatic",
       "fuel_type": "Diesel",
       "condition": "Certified Pre-Owned",
@@ -13999,6 +13971,26 @@
       "condition": "Used",
       "location": "Seattle",
       "id": 1000
+    },
+    {
+      "year": "2013",
+      "make": "Audi",
+      "model": "A4",
+      "mileage": "55000",
+      "transmission": "Automatic",
+      "color": "Gray",
+      "id": 1002
+    },
+    {
+      "car_model_year": "2021",
+      "car_make": "Cadillac",
+      "car_model": "CT4",
+      "mileage": "18000",
+      "transmission": "Automatic",
+      "color": "Blue",
+      "price": "75000",
+      "condition": "Certified Pre-Owned",
+      "id": 1003
     }
   ]
 }

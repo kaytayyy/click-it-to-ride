@@ -190,6 +190,29 @@ figcaption {
 .nav-button {
   @apply text-white text-2xl w-[150px] bg-[#2E282A] hover:bg-[#2F282A] focus:outline-none focus:ring-4 focus:ring-[#6c6869] font-medium rounded-md px-2.5 py-2.5 text-center mr-2 mt-2 dark:focus:ring-[#eae9e9];
 }
+
+#sale-form {
+  @apply text-gray-700 max-w-md;
+}
+#sale-form .row {
+  @apply text-gray-700 ml-0 mb-2 flex items-center;
+}
+#sale-form .row .left {
+  @apply mb-1 w-1/3;
+}
+#sale-form .row .right {
+  @apply w-2/3 flex flex-grow;
+}
+#sale-form .row input,
+#sale-form .row select {
+  @apply w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg;
+}
+#sale-form .row label {
+  @apply inline uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
+}
+#sale-form .row #submit-btn {
+  @apply mx-auto bg-[#2E282A] text-slate-100 text-[1.3rem];
+}
 .about {
   @apply flex flex-wrap items-center justify-center gap-6 md:flex-col-reverse;
 }
@@ -221,8 +244,8 @@ figcaption {
   @apply flex justify-between gap-4 sm:grid sm:grid-cols-1;
 }
 
-.footer-container .logo {
-  @apply text-[#2E282A] mb-4;
+.footer-container .logo { 
+  @apply text-[#2E282A] mb-4 w-10;
 }
 
 .footer-container .footer-box,
