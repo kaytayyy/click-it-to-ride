@@ -92,7 +92,10 @@
           <!-- <div class="results">
             There are <span id="result_number"> </span> results.
           </div> -->
-          <div class="page-control" id="page-nav"><button id="prev-cars" class="nav-button"><<</button><button id="next-cars" class="nav-button">>></button></div>
+          <div class="page-control" id="page-nav">
+            <button id="prev-cars" class="nav-button"><<</button
+            ><button id="next-cars" class="nav-button">>></button>
+          </div>
         </div>
       </div>
       <!-- Cars Container -->
@@ -103,12 +106,87 @@
       <div class="about-image">
         <img src="assets/car_blue.png" alt="" />
       </div>
-      <div class="about-text">
-        <span>About Us</span>
-        <h2>The Best Prices <br />The Highest Quality</h2>
-        <p>I hate the Lorem text</p>
-        <!-- About Button -->
-        <a href="#" class="button">Learn More</a>
+      <div class="about-text sale-form-div">
+        <form id="sale-form" class="sale-form">
+          <h2>Sell Us Your Car</h2>
+
+          <div class="row">
+            <div class="left"><label for="year">YEAR</label></div>
+            <div class="right">
+              <input type="text" name="year" id="year-form" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="left"><label for="make">MAKE</label></div>
+            <div class="right">
+              <input type="text" name="make" id="make-form" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="left"><label for="model">MODEL</label></div>
+            <div class="right">
+              <input type="text" name="model" id="model-form" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="left"><label for="price">PRICE</label></div>
+            <div class="right">
+              <input type="text" name="price" id="price-form" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="left"><label for="condition">CONDITION</label></div>
+            <div class="right">
+              <select name="condition" id="condition-form">
+                <option value="New">New</option>
+                <option value="Used">Used</option>
+                <option value="Certified Pre-Owned">Certified Pre-Owned</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="left"><label for="mileage">MILEAGE</label></div>
+            <div class="right">
+              <input type="number" name="mileage" id="mileage-form" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="left">
+              <label for="transmission">TRANSMISSION</label>
+            </div>
+            <div class="right">
+              <select name="transmission" id="transmission-form">
+                <option value="Automatic">Automatic</option>
+                <option value="Manual">Manual</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="left"><label for="fuel_type">FUEL TYPE</label></div>
+            <div class="right">
+              <select name="fuel_type" id="fuel-type-form">
+                <option value="Gasoline">Gasoline</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Electric">Electric</option>
+                <option value="Hybrid">Hybrid</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="left"><label for="color">COLOR</label></div>
+            <div class="right">
+              <input type="text" name="color" id="color-form" />
+            </div>
+          </div>
+
+          <div class="row">
+            <input type="submit" id="submit-btn" value="LIST IT" />
+          </div>
+        </form>
       </div>
     </section>
     <!-- Footer -->
