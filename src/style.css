@@ -244,8 +244,8 @@ figcaption {
   @apply flex justify-between gap-4 sm:grid sm:grid-cols-1;
 }
 
-.footer-container .logo {
-  @apply text-[#2E282A] mb-4;
+.footer-container .logo { 
+  @apply text-[#2E282A] mb-4 w-10;
 }
 
 .footer-container .footer-box,
