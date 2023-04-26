@@ -446,9 +446,20 @@ addEventListener("DOMContentLoaded", () => {
     carImage.classList.add("car-image");
 
     // use imagin API to generate image for the car based on parameters
-    getImage(car.car_model_year, car.car_make, car.car_model, car.color).then(
-      image => (carImage.src = image.url),
-    );
+
+    if (car.image) {
+      carImage.src = car.image;
+    } else {
+      getImage(car.car_model_year, car.car_make, car.car_model, car.color).then(
+        image => {
+          carImage.src = image.url;
+          let data = {image: image.url};
+          rover
+            .patch(`${carsUrl}/${car.id}`, data)
+            .then(updated => console.log(updated));
+        },
+      );
+    }
 
     //  <!-- price container
     const carPrice = document.createElement("h2");
