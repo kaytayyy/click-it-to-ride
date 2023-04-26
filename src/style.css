@@ -145,8 +145,8 @@ figcaption {
   @apply flex-grow flex-shrink basis-64 relative;
 }
 
-.cars-container .car-image {
-  @apply w-full  object-cover overflow-hidden hover:scale-105 hover:duration-500;
+#cars-container .card .car-image {
+  @apply w-auto h-auto max-h-[245px] object-cover overflow-hidden hover:scale-105 hover:duration-500;
 }
 
 .cars-container .cars-text {
@@ -217,9 +217,6 @@ figcaption {
   @apply block text-sm ml-0 pl-0 file:h-full file:text-slate-50 rounded-lg cursor-pointer focus:outline-none;
 }
 
-#sale-form #image_upload_row.row {
-  @apply hidden;
-}
 .about {
   @apply flex flex-wrap items-center justify-center gap-6 md:flex-col-reverse;
 }
@@ -251,8 +248,11 @@ figcaption {
   @apply flex justify-between gap-4 sm:grid sm:grid-cols-1;
 }
 
-.footer-container .logo { 
-  @apply text-[#2E282A] mb-4 w-10;
+.footer-container .logo {
+  @apply text-[#2E282A] mb-4;
+}
+.footer-box .logo img {
+  @apply w-14;
 }
 
 .footer-container .footer-box,

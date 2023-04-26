@@ -101,6 +101,7 @@ addEventListener("DOMContentLoaded", () => {
       price: e.target.price.value,
       condition: e.target.condition.value,
       fuel_type: e.target.fuel_type.value,
+      user_image_url: e.target.user_image_url.value,
     };
     function sendListing(sellCar) {
       fetch(carsUrl, {
@@ -199,21 +200,6 @@ addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const form_image_url = document.querySelector("#sale-form #image_url_row");
-
-  const form_image_upload = document.querySelector(
-    "#sale-form #image_upload_row.row",
-  );
-
-  const imageMethod = document.querySelector(
-    "#sale-form #image-upload-method-row",
-  );
-  // imageMethod.addEventListener("click", event => {
-  //   if (event.target.id === "image_upload_btn") {
-  //     form_image_upload.classList.remove("hidden");
-  //     form.image
-  //   }
-  // });
   /** ********EVENT LISTENERS END****************/
 
   /** ********FORM PROCESSING START**************/
@@ -435,15 +421,15 @@ addEventListener("DOMContentLoaded", () => {
     document.querySelector(
       `.card[data-id="${car.id}"] >.condition > h4`,
     ).textContent = car.condition;
-
+    //mileage
     document.querySelector(
       `.card[data-id="${car.id}"] .mileage > h4`,
     ).textContent = car.mileage;
-
+    //transmission
     document.querySelector(
       `.card[data-id="${car.id}"] .transmission > h4`,
     ).textContent = car.transmission;
-
+    //fuel type
     document.querySelector(
       `.card[data-id="${car.id}"] .fuel-type > h4`,
     ).textContent = car.fuel_type;
@@ -462,8 +448,9 @@ addEventListener("DOMContentLoaded", () => {
     carImage.classList.add("car-image");
 
     // use imagin API to generate image for the car based on parameters
-
-    if (car.image) {
+    if (car.user_image_url && car.user_image_url !== "") {
+      carImage.src = car.user_image_url;
+    } else if (car.image) {
       carImage.src = car.image;
     } else {
       getImage(car.car_model_year, car.car_make, car.car_model, car.color).then(
