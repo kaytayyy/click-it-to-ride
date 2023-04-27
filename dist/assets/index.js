@@ -186,6 +186,7 @@ addEventListener("DOMContentLoaded", () => {
   let carLot = [];
   let isLoggedIn = false;
   const carsContainer = document.querySelector("#cars-container");
+  const saleForm = document.querySelector("#sale-form");
   const updaterForm = document.querySelector("#sale-form-updater");
   /** ********VARIABLE DECLARATION END***********/
 
@@ -257,9 +258,9 @@ addEventListener("DOMContentLoaded", () => {
   };
   /** ********FETCH REQUESTS END*****************/
   /** ********SALE FORM************************/
-  const saleForm = document.querySelector("#sale-form");
 
   saleForm.addEventListener("submit", e => {
+    validateForm(e);
     e.preventDefault();
     const sellCar = {
       car_model_year: e.target.year.value,
@@ -416,7 +417,94 @@ addEventListener("DOMContentLoaded", () => {
   /** ********EVENT LISTENERS END****************/
 
   /** ********FORM PROCESSING START**************/
+  // sale form processing and validation
 
+  function validateForm(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formFields = Array.from(form.elements);
+    console.log(event);
+
+    const isRequired = value => (value === "" ? false : true);
+    const isLongEnough = (length, min, max) => length < min || length > max;
+    const isValidRange = (value, min, max) => value < min || value > max;
+    const pricePattern = new RegExp("/d{1,}.{0,}d{0,}/g");
+
+    const yearValid = () => {
+      let valid = false;
+      const year = document.querySelector("#sale-form #year-input").value;
+
+      if (!isRequired(year)) {
+        showMessage(document.querySelector("#sale-form #error-year"),"Year is required");
+      } else {showValid(year)}
+    };
+
+    const showErrors = (field, message) => {
+      //which field
+      const errorField = document.querySelector(
+        `#sale-form #${field.id}-error`,
+      );
+      errorField.classList.remove("hidden");
+      field.classList.add("invalid");
+      errorField.textContent = message;
+    };
+
+    const showValid = field => {
+      //which field
+      const errorField = document.querySelector(
+        `#sale-form #${field.id}-error`,
+      );
+      errorField.classList.add("hidden");
+      field.classList.remove("invalid");
+      errorField.textContent = "";
+    };
+
+    // year-input
+    // make-form
+    // model-form
+    // price-form
+    // condition-form
+    // mileage-form
+    // transmission-form
+    // fuel-type-form
+    // color-form
+    // image_url
+    formFields.forEach(field => {
+      console.log(field.id);
+      if (field.checkValidity()) {
+        //if invalid add red border class
+        field.classList.remove("invalid");
+      } else {
+        console.log(field.validity);
+        //if valid then remove
+        field.validity.patternMismatch
+          ? (document.querySelector(
+              `#error-${field.name}`,
+            ).textContent = `Entry doesn't match required pattern`)
+          : "";
+        //   ? ""
+        //   : ""(field.validity.rangeUnderflow)
+        //   ? ""
+        //   : ""(field.validity.stepMismatch)
+        //   ? ""
+        //   : ""(field.validity.tooLong)
+        //   ? ""
+        //   : ""(field.validity.typeMismatch)
+        //   ? ""
+        //   : ""(field.validity.valueMissing)
+        //   ? ""
+        //   : "";
+
+        field.classList.add("invalid");
+      }
+    });
+
+    console.log(form.checkValidity());
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+  }
   // handle input from search form
   function handleSearch(event) {
     event.preventDefault();
