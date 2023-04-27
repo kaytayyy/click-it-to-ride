@@ -522,6 +522,11 @@ video {
   width: 100%;
 }
 
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .hidden{
   display: none;
 }
@@ -1409,6 +1414,38 @@ figcaption{
   font-size: 1.3rem;
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity));
+}
+
+#sale-form-updater .row .right #image_url{
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-right-width: 0px;
+  padding-right: 0px;
+}
+
+#sale-form-updater .row .right #image_url:focus{
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+#sale-form-updater .row .right #image_delete_button{
+  align-items: center;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-left-width: 0px;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  padding-right: 0.25rem;
+  padding-top: 0.375rem;
+  font-size: 1.75rem;
+}
+
+#sale-form-updater .row .right #image_delete_button:focus{
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .about{

@@ -378,11 +378,20 @@ addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
 
     document.querySelector("#modal_outer_frame").classList.add("hidden");
-
-    if (event.target.id === "cancel-btn") {
+    console.log(event);
+    if (event.submitter.id === "cancel-btn") {
       return false;
+    } else {
+      handleSave(event, car);
     }
-    handleSave(event, car);
+  });
+
+  //image delete button
+  let imageDeleteButton = document.querySelector(
+    "#sale-form-updater #image_delete_button",
+  );
+  imageDeleteButton.addEventListener("click", event => {
+    document.querySelector("#sale-form-updater #image_url").value = "";
   });
   /** ********EVENT LISTENERS END****************/
 
@@ -568,6 +577,30 @@ addEventListener("DOMContentLoaded", () => {
     document.querySelector(
       `.card[data-id="${car.id}"] .color> h4`,
     ).textContent = car.color;
+
+    document.querySelector(
+      `.card[data-id="${car.id}"] .car-image`,
+    ).alt = `${car.car_model_year} ${car.car_make} ${car.car_model}`;
+
+    // use imagin API to generate image for the car based on parameters
+    if (car.user_image_url && car.user_image_url !== "") {
+      document.querySelector(`.card[data-id="${car.id}"] .car-image`).src =
+        car.user_image_url;
+    } else if (car.image) {
+      document.querySelector(`.card[data-id="${car.id}"] .car-image`).src =
+        car.image;
+    } else {
+      getImage(car.car_model_year, car.car_make, car.car_model, car.color).then(
+        image => {
+          document.querySelector(`.card[data-id="${car.id}"] .car-image`).src =
+            image.url;
+          let data = {image: image.url};
+          rover
+            .patch(`${carsUrl}/${car.id}`, data)
+            .then(updated => console.log(updated));
+        },
+      );
+    }
     currentCar = car;
   }
 

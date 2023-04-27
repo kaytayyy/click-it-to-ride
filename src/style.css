@@ -336,6 +336,14 @@ figcaption {
   @apply mx-auto bg-[#2E282A] text-slate-100 text-[1.3rem];
 }
 
+#sale-form-updater .row .right #image_url {
+  @apply border-r-0 rounded-r-none rounded-l-lg pr-0 focus:outline-none;
+}
+#sale-form-updater .row .right #image_delete_button {
+  @apply text-[1.75rem] rounded-r-lg border-l-0 border-t
+  border-r border-b pr-1 pt-1.5 items-center focus:outline-none;
+}
+
 .about {
   @apply flex flex-wrap items-center justify-center gap-6 md:flex-col-reverse;
 }
