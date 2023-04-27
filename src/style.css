@@ -156,14 +156,14 @@ h6.attribution {
 }
 
 .filters {
-  @apply flex gap-4;
+  @apply flex gap-4 md:flex md:flex-col md:gap-0;
 }
 
 .filters select {
   @apply border-2;
 }
 .filters #make {
-  @apply w-[150px];
+  @apply w-[150px] md:w-[225px];
 }
 
 .filters #model {
@@ -171,11 +171,11 @@ h6.attribution {
 }
 
 .filters #year {
-  @apply w-[75px];
+  @apply w-[75px] md:w-[225px];
 }
 
 .filters #clearFilters {
-  @apply text-xl leading-none hover:scale-105;
+  @apply text-xl leading-none hover:scale-105 md:mt-4;
 }
 .pagination {
   @apply flex flex-col justify-center mt-4 items-center align-middle text-[1.2rem];
@@ -198,7 +198,7 @@ h6.attribution {
 }
 
 .cars-container .card {
-  @apply flex-grow flex-shrink basis-64 relative;
+  @apply flex-grow flex-shrink basis-64 relative md:max-w-lg md:mx-auto md:gap-1;
 }
 
 #cars-container .card .car-image {
@@ -267,7 +267,7 @@ h6.attribution {
 }
 
 /* #modal_overlay {
-
+f
 @apply bg-slate-800 bg-opacity-50justify-center items-center absolute top-0 right-0 bottom-0 left-0 hidden ;
 
 } */
@@ -372,11 +372,11 @@ small.error:active {
   @apply outline-none;
 }
 .about {
-  @apply flex flex-wrap items-center justify-center gap-6 md:flex-col-reverse;
+  @apply flex flex-wrap items-center justify-center gap-6 lg:flex-row-reverse md:flex-col-reverse;
 }
 
 .about-image {
-  @apply flex-grow flex-shrink basis-80;
+  @apply flex-grow flex-shrink basis-80 md:hidden;
 }
 
 .about-text {
@@ -400,7 +400,7 @@ small.error:active {
 }
 
 .footer-container {
-  @apply flex justify-between gap-4 sm:grid sm:grid-cols-1;
+  @apply flex justify-between gap-4 md:grid md:grid-cols-1;
 }
 
 .footer-container .logo {
@@ -413,7 +413,7 @@ small.error:active {
 
 .footer-container .footer-box,
 #login-btn {
-  @apply flex sm:flex-col gap-4 sm:gap-2 items-center text-[1.25rem] sm:text-[1rem];
+  @apply flex md:flex-col gap-4 md:gap-2 items-center text-[1.25rem] sm:text-[1rem];
 }
 
 .social {

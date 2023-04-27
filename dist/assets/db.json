@@ -13,7 +13,7 @@
       "condition": "Certified Pre-Owned",
       "location": "Dallas",
       "id": 1,
-      "user_image_url": "",
+      "user_image_url": "https://file.kelleybluebookimages.com/kbb/base/evox/StJ/12104/2018-Toyota-Camry-front-angle4-low_12104_090_640x480.jpg",
       "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2018&make=Toyota&modelFamily=Camry&paintDescription=Black"
     },
     {
@@ -109,26 +109,10 @@
       "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1990&make=Mazda&modelFamily=MX-5&paintDescription=Aquamarine"
     },
     {
-      "registration": "0162-FFD",
-      "car_make": "Volkswagen",
-      "car_model": "Jetta",
-      "car_model_year": "2019",
-      "color": "Maroon",
-      "mileage": "72571",
-      "price": "25000",
-      "transmission": "Automatic",
-      "fuel_type": "Gasoline",
-      "condition": "Certified Pre-Owned",
-      "location": "Atlanta",
-      "id": 8,
-      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1988&make=Volkswagen&modelFamily=Jetta&paintDescription=Maroon",
-      "user_image_url": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1988&make=Volkswagen&modelFamily=Jetta&paintDescription=Maroon"
-    },
-    {
       "registration": "1914-WIL",
       "car_make": "Mercedes-Benz",
       "car_model": "CL-Class",
-      "car_model_year": "2019",
+      "car_model_year": "2012",
       "color": "Green",
       "mileage": "50588",
       "price": "47496.04",
