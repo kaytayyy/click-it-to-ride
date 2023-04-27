@@ -112,31 +112,33 @@
       "registration": "0162-FFD",
       "car_make": "Volkswagen",
       "car_model": "Jetta",
-      "car_model_year": "1988",
+      "car_model_year": "2019",
       "color": "Maroon",
       "mileage": "72571",
-      "price": "38884.45",
+      "price": "25000",
       "transmission": "Automatic",
       "fuel_type": "Gasoline",
       "condition": "Certified Pre-Owned",
       "location": "Atlanta",
       "id": 8,
-      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1988&make=Volkswagen&modelFamily=Jetta&paintDescription=Maroon"
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1988&make=Volkswagen&modelFamily=Jetta&paintDescription=Maroon",
+      "user_image_url": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1988&make=Volkswagen&modelFamily=Jetta&paintDescription=Maroon"
     },
     {
       "registration": "1914-WIL",
       "car_make": "Mercedes-Benz",
       "car_model": "CL-Class",
-      "car_model_year": 2007,
+      "car_model_year": "2019",
       "color": "Green",
-      "mileage": 50588,
-      "price": 47496.04,
+      "mileage": "50588",
+      "price": "47496.04",
       "transmission": "Manual",
-      "fuel_type": "Diesel",
-      "condition": "Certified Pre-Owned",
+      "fuel_type": "Gasoline",
+      "condition": "New",
       "location": "Los Angeles",
       "id": 9,
-      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2007&make=Mercedes-Benz&modelFamily=CL-Class&paintDescription=Green"
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2007&make=Mercedes-Benz&modelFamily=CL-Class&paintDescription=Green",
+      "user_image_url": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2007&make=Mercedes-Benz&modelFamily=CL-Class&paintDescription=Green"
     },
     {
       "registration": "4867-QGT",
@@ -6419,7 +6421,8 @@
       "fuel_type": "Gasoline",
       "condition": "Certified Pre-Owned",
       "location": "Seattle",
-      "id": 449
+      "id": 449,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2011&make=BMW&modelFamily=5%20Series&paintDescription=Crimson"
     },
     {
       "registration": "8774-SOA",
@@ -11506,7 +11509,8 @@
       "fuel_type": "Hybrid",
       "condition": "New",
       "location": "Atlanta",
-      "id": 811
+      "id": 811,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1992&make=BMW&modelFamily=5%20Series&paintDescription=Violet"
     },
     {
       "registration": "1894-SHE",
@@ -12950,7 +12954,8 @@
       "fuel_type": "Hybrid",
       "condition": "Used",
       "location": "Los Angeles",
-      "id": 914
+      "id": 914,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2008&make=BMW&modelFamily=5%20Series&paintDescription=Khaki"
     },
     {
       "registration": "9720-TXY",
@@ -13202,7 +13207,8 @@
       "fuel_type": "Diesel",
       "condition": "Used",
       "location": "Boston",
-      "id": 932
+      "id": 932,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1992&make=BMW&modelFamily=5%20Series&paintDescription=Green"
     },
     {
       "registration": "8191-IWW",

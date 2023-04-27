@@ -378,6 +378,7 @@ addEventListener("DOMContentLoaded", () => {
   });
 
   updaterForm.addEventListener("submit", (event, car) => {
+    validateForm(event);
     event.preventDefault();
 
     document.querySelector("#modal_outer_frame").classList.add("hidden");
@@ -430,7 +431,6 @@ addEventListener("DOMContentLoaded", () => {
         // if invalid add red border class
         field.classList.remove("invalid");
       } else {
-        console.log(field.validity);
         // if valid then remove
         //doesn't match the right pattern
         field.validity.patternMismatch
