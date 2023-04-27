@@ -3249,7 +3249,8 @@
       "fuel_type": "Electric",
       "condition": "Certified Pre-Owned",
       "location": "Miami",
-      "id": 225
+      "id": 225,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2004&make=Chevrolet&modelFamily=Colorado&paintDescription=Teal"
     },
     {
       "registration": "4212-RPC",
