@@ -407,7 +407,7 @@ addEventListener("DOMContentLoaded", () => {
   const loginButton = document.querySelector("#login-btn");
   loginButton.addEventListener("click", () => {
     isLoggedIn = !isLoggedIn;
-    console.log(isLoggedIn);
+
     isLoggedIn ? (loginButton.value = "Logout") : (loginButton.value = "Login");
     document.querySelectorAll(".admin-button-div").forEach(div => {
       div.classList.toggle("hidden");
