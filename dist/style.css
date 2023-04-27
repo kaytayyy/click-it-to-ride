@@ -1031,19 +1031,22 @@ figcaption{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.cars-container .cars-text{
+.cars-container .price-div{
   position: absolute;
   top: 2rem;
+  display: flex;
+  gap: 0.25rem;
   border-radius: 0.5rem;
   --tw-bg-opacity: 1;
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
   padding: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  line-height: 1;
   --tw-text-opacity: 1;
   color: rgb(46 40 42 / var(--tw-text-opacity));
 }
 
-.cars-container .cars-text:hover{
+.cars-container .price-div:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(7 42 200 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;

@@ -431,7 +431,7 @@ addEventListener("DOMContentLoaded", () => {
       let modelArray = cars.filter(car => (car.car_make = event.target.value));
 
       //run garbageCollector on modelOptions array
-      garbageCollector(document.querySelector("#model"));
+
       //now send to buildModelFilter function to rebuild options
       buildModelFilter(modelArray);
       garbageCollector(carsContainer);
@@ -562,7 +562,7 @@ addEventListener("DOMContentLoaded", () => {
     // price lives in an h2 with class fox-socks
     document.querySelector(
       `.card[data-id="${car.id}"] h2.fox-socks`,
-    ).textContent = car.price;
+    ).textContent = parseFloat(car.price).toFixed(2);
     // year make model live ni the car-title
     document.querySelector(
       `.card[data-id="${car.id}"] .car-title`,
@@ -642,9 +642,14 @@ addEventListener("DOMContentLoaded", () => {
     }
 
     //  <!-- price container
+    const carPriceDiv = document.createElement("div");
+    carPriceDiv.classList.add("price-div");
+    const dollarSignIcon = document.createElement("i");
+    dollarSignIcon.classList.add("fa-solid", "fa-dollar-sign", "dollar-sign");
     const carPrice = document.createElement("h2");
     carPrice.classList.add("cars-text", "price", "fox-socks");
-    carPrice.textContent = `${car.price}`;
+    carPrice.textContent = `${parseFloat(car.price).toFixed(2)}`;
+    carPriceDiv.append(dollarSignIcon, carPrice);
 
     // <!-- DETAILS SECTION
     // year | make | model
@@ -742,7 +747,7 @@ addEventListener("DOMContentLoaded", () => {
 
     carCard.append(
       carImage,
-      carPrice,
+      carPriceDiv,
       carYearMakeModelDiv,
       carConditionDiv,
       carMileageDiv,
@@ -791,6 +796,7 @@ addEventListener("DOMContentLoaded", () => {
   // build filter from array of car_model
   function buildModelFilter(cars) {
     const modelFilter = document.querySelector("#model");
+    garbageCollector(modelFilter);
     const uniqueModels = [...new Set(cars.map(car => car.car_model))];
     uniqueModels.sort();
     const emptyOption = document.createElement("option");

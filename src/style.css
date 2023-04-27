@@ -203,8 +203,8 @@ figcaption {
   @apply absolute top-[225px] right-7 z-10 hover:scale-105;
 }
 
-.cars-container .cars-text {
-  @apply absolute top-8 text-[1rem] p-2 rounded-lg bg-slate-100 text-[#2E282A] hover:text-slate-100 hover:bg-[#072AC8];
+.cars-container .price-div {
+  @apply absolute top-8 text-[1.2rem] p-2 rounded-lg bg-slate-100 text-[#2E282A] hover:text-slate-100 hover:bg-[#072AC8] flex leading-none gap-1;
 }
 
 .cars-container input.cars-text {
