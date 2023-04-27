@@ -393,6 +393,15 @@ addEventListener("DOMContentLoaded", () => {
   imageDeleteButton.addEventListener("click", event => {
     document.querySelector("#sale-form-updater #image_url").value = "";
   });
+
+  //clearFilters button
+  const clearFiltersButton = document.querySelector(".filters #clearFilters");
+  clearFiltersButton.addEventListener("click", () => {
+    document.querySelector("#year").value = "";
+    document.querySelector("#make").value = "";
+    document.querySelector("#model").value = "";
+    rover.fetch(`${carsUrl}`).then(cars => initialize());
+  });
   /** ********EVENT LISTENERS END****************/
 
   /** ********FORM PROCESSING START**************/
@@ -412,7 +421,7 @@ addEventListener("DOMContentLoaded", () => {
 
   function filterList(event) {
     // only simple filtering right now, not looking at multiple values yet
-    console.log(event); //'Chevrolet'
+    //'Chevrolet'
 
     const filter =
       event.target.id === "year"
@@ -422,23 +431,37 @@ addEventListener("DOMContentLoaded", () => {
         : "car_model";
 
     //if make !== "" then make model array with .filter
-    const params =
-      event.target.value === "" ? "" : `?${filter}=${event.target.value}`;
+    // const params =
+    //   event.target.value === "" ? "" : `?${filter}=${event.target.value}`;
+    const yearSelected = document.querySelector("#year").value;
+    const yearFilter =
+      document.querySelector("#year").value &&
+      document.querySelector("#year").value !== ""
+        ? `&car_model_year=${document.querySelector("#year").value}`
+        : "";
+    const makeSelected = document.querySelector("#make").value;
+    const makeFilter =
+      document.querySelector("#make").value &&
+      document.querySelector("#make").value !== ""
+        ? `&car_make=${document.querySelector("#make").value}`
+        : "";
+    const modelSelected = document.querySelector("#model").value;
+    const modelFilter =
+      document.querySelector("#model").value &&
+      document.querySelector("#model").value !== ""
+        ? `&car_model=${document.querySelector("#model").value}`
+        : "";
+    const params = `${yearFilter}${makeFilter}${modelFilter}`;
 
     // grab the filtered cars array and render the first 9
-    rover.fetch(`${carsUrl}${params}`).then(cars => {
+    rover.fetch(`${carsUrl}?${params}`).then(cars => {
       //let filterArray = cars.filter(car => (car.car_make = event.target.value));
-      let filterArray = cars.filter(car => (car.car_model_year = event.target.value))
 
       //run garbageCollector on modelOptions array
-<<<<<<< HEAD
-
-=======
->>>>>>> 50c1f020e4ab7e35e13a5becf2899a5d1e54b187
       //now send to buildModelFilter function to rebuild options
-      buildYearFilter(filterArray);
-      buildMakeFilter(filterArray);
-      buildModelFilter(filterArray);
+      buildYearFilter(cars, yearSelected);
+      buildMakeFilter(cars, makeSelected);
+      buildModelFilter(cars, modelSelected);
       garbageCollector(carsContainer);
       const maxResults = cars.length >= 9 ? 9 : cars.length;
       for (let i = 0; i < maxResults; i++) {
@@ -642,7 +665,7 @@ addEventListener("DOMContentLoaded", () => {
           let data = {image: image.url};
           rover
             .patch(`${carsUrl}/${car.id}`, data)
-            .then(updated => console.log(updated));
+            .then(updated => console.log("success!"));
         },
       );
     }
@@ -775,40 +798,55 @@ addEventListener("DOMContentLoaded", () => {
   /** *********GENERAL FUNCTIONS START***********/
 
   // years filter from array of car_model_years
-  function buildYearFilter(cars) {
+  function buildYearFilter(cars, filter) {
     const yearsFilter = document.querySelector("#year");
-    garbageCollector(yearsFilter)
+    garbageCollector(yearsFilter);
     const uniqueYears = [...new Set(cars.map(car => car.car_model_year))];
     uniqueYears.sort((a, b) => b - a);
+
     const emptyOption = document.createElement("option");
-    makeFilter.append(emptyOption)
+    yearsFilter.append(emptyOption);
     uniqueYears.forEach(year => {
       const yearOption = document.createElement("option");
       yearOption.value = year;
       yearOption.textContent = year;
+      if (
+        (filter !== "" && yearOption.textContent === filter) ||
+        uniqueYears.length === 1
+      ) {
+        yearOption.setAttribute("selected", "selected");
+      }
       yearsFilter.append(yearOption);
     });
   }
   // build filter from array of car_make
-  function buildMakeFilter(cars) {
+  function buildMakeFilter(cars, filter) {
     const makeFilter = document.querySelector("#make");
     garbageCollector(makeFilter);
     const uniqueMakes = [...new Set(cars.map(car => car.car_make))];
     uniqueMakes.sort();
+
     const emptyOption = document.createElement("option");
-    makeFilter.append(emptyOption)
+    makeFilter.append(emptyOption);
     uniqueMakes.forEach(make => {
       const makeOption = document.createElement("option");
       makeOption.value = make;
       makeOption.textContent = make;
+
+      if (
+        (filter !== "" && makeOption.textContent === filter) ||
+        uniqueMakes.length === 1
+      ) {
+        makeOption.setAttribute("selected", "selected");
+      }
       makeFilter.append(makeOption);
     });
   }
 
   // build filter from array of car_model
-  function buildModelFilter(cars) {
+  function buildModelFilter(cars, filter) {
     const modelFilter = document.querySelector("#model");
-    garbageCollector(modelFilter)
+    garbageCollector(modelFilter);
     const uniqueModels = [...new Set(cars.map(car => car.car_model))];
     uniqueModels.sort();
     const emptyOption = document.createElement("option");
@@ -817,6 +855,12 @@ addEventListener("DOMContentLoaded", () => {
       const modelOption = document.createElement("option");
       modelOption.value = model;
       modelOption.textContent = model;
+      if (
+        (filter !== "" && modelOption.textContent === filter) ||
+        uniqueModels.length === 1
+      ) {
+        modelOption.setAttribute("selected", "selected");
+      }
       modelFilter.append(modelOption);
     });
   }
@@ -976,10 +1020,9 @@ addEventListener("DOMContentLoaded", () => {
         renderCarCards(cars[i]);
       }
 
-      buildYearFilter(cars);
-      buildMakeFilter(cars);
-      buildModelFilter(cars);
-      console.log(carLot);
+      buildYearFilter(cars, "");
+      buildMakeFilter(cars, "");
+      buildModelFilter(cars, "");
     });
   }
 

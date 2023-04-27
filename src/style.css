@@ -160,9 +160,23 @@ figcaption {
 }
 
 .filters select {
-  @apply border-2 w-fit;
+  @apply border-2;
+}
+.filters #make {
+  @apply w-[150px];
 }
 
+.filters #model {
+  @apply w-[225px];
+}
+
+.filters #year {
+  @apply w-[75px];
+}
+
+.filters #clearFilters {
+  @apply text-xl leading-none hover:scale-105;
+}
 .pagination {
   @apply flex flex-col justify-center mt-4 items-center align-middle text-[1.2rem];
 }
