@@ -2770,3 +2770,5 @@ node_modules/yaml/dist/stringify/stringifyString.js
 .gitignore
 dist/assets/config.js
 dist/assets/db.json
+.DS_Store
+dist/assets/db.json
