@@ -54,7 +54,7 @@
         <!-- Home Button -->
         <a href="#" class="button">Find it now</a>
       </div>
-      <figcaption>
+      <h6 class="attribution">
         Photo by
         <a
           href="https://unsplash.com/@hansonluu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
@@ -65,7 +65,7 @@
           href="https://unsplash.com/photos/956EmlIRARQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
           >Unsplash</a
         >
-      </figcaption>
+      </h6>
     </section>
     <!-- Cars Section -->
     <section class="cars" id="cars">
@@ -110,13 +110,13 @@
       </div>
       <!-- add new car for sale form-->
       <div class="about-text sale-form-div">
-        <form id="sale-form" class="sale-form">
+        <form id="sale-form" class="sale-form" novalidate>
           <h2>Sell Us Your Car</h2>
 
           <div class="row">
             <div class="left"><label for="year">YEAR</label></div>
             <div class="right">
-              <select name="year" id="year-input">
+              <select name="year" id="year-input" required aria-required="true">
                 <option value=""></option>
                 <option value="2023">2023</option>
                 <option value="2022">2022</option>
@@ -166,28 +166,75 @@
             </div>
           </div>
           <div class="row">
+            <small
+              class="error hidden"
+              aria-live="polite"
+              id="year-input-error"></small>
+          </div>
+
+          <div class="row">
             <div class="left"><label for="make">MAKE</label></div>
             <div class="right">
-              <input type="text" name="make" id="make-form" />
+              <input
+                type="text"
+                name="make"
+                id="make-form"
+                required
+                aria-required="true"
+                minlength="2" />
             </div>
+          </div>
+          <div class="row">
+            <small
+              class="error hidden"
+              aria-live="polite"
+              id="make-form-error"></small>
           </div>
           <div class="row">
             <div class="left"><label for="model">MODEL</label></div>
             <div class="right">
-              <input type="text" name="model" id="model-form" />
+              <input
+                type="text"
+                name="model"
+                id="model-form"
+                required
+                aria-required="true" />
             </div>
+          </div>
+          <div class="row">
+            <small
+              class="error hidden"
+              aria-live="polite"
+              id="model-form-error"></small>
           </div>
           <div class="row">
             <div class="left"><label for="price">PRICE</label></div>
             <div class="right">
-              <input type="text" name="price" id="price-form" />
+              <input
+                type="text"
+                name="price"
+                id="price-form"
+                required
+                pattern="^\d{1,}$|(?=^.{1,}$)^\d+\.\d{0,2}$"
+                aria-required="true"
+                minlength="3"
+                maxlength="10" />
             </div>
           </div>
-
+          <div class="row">
+            <small
+              class="error hidden"
+              aria-live="polite"
+              id="price-form-error"></small>
+          </div>
           <div class="row">
             <div class="left"><label for="condition">CONDITION</label></div>
             <div class="right">
-              <select name="condition" id="condition-form">
+              <select
+                name="condition"
+                id="condition-form"
+                required
+                aria-required="true">
                 <option value="New">New</option>
                 <option value="Used">Used</option>
                 <option value="Certified Pre-Owned">Certified Pre-Owned</option>
@@ -195,28 +242,58 @@
             </div>
           </div>
           <div class="row">
+            <small
+              class="error hidden"
+              aria-live="polite"
+              id="condition-form-error"></small>
+          </div>
+          <div class="row">
             <div class="left"><label for="mileage">MILEAGE</label></div>
             <div class="right">
-              <input type="tel" name="mileage" id="mileage-form" />
+              <input
+                type="tel"
+                name="mileage"
+                id="mileage-form"
+                required
+                aria-required="true"
+                maxlength="7" />
             </div>
           </div>
-
+          <div class="row">
+            <small
+              class="error hidden"
+              aria-live="polite"
+              id="mileage-form-error"></small>
+          </div>
           <div class="row">
             <div class="left">
               <label for="transmission">TRANSMISSION</label>
             </div>
             <div class="right">
-              <select name="transmission" id="transmission-form">
+              <select
+                name="transmission"
+                id="transmission-form"
+                required
+                aria-required="true">
                 <option value="Automatic">Automatic</option>
                 <option value="Manual">Manual</option>
               </select>
             </div>
           </div>
-
+          <div class="row">
+            <small
+              class="error hidden"
+              aria-live="polite"
+              id="transmission-form-error"></small>
+          </div>
           <div class="row">
             <div class="left"><label for="fuel_type">FUEL TYPE</label></div>
             <div class="right">
-              <select name="fuel_type" id="fuel-type-form">
+              <select
+                name="fuel_type"
+                id="fuel-type-form"
+                required
+                aria-required="true">
                 <option value="Gasoline">Gasoline</option>
                 <option value="Diesel">Diesel</option>
                 <option value="Electric">Electric</option>
@@ -224,12 +301,29 @@
               </select>
             </div>
           </div>
-
+          <div class="row">
+            <small
+              class="error hidden"
+              aria-live="polite"
+              id="fuel-type-error"></small>
+          </div>
           <div class="row">
             <div class="left"><label for="color">COLOR</label></div>
             <div class="right">
-              <input type="text" name="color" id="color-form" />
+              <input
+                type="text"
+                name="color"
+                id="color-form"
+                required
+                aria-required="true"
+                minlength="3" />
             </div>
+          </div>
+          <div class="row">
+            <small
+              class="error hidden"
+              aria-live="polite"
+              id="color-form-error"></small>
           </div>
           <div class="row" id="image_url_row">
             <div class="left">
@@ -253,10 +347,24 @@
             <img src="./assets/ClickItToRide2.png" />
           </a>
           <div class="social">
-            <a href="https://www.facebook.com/profile.php?id=100091912762622" target="_blank"><i class="bx bxl-facebook"></i></a>
-            <a href="https://twitter.com/ClickItToRide" target="_blank"><i class="bx bxl-twitter"></i></a>
-            <a href="https://www.instagram.com/click_it_to_ride/" target="_blank"><i class="bx bxl-instagram"></i></a>
-            <a href="https://www.youtube.com/channel/UC6DIL_hP4zowsA5HfOri08g" target="_blank"><i class="bx bxl-youtube"></i></a>
+            <a
+              href="https://www.facebook.com/profile.php?id=100091912762622"
+              target="_blank"
+              ><i class="bx bxl-facebook"></i
+            ></a>
+            <a href="https://twitter.com/ClickItToRide" target="_blank"
+              ><i class="bx bxl-twitter"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/click_it_to_ride/"
+              target="_blank"
+              ><i class="bx bxl-instagram"></i
+            ></a>
+            <a
+              href="https://www.youtube.com/channel/UC6DIL_hP4zowsA5HfOri08g"
+              target="_blank"
+              ><i class="bx bxl-youtube"></i
+            ></a>
           </div>
         </div>
         <div class="footer-box">
@@ -279,7 +387,11 @@
               <div class="row">
                 <div class="left"><label for="year">YEAR</label></div>
                 <div class="right">
-                  <select name="year" id="year-input">
+                  <select
+                    name="year"
+                    id="year-input"
+                    required
+                    aria-required="true">
                     <option value=""></option>
                     <option value="2023">2023</option>
                     <option value="2022">2022</option>
@@ -329,28 +441,75 @@
                 </div>
               </div>
               <div class="row">
+                <small
+                  class="error hidden"
+                  aria-live="polite"
+                  id="year-input-error"></small>
+              </div>
+
+              <div class="row">
                 <div class="left"><label for="make">MAKE</label></div>
                 <div class="right">
-                  <input type="text" name="make" id="make-form" />
+                  <input
+                    type="text"
+                    name="make"
+                    id="make-form"
+                    required
+                    aria-required="true"
+                    minlength="2" />
                 </div>
+              </div>
+              <div class="row">
+                <small
+                  class="error hidden"
+                  aria-live="polite"
+                  id="make-form-error"></small>
               </div>
               <div class="row">
                 <div class="left"><label for="model">MODEL</label></div>
                 <div class="right">
-                  <input type="text" name="model" id="model-form" />
+                  <input
+                    type="text"
+                    name="model"
+                    id="model-form"
+                    required
+                    aria-required="true" />
                 </div>
+              </div>
+              <div class="row">
+                <small
+                  class="error hidden"
+                  aria-live="polite"
+                  id="model-form-error"></small>
               </div>
               <div class="row">
                 <div class="left"><label for="price">PRICE</label></div>
                 <div class="right">
-                  <input type="text" name="price" id="price-form" />
+                  <input
+                    type="text"
+                    name="price"
+                    id="price-form"
+                    required
+                    pattern="^\d{1,}$|(?=^.{1,}$)^\d+\.\d{0,2}$"
+                    aria-required="true"
+                    minlength="3"
+                    maxlength="10" />
                 </div>
               </div>
-
+              <div class="row">
+                <small
+                  class="error hidden"
+                  aria-live="polite"
+                  id="price-form-error"></small>
+              </div>
               <div class="row">
                 <div class="left"><label for="condition">CONDITION</label></div>
                 <div class="right">
-                  <select name="condition" id="condition-form">
+                  <select
+                    name="condition"
+                    id="condition-form"
+                    required
+                    aria-required="true">
                     <option value="New">New</option>
                     <option value="Used">Used</option>
                     <option value="Certified Pre-Owned">
@@ -360,28 +519,58 @@
                 </div>
               </div>
               <div class="row">
+                <small
+                  class="error hidden"
+                  aria-live="polite"
+                  id="condition-form-error"></small>
+              </div>
+              <div class="row">
                 <div class="left"><label for="mileage">MILEAGE</label></div>
                 <div class="right">
-                  <input type="tel" name="mileage" id="mileage-form" />
+                  <input
+                    type="tel"
+                    name="mileage"
+                    id="mileage-form"
+                    required
+                    aria-required="true"
+                    maxlength="7" />
                 </div>
               </div>
-
+              <div class="row">
+                <small
+                  class="error hidden"
+                  aria-live="polite"
+                  id="mileage-form-error"></small>
+              </div>
               <div class="row">
                 <div class="left">
                   <label for="transmission">TRANSMISSION</label>
                 </div>
                 <div class="right">
-                  <select name="transmission" id="transmission-form">
+                  <select
+                    name="transmission"
+                    id="transmission-form"
+                    required
+                    aria-required="true">
                     <option value="Automatic">Automatic</option>
                     <option value="Manual">Manual</option>
                   </select>
                 </div>
               </div>
-
+              <div class="row">
+                <small
+                  class="error hidden"
+                  aria-live="polite"
+                  id="transmission-form-error"></small>
+              </div>
               <div class="row">
                 <div class="left"><label for="fuel_type">FUEL TYPE</label></div>
                 <div class="right">
-                  <select name="fuel_type" id="fuel-type-form">
+                  <select
+                    name="fuel_type"
+                    id="fuel-type-form"
+                    required
+                    aria-required="true">
                     <option value="Gasoline">Gasoline</option>
                     <option value="Diesel">Diesel</option>
                     <option value="Electric">Electric</option>
@@ -389,13 +578,31 @@
                   </select>
                 </div>
               </div>
-
+              <div class="row">
+                <small
+                  class="error hidden"
+                  aria-live="polite"
+                  id="fuel-type-error"></small>
+              </div>
               <div class="row">
                 <div class="left"><label for="color">COLOR</label></div>
                 <div class="right">
-                  <input type="text" name="color" id="color-form" />
+                  <input
+                    type="text"
+                    name="color"
+                    id="color-form"
+                    required
+                    aria-required="true"
+                    minlength="3" />
                 </div>
               </div>
+              <div class="row">
+                <small
+                  class="error hidden"
+                  aria-live="polite"
+                  id="color-form-error"></small>
+              </div>
+
               <div class="row" id="image_url_row">
                 <div class="left">
                   <label for="user_image_url">IMAGE URL</label>

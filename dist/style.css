@@ -535,6 +535,10 @@ video {
   display: none;
 }
 
+.border{
+  border-width: 1px;
+}
+
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -864,7 +868,7 @@ img{
   }
 }
 
-figcaption{
+h6.attribution{
   position: absolute;
   bottom: 0px;
   left: 65%;
@@ -1366,7 +1370,7 @@ figcaption{
 #sale-form .row,
 #sale-form-updater .row{
   margin-left: 0px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   display: flex;
   align-items: center;
   --tw-text-opacity: 1;
@@ -1471,6 +1475,36 @@ figcaption{
 }
 
 #sale-form-updater .row .right #image_delete_button:focus{
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+small.error{
+  margin-left: auto;
+  width: 66.666667%;
+  border-bottom-right-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(153 0 0 / var(--tw-bg-opacity));
+  padding: 0px;
+  text-align: center;
+  font-size: 0.8rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+small.error:active{
+  padding: 0.3em;
+}
+
+.row input.invalid,
+.row select.invalid{
+  border-inline-start-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(153 0 0 / var(--tw-border-opacity));
+}
+
+.row input.invalid:focus{
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
