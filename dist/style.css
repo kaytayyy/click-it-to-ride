@@ -12,14 +12,10 @@
 *,
 ::before,
 ::after {
-  box-sizing: border-box;
-  /* 1 */
-  border-width: 0;
-  /* 2 */
-  border-style: solid;
-  /* 2 */
-  border-color: #e5e7eb;
-  /* 2 */
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
 }
 
 ::before,
@@ -37,21 +33,14 @@
 */
 
 html {
-  line-height: 1.5;
-  /* 1 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
-  -moz-tab-size: 4;
-  /* 3 */
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
   -o-tab-size: 4;
-     tab-size: 4;
-  /* 3 */
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  /* 4 */
-  font-feature-settings: normal;
-  /* 5 */
-  font-variation-settings: normal;
-  /* 6 */
+     tab-size: 4; /* 3 */
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+  font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
 }
 
 /*
@@ -60,10 +49,8 @@ html {
 */
 
 body {
-  margin: 0;
-  /* 1 */
-  line-height: inherit;
-  /* 2 */
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
 }
 
 /*
@@ -73,12 +60,9 @@ body {
 */
 
 hr {
-  height: 0;
-  /* 1 */
-  color: inherit;
-  /* 2 */
-  border-top-width: 1px;
-  /* 3 */
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
 }
 
 /*
@@ -131,10 +115,8 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  /* 1 */
-  font-size: 1em;
-  /* 2 */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
+  font-size: 1em; /* 2 */
 }
 
 /*
@@ -172,12 +154,9 @@ sup {
 */
 
 table {
-  text-indent: 0;
-  /* 1 */
-  border-color: inherit;
-  /* 2 */
-  border-collapse: collapse;
-  /* 3 */
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
 }
 
 /*
@@ -191,20 +170,13 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit;
-  /* 1 */
-  font-size: 100%;
-  /* 1 */
-  font-weight: inherit;
-  /* 1 */
-  line-height: inherit;
-  /* 1 */
-  color: inherit;
-  /* 1 */
-  margin: 0;
-  /* 2 */
-  padding: 0;
-  /* 3 */
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
 }
 
 /*
@@ -225,12 +197,9 @@ button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
-  -webkit-appearance: button;
-  /* 1 */
-  background-color: transparent;
-  /* 2 */
-  background-image: none;
-  /* 2 */
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
 }
 
 /*
@@ -272,10 +241,8 @@ Correct the cursor style of increment and decrement buttons in Safari.
 */
 
 [type='search'] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
 }
 
 /*
@@ -292,10 +259,8 @@ Remove the inner padding in Chrome and Safari on macOS.
 */
 
 ::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
 }
 
 /*
@@ -357,18 +322,14 @@ textarea {
 */
 
 input::-moz-placeholder, textarea::-moz-placeholder {
-  opacity: 1;
-  /* 1 */
-  color: #9ca3af;
-  /* 2 */
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
 }
 
 input::placeholder,
 textarea::placeholder {
-  opacity: 1;
-  /* 1 */
-  color: #9ca3af;
-  /* 2 */
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
 }
 
 /*
@@ -402,10 +363,8 @@ audio,
 iframe,
 embed,
 object {
-  display: block;
-  /* 1 */
-  vertical-align: middle;
-  /* 2 */
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
 }
 
 /*
@@ -562,6 +521,7 @@ video {
   scroll-behavior: smooth;
   padding: 0px;
   text-decoration-line: none;
+
   font-family: "Poppins", sans-serif;
 }
 
@@ -621,6 +581,7 @@ header .shadow{
 }
 
 @media (max-width: 1023px){
+
   .nav{
     padding-left: 15px;
     padding-right: 15px;
@@ -630,6 +591,7 @@ header .shadow{
 }
 
 @media (max-width: 767px){
+
   .nav{
     padding-left: 10px;
     padding-right: 10px;
@@ -644,6 +606,7 @@ section{
 }
 
 @media (max-width: 1023px){
+
   section{
     padding-top: 3rem;
     padding-bottom: 1rem;
@@ -661,6 +624,7 @@ img{
 }
 
 @media (max-width: 1023px){
+
   .container{
     margin-left: 1rem;
     margin-right: 1rem;
@@ -674,6 +638,7 @@ img{
 }
 
 @media (max-width: 767px){
+
   #menu-icon{
     display: inline;
   }
@@ -696,6 +661,7 @@ img{
 }
 
 @media (max-width: 767px){
+
   .navbar{
     position: absolute;
     top: 100%;
@@ -724,6 +690,7 @@ img{
 }
 
 @media (max-width: 767px){
+
   .navbar a{
     display: block;
     padding: 15px;
@@ -744,6 +711,7 @@ img{
 }
 
 @media (max-width: 1023px){
+
   .navbar a:hover,
 .navbar .active{
     border-bottom-width: 0px;
@@ -751,6 +719,7 @@ img{
 }
 
 @media (max-width: 767px){
+
   .navbar a:hover,
 .navbar .active{
     --tw-bg-opacity: 1;
@@ -776,13 +745,16 @@ img{
   --tw-shadow: 4px 4px 20px rgba(15,54,55,0.1);
   --tw-shadow-colored: 4px 4px 20px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+
   -webkit-clip-path: circle(0% at 100% 0%);
+
           clip-path: circle(0% at 100% 0%);
 }
 
 .search-box.active {
   -webkit-clip-path: circle(144% at 100% 0%);
           clip-path: circle(144% at 100% 0%);
+
   transition: 0.4s;
 }
 
@@ -797,12 +769,14 @@ img{
 }
 
 @media (max-width: 767px){
+
   #search{
     padding: 15px;
   }
 }
 
 @media (max-width: 479px){
+
   #search{
     padding: 11px;
   }
@@ -820,12 +794,14 @@ img{
 }
 
 @media (max-width: 479px){
+
   .home{
     min-height: 500px;
   }
 }
 
 .home {
+
   background-image: url("assets/image-unsplash.jpg");
 }
 
@@ -835,6 +811,7 @@ img{
 }
 
 @media (max-width: 1023px){
+
   .home-text{
     padding-left: 2rem;
   }
@@ -845,12 +822,14 @@ img{
 }
 
 @media (max-width: 1023px){
+
   .home-text h1{
     font-size: 2.1rem;
   }
 }
 
 @media (max-width: 479px){
+
   .home-text h1{
     font-size: 2rem;
   }
@@ -863,6 +842,7 @@ img{
 }
 
 @media (max-width: 479px){
+
   .home-text p br{
     display: contents;
   }
@@ -905,6 +885,7 @@ h6.attribution{
 }
 
 @media (max-width: 767px){
+
   .cars-heading span{
     font-size: 0.9rem;
   }
@@ -927,7 +908,6 @@ h6.attribution{
 .filters select{
   border-width: 2px;
 }
-
 .filters #make{
   width: 150px;
 }
@@ -951,7 +931,6 @@ h6.attribution{
   --tw-scale-y: 1.05;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-
 .pagination{
   margin-top: 1rem;
   display: flex;
@@ -992,12 +971,14 @@ h6.attribution{
 }
 
 @media (max-width: 1023px){
+
   .cars-container{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 767px){
+
   .cars-container{
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
@@ -1460,7 +1441,6 @@ h6.attribution{
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
-
 #sale-form-updater .row .right #image_delete_button{
   align-items: center;
   border-top-right-radius: 0.5rem;
@@ -1473,12 +1453,10 @@ h6.attribution{
   padding-top: 0.375rem;
   font-size: 1.75rem;
 }
-
 #sale-form-updater .row .right #image_delete_button:focus{
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
-
 small.error{
   margin-left: auto;
   width: 66.666667%;
@@ -1487,15 +1465,14 @@ small.error{
   --tw-bg-opacity: 1;
   background-color: rgb(153 0 0 / var(--tw-bg-opacity));
   padding: 0px;
+  text-align: center;
   font-size: 0.8rem;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
-
 small.error:active{
   padding: 0.3em;
 }
-
 .row input.invalid,
 .row select.invalid{
   border-inline-start-width: 2px;
@@ -1507,7 +1484,6 @@ small.error:active{
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
-
 .about{
   display: flex;
   flex-wrap: wrap;
@@ -1515,8 +1491,8 @@ small.error:active{
   justify-content: center;
   gap: 1.5rem;
 }
-
 @media (max-width: 767px){
+
   .about{
     flex-direction: column-reverse;
   }
@@ -1535,6 +1511,7 @@ small.error:active{
 }
 
 @media (max-width: 767px){
+
   .about-text{
     text-align: center;
   }
@@ -1551,6 +1528,7 @@ small.error:active{
 }
 
 @media (max-width: 767px){
+
   .about-text h2{
     font-size: 1.4rem;
   }
@@ -1582,6 +1560,7 @@ small.error:active{
 }
 
 @media (max-width: 639px){
+
   .footer-container{
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -1607,6 +1586,7 @@ small.error:active{
 }
 
 @media (max-width: 639px){
+
   .footer-container .footer-box,
 #login-btn{
     flex-direction: column;
@@ -1662,6 +1642,7 @@ small.error:active{
   .navbar {
     -webkit-clip-path: circle(0% at 0% 0%);
             clip-path: circle(0% at 0% 0%);
+
     transition: 0.6s;
   }
 

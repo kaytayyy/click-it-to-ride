@@ -14203,6 +14203,19 @@
       "fuel_type": "Gasoline",
       "user_image_url": "https://lh3.googleusercontent.com/pw/AJFCJaXiQ65VowsIvUbhckeDTSK477nuj5vw4D2euThtU4M1H9NMQTh-Sz0NitCSwYgtvTnM3ejJ-WEfcEjT-32UCag5kUpL5Uqd0cAMq_TCD043g_pJx5HyC7RBKrbHfuf7EP4ZJ3MLYcEUMx_D-WRyWReu=w2366-h1774-s-no?authuser=0",
       "id": 1005
+    },
+    {
+      "car_model_year": "2022",
+      "car_make": "Cadillac",
+      "car_model": "CT4",
+      "mileage": "200",
+      "transmission": "Automatic",
+      "color": "Light Blue",
+      "price": "69999",
+      "condition": "New",
+      "fuel_type": "Gasoline",
+      "user_image_url": "https://hips.hearstapps.com/hmg-prod/images/2022-cadillac-ct4-v-blackwing-6mt-742-edit-1634133281.jpg",
+      "id": 1006
     }
   ]
 }

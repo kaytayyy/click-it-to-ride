@@ -424,59 +424,8 @@ addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
     const form = event.target;
     const formFields = Array.from(form.elements);
-    console.log(event);
 
-    const isRequired = value => (value === "" ? false : true);
-    const isLongEnough = (length, min, max) => length < min || length > max;
-    const isValidRange = (value, min, max) => value < min || value > max;
-    const pricePattern = new RegExp("/d{1,}.{0,}d{0,}/g");
-
-    const yearValid = () => {
-      let valid = false;
-      const year = document.querySelector("#sale-form #year-input").value;
-
-      if (!isRequired(year)) {
-        showErrors(
-          document.querySelector("#sale-form #error-year"),
-          "Year is required",
-        );
-      } else {
-        showValid(year);
-      }
-    };
-
-    const showErrors = (field, message) => {
-      // which field
-      const errorField = document.querySelector(
-        `#sale-form #${field.id}-error`,
-      );
-      errorField.classList.remove("hidden");
-      field.classList.add("invalid");
-      errorField.textContent = message;
-    };
-
-    const showValid = field => {
-      // which field
-      const errorField = document.querySelector(
-        `#sale-form #${field.id}-error`,
-      );
-      errorField.classList.add("hidden");
-      field.classList.remove("invalid");
-      errorField.textContent = "";
-    };
-
-    // year-input
-    // make-form
-    // model-form
-    // price-form
-    // condition-form
-    // mileage-form
-    // transmission-form
-    // fuel-type-form
-    // color-form
-    // image_url
     formFields.forEach(field => {
-      console.log(field.id);
       if (field.checkValidity()) {
         // if invalid add red border class
         field.classList.remove("invalid");
@@ -486,14 +435,14 @@ addEventListener("DOMContentLoaded", () => {
         //doesn't match the right pattern
         field.validity.patternMismatch
           ? (document.querySelector(
-              `#${field.id}-#error`,
+              `#${field.id}-error`,
             ).textContent += `Entry doesn't match required pattern`)
           : "";
 
         //number too low for range
         field.validity.rangeUnderflow
           ? (document.querySelector(
-              `#${field.id}-#error`,
+              `#${field.id}-error`,
             ).textContent += `This number is below the acceptable range.`)
           : "";
 
@@ -525,14 +474,12 @@ addEventListener("DOMContentLoaded", () => {
               `#${field.id}-error`,
             ).textContent += `Field cannot be blank`)
           : "";
-
-        //   : "";
+        //display the error class with message
         document.querySelector(`#${field.id}-error`).classList.remove("hidden");
         field.classList.add("invalid");
       }
     });
 
-    console.log(form.checkValidity());
     if (!form.checkValidity()) {
       event.preventDefault();
       event.stopImmediatePropagation();

@@ -185,9 +185,10 @@
             </div>
           </div>
           <div class="row">
-            <small class="error hidden" aria-live="polite" id="make-form-error"
-              >make error</small
-            >
+            <small
+              class="error hidden"
+              aria-live="polite"
+              id="make-form-error"></small>
           </div>
           <div class="row">
             <div class="left"><label for="model">MODEL</label></div>
@@ -214,10 +215,10 @@
                 name="price"
                 id="price-form"
                 required
-                pattern="/\d{1,}\.{0,}\d{0,}/g"
+                pattern="^\d{1,}$|(?=^.{1,}$)^\d+\.\d{0,2}$"
                 aria-required="true"
                 minlength="3"
-                maxlength="6" />
+                maxlength="10" />
             </div>
           </div>
           <div class="row">
