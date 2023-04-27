@@ -808,11 +808,7 @@ addEventListener("DOMContentLoaded", () => {
   // build filter from array of car_model
   function buildModelFilter(cars) {
     const modelFilter = document.querySelector("#model");
-<<<<<<< HEAD
-    garbageCollector(modelFilter);
-=======
     garbageCollector(modelFilter)
->>>>>>> 50c1f020e4ab7e35e13a5becf2899a5d1e54b187
     const uniqueModels = [...new Set(cars.map(car => car.car_model))];
     uniqueModels.sort();
     const emptyOption = document.createElement("option");
