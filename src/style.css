@@ -65,7 +65,7 @@ header .shadow {
 }
 
 section {
-  @apply lg:pt-12 lg:pb-4 pt-16 pb-8;
+  @apply lg:pt-8 lg:pb-4 pt-16 pb-8 md:pt-1 md:pb-2;
 }
 
 img {
@@ -126,9 +126,9 @@ img {
 }
 
 .home {
-  @apply m-auto w-full min-h-[640px] flex bg-no-repeat bg-cover bg-left xs:min-h-[500px] relative;
+  @apply m-auto w-full min-h-[640px] flex bg-no-repeat bg-cover bg-left xs:min-h-[500px] relative bg-[url("assets/image-unsplash.jpg")] md:bg-[url("assets/image-unsplash-mobile.png")] md:bg-contain;
 
-  background-image: url("assets/image-unsplash.jpg");
+  /* background-image: url("assets/image-unsplash.jpg"); */
 }
 
 .home-text {
@@ -148,7 +148,7 @@ img {
 }
 
 h6.attribution {
-  @apply absolute bottom-0 left-[65%] text-[.85rem];
+  @apply absolute bottom-0 left-[65%] text-[.85rem] md:top-[85%];
 }
 
 .button {

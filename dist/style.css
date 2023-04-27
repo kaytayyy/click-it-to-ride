@@ -661,8 +661,15 @@ section{
 
 @media (max-width: 1023px){
   section{
-    padding-top: 3rem;
+    padding-top: 2rem;
     padding-bottom: 1rem;
+  }
+}
+
+@media (max-width: 767px){
+  section{
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
   }
 }
 
@@ -830,9 +837,17 @@ img{
   display: flex;
   min-height: 640px;
   width: 100%;
+  background-image: url("assets/image-unsplash.jpg");
   background-size: cover;
   background-position: left;
   background-repeat: no-repeat;
+}
+
+@media (max-width: 767px){
+  .home{
+    background-image: url("assets/image-unsplash-mobile.png");
+    background-size: contain;
+  }
 }
 
 @media (max-width: 479px){
@@ -842,7 +857,7 @@ img{
 }
 
 .home {
-  background-image: url("assets/image-unsplash.jpg");
+  /* background-image: url("assets/image-unsplash.jpg"); */
 }
 
 .home-text{
@@ -889,6 +904,12 @@ h6.attribution{
   bottom: 0px;
   left: 65%;
   font-size: .85rem;
+}
+
+@media (max-width: 767px){
+  h6.attribution{
+    top: 85%;
+  }
 }
 
 .button{

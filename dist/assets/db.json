@@ -125,34 +125,20 @@
       "user_image_url": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2007&make=Mercedes-Benz&modelFamily=CL-Class&paintDescription=Green"
     },
     {
-      "registration": "4867-QGT",
-      "car_make": "Ford",
-      "car_model": "Econoline E150",
-      "car_model_year": 1999,
-      "color": "Blue",
-      "mileage": 55594,
-      "price": 46642.89,
-      "transmission": "Automatic",
-      "fuel_type": "Electric",
-      "condition": "New",
-      "location": "Los Angeles",
-      "id": 10,
-      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1999&make=Ford&modelFamily=Econoline%20E150&paintDescription=Blue"
-    },
-    {
       "registration": "6396-URC",
       "car_make": "Subaru",
       "car_model": "Legacy",
-      "car_model_year": 2008,
+      "car_model_year": "2012",
       "color": "Crimson",
-      "mileage": 26808,
-      "price": 66378.31,
+      "mileage": "26808",
+      "price": "66378.31",
       "transmission": "Manual",
       "fuel_type": "Diesel",
       "condition": "New",
       "location": "San Francisco",
       "id": 11,
-      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2008&make=Subaru&modelFamily=Legacy&paintDescription=Crimson"
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2008&make=Subaru&modelFamily=Legacy&paintDescription=Crimson",
+      "user_image_url": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2008&make=Subaru&modelFamily=Legacy&paintDescription=Crimson"
     },
     {
       "registration": "0662-JPX",
