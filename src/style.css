@@ -358,7 +358,7 @@ h6.attribution {
   border-r border-b pr-1 pt-1.5 items-center focus:outline-none;
 }
 small.error {
-  @apply w-full p-0 text-[0.8rem] text-white bg-[#900] rounded-b-md rounded-bl-md;
+  @apply w-2/3 ml-auto p-0 text-[0.8rem] text-white bg-[#900] rounded-b-md rounded-bl-md;
 }
 small.error:active {
   @apply p-[0.3em];

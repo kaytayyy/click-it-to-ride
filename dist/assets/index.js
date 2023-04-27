@@ -166,6 +166,7 @@ addEventListener("DOMContentLoaded", () => {
         this.apiImage,
       );
     }
+
     deleteMe() {
       handleDelete(this);
     }
@@ -309,7 +310,7 @@ addEventListener("DOMContentLoaded", () => {
   });
   const makeSelector = document.querySelector("#make");
   makeSelector.addEventListener("change", event => {
-    //redo model selector to match only models from selected make
+    // redo model selector to match only models from selected make
     filterList(event);
   });
   const modelSelector = document.querySelector("#model");
@@ -387,7 +388,7 @@ addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  //image delete button
+  // image delete button
   let imageDeleteButton = document.querySelector(
     "#sale-form-updater #image_delete_button",
   );
@@ -395,7 +396,7 @@ addEventListener("DOMContentLoaded", () => {
     document.querySelector("#sale-form-updater #image_url").value = "";
   });
 
-  //clearFilters button
+  // clearFilters button
   const clearFiltersButton = document.querySelector(".filters #clearFilters");
   clearFiltersButton.addEventListener("click", () => {
     document.querySelector("#year").value = "";
@@ -404,7 +405,7 @@ addEventListener("DOMContentLoaded", () => {
     rover.fetch(`${carsUrl}`).then(cars => initialize());
   });
 
-  //login button
+  // login button
   const loginButton = document.querySelector("#login-btn");
   loginButton.addEventListener("click", () => {
     isLoggedIn = !isLoggedIn;
@@ -445,7 +446,7 @@ addEventListener("DOMContentLoaded", () => {
     };
 
     const showErrors = (field, message) => {
-      //which field
+      // which field
       const errorField = document.querySelector(
         `#sale-form #${field.id}-error`,
       );
@@ -455,7 +456,7 @@ addEventListener("DOMContentLoaded", () => {
     };
 
     const showValid = field => {
-      //which field
+      // which field
       const errorField = document.querySelector(
         `#sale-form #${field.id}-error`,
       );
@@ -477,29 +478,56 @@ addEventListener("DOMContentLoaded", () => {
     formFields.forEach(field => {
       console.log(field.id);
       if (field.checkValidity()) {
-        //if invalid add red border class
+        // if invalid add red border class
         field.classList.remove("invalid");
       } else {
         console.log(field.validity);
-        //if valid then remove
+        // if valid then remove
+        //doesn't match the right pattern
         field.validity.patternMismatch
           ? (document.querySelector(
-              `#error-${field.name}`,
-            ).textContent = `Entry doesn't match required pattern`)
+              `#${field.id}-#error`,
+            ).textContent += `Entry doesn't match required pattern`)
+          : "";
+
+        //number too low for range
+        field.validity.rangeUnderflow
+          ? (document.querySelector(
+              `#${field.id}-#error`,
+            ).textContent += `This number is below the acceptable range.`)
+          : "";
+
+        //step mismatch
+        field.validity.tooShort
+          ? (document.querySelector(
+              `#${field.id}-error`,
+            ).textContent += `The entry is not long enough.`)
+          : "";
+
+        //too long
+        field.validity.tooLong
+          ? (document.querySelector(
+              `#${field.id}-error`,
+            ).textContent += `Entry is too long`)
+          : "";
+
+        //invalid type
+        field.validity.typeMismatch
+          ? (document.querySelector(
+              `#${field.id}-error`,
+            ).textContent += `Invalid type`)
           : "";
         //   ? ""
-        //   : ""(field.validity.rangeUnderflow)
-        //   ? ""
-        //   : ""(field.validity.stepMismatch)
-        //   ? ""
-        //   : ""(field.validity.tooLong)
-        //   ? ""
-        //   : ""(field.validity.typeMismatch)
-        //   ? ""
-        //   : ""(field.validity.valueMissing)
-        //   ? ""
-        //   : "";
 
+        //missing value
+        field.validity.valueMissing
+          ? (document.querySelector(
+              `#${field.id}-error`,
+            ).textContent += `Field cannot be blank`)
+          : "";
+
+        //   : "";
+        document.querySelector(`#${field.id}-error`).classList.remove("hidden");
         field.classList.add("invalid");
       }
     });
@@ -525,7 +553,7 @@ addEventListener("DOMContentLoaded", () => {
 
   function filterList(event) {
     // only simple filtering right now, not looking at multiple values yet
-    //'Chevrolet'
+    // 'Chevrolet'
 
     const filter =
       event.target.id === "year"
@@ -534,7 +562,7 @@ addEventListener("DOMContentLoaded", () => {
         ? "car_make"
         : "car_model";
 
-    //if make !== "" then make model array with .filter
+    // if make !== "" then make model array with .filter
     // const params =
     //   event.target.value === "" ? "" : `?${filter}=${event.target.value}`;
     const yearSelected = document.querySelector("#year").value;
@@ -559,10 +587,10 @@ addEventListener("DOMContentLoaded", () => {
 
     // grab the filtered cars array and render the first 9
     rover.fetch(`${carsUrl}?${params}`).then(cars => {
-      //let filterArray = cars.filter(car => (car.car_make = event.target.value));
+      // let filterArray = cars.filter(car => (car.car_make = event.target.value));
 
-      //run garbageCollector on modelOptions array
-      //now send to buildModelFilter function to rebuild options
+      // run garbageCollector on modelOptions array
+      // now send to buildModelFilter function to rebuild options
       buildYearFilter(cars, yearSelected);
       buildMakeFilter(cars, makeSelected);
       buildModelFilter(cars, modelSelected);
@@ -579,36 +607,36 @@ addEventListener("DOMContentLoaded", () => {
   function handleEdit(card, car) {
     // there is no significance to fox socks except that it's something I remember and my daughter has been saying it
 
-    //updater form text values
-    //price
+    // updater form text values
+    // price
     updaterForm.price.value = document.querySelector(
       `.card[data-id="${car.id}"] .price`,
     ).textContent;
-    //year
+    // year
     updaterForm
       .querySelector(`[value="${car.car_model_year}"]`)
       .setAttribute("selected", "selected");
-    //make
+    // make
     updaterForm.make.value = car.car_make;
 
-    //model
+    // model
     updaterForm.model.value = car.car_model;
 
-    //color
+    // color
     updaterForm.color.value = document.querySelector(
       `.card[data-id="${car.id}"]> .color >.fox-socks`,
     ).textContent;
-    //condition
+    // condition
     updaterForm
       .querySelector(`[value="${car.condition}"]`)
       .setAttribute("selected", "selected");
 
-    //mileage
+    // mileage
     updaterForm.mileage.value = document.querySelector(
       `.card[data-id="${car.id}"]> .mileage >.fox-socks`,
     ).textContent;
 
-    //transmission
+    // transmission
     let currentTransmission = document.querySelector(
       `.card[data-id="${car.id}"]> .transmission >.fox-socks`,
     ).textContent;
@@ -616,7 +644,7 @@ addEventListener("DOMContentLoaded", () => {
       .querySelector(`[value="${currentTransmission}"]`)
       .setAttribute("selected", "selected");
 
-    //fuel-type
+    // fuel-type
     let currentFuel = document.querySelector(
       `.card[data-id="${car.id}"]> .fuel-type >.fox-socks`,
     ).textContent;
@@ -624,7 +652,7 @@ addEventListener("DOMContentLoaded", () => {
       .querySelector(`[value="${currentFuel}"]`)
       .setAttribute("selected", "selected");
 
-    //imageUrl
+    // imageUrl
     updaterForm.user_image_url.value = document.querySelector(
       `.card[data-id="${car.id}"] .car-image`,
     ).src;
@@ -874,7 +902,7 @@ addEventListener("DOMContentLoaded", () => {
         ? handleEdit(carCard, car)
         : handleSave(currentCar, car);
     });
-    isLoggedIn //true -currently false
+    isLoggedIn // true -currently false
       ? carAdminDiv.classList.remove("hidden")
       : carAdminDiv.classList.add("hidden");
     // append
@@ -1042,7 +1070,7 @@ addEventListener("DOMContentLoaded", () => {
     return input;
   };
 
-  // allow the year make and model to be editabl;e
+  // allow the year make and model to be editable
   const yearMakeModelInputs = (currentYear, currentMake, currentModel) => {
     const yearInput = document.createElement("input");
     yearInput.classList.add("car-title");
