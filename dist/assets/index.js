@@ -32,6 +32,8 @@ addEventListener("DOMContentLoaded", () => {
       this.user_image_url = user_image_url;
       this.image = image;
       // console.log("car factory end");
+
+      this.deleteListing = () => console.log(this);
     }
     // getters
 
@@ -163,6 +165,9 @@ addEventListener("DOMContentLoaded", () => {
         this.user_image_url,
         this.apiImage,
       );
+    }
+    deleteMe() {
+      handleDelete(this);
     }
   }
 
@@ -369,14 +374,9 @@ addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /** ********EVENT LISTENERS END****************/
-
-  /** ********FORM PROCESSING START**************/
-
   updaterForm.addEventListener("submit", (event, car) => {
     event.preventDefault();
 
-    console.log(event);
     document.querySelector("#modal_outer_frame").classList.add("hidden");
 
     if (event.target.id === "cancel-btn") {
@@ -384,6 +384,10 @@ addEventListener("DOMContentLoaded", () => {
     }
     handleSave(event, car);
   });
+  /** ********EVENT LISTENERS END****************/
+
+  /** ********FORM PROCESSING START**************/
+
   // handle input from search form
   function handleSearch(event) {
     event.preventDefault();
@@ -424,7 +428,7 @@ addEventListener("DOMContentLoaded", () => {
   // editing functionality
   function handleEdit(card, car) {
     // there is no significance to fox socks except that it's something I remember and my daughter has been saying it
- 
+
     //updater form text values
     //price
     updaterForm.price.value = document.querySelector(
@@ -475,7 +479,6 @@ addEventListener("DOMContentLoaded", () => {
       car.user_image_url && car.user_image_url !== "" ? car.user_image_url : "";
 
     currentCar = car;
- 
 
     // update text on edit button to say "Save"
     document.querySelector("#modal_outer_frame").classList.remove("hidden");
@@ -520,7 +523,6 @@ addEventListener("DOMContentLoaded", () => {
     rover
       .patch(`${carsUrl}/${currentCar.id}`, data)
       .then(car => {
-        console.log(car);
         updateCard(car);
       })
       .catch(err => {
@@ -539,7 +541,6 @@ addEventListener("DOMContentLoaded", () => {
   }
 
   function updateCard(car) {
-    console.log(car.id);
     // price lives in an h2 with class fox-socks
     document.querySelector(
       `.card[data-id="${car.id}"] h2.fox-socks`,
@@ -891,23 +892,23 @@ addEventListener("DOMContentLoaded", () => {
     rover.fetch(`${carsUrl}`).then(cars => {
       garbageCollector(carsContainer);
 
-      currentCar = cars[0];
+      // currentCar = cars[0];
 
       const maxResults = cars.length >= 9 ? 9 : cars.length;
       for (let i = 0; i < maxResults; i++) {
         window["myCar" + i] = new Car(
-          currentCar.car_make,
-          currentCar.car_model,
-          currentCar.car_model_year,
-          currentCar.color,
-          currentCar.mileage,
-          currentCar.price,
-          currentCar.transmission,
-          currentCar.fuel_type,
-          currentCar.condition,
-          currentCar.id,
-          currentCar.user_image_url,
-          currentCar.image,
+          cars[i].car_make,
+          cars[i].car_model,
+          cars[i].car_model_year,
+          cars[i].color,
+          cars[i].mileage,
+          cars[i].price,
+          cars[i].transmission,
+          cars[i].fuel_type,
+          cars[i].condition,
+          cars[i].id,
+          cars[i].user_image_url,
+          cars[i].image,
         );
         carLot.push(window["myCar" + i]);
         renderCarCards(cars[i]);
@@ -916,7 +917,7 @@ addEventListener("DOMContentLoaded", () => {
       buildYearFilter(cars);
       buildMakeFilter(cars);
       buildModelFilter(cars);
-      // document.querySelector("#prev-cars").disabled = true;
+      console.log(carLot);
     });
   }
 
