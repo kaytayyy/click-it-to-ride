@@ -845,8 +845,10 @@ img{
 
 @media (max-width: 767px){
   .home{
+    min-height: 480px;
     background-image: url("assets/image-unsplash-mobile.png");
     background-size: contain;
+    background-position: top;
   }
 }
 
@@ -868,6 +870,12 @@ img{
 @media (max-width: 1023px){
   .home-text{
     padding-left: 2rem;
+  }
+}
+
+@media (max-width: 767px){
+  .home-text{
+    padding-top: 70px;
   }
 }
 
@@ -1069,6 +1077,8 @@ h6.attribution{
 @media (max-width: 767px){
   .cars-container{
     grid-template-columns: repeat(1, minmax(0, 1fr));
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
   }
 }
 
@@ -1083,7 +1093,7 @@ h6.attribution{
   .cars-container .card{
     margin-left: auto;
     margin-right: auto;
-    max-width: 32rem;
+    max-width: 42rem;
     gap: 0.25rem;
   }
 }

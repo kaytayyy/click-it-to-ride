@@ -1,8 +1,24 @@
 addEventListener("DOMContentLoaded", () => {
   /** ********DELIVERABLES START*****************/
-
+  /** Project Pitch
+   * HTML/CSS/JS
+   * Public API - imagin.studio
+   * Private API - db.json via json-server
+   * Single-page app
+   * Event listeners (click, submit, scroll,change,DOMContentLoaded)
+   * Array methods [.map(), .filter(), forEach, for loops]
+   * GitHub repo: https://github.com/kaytayyy/click-it-to-ride
+   * README: https://github.com/kaytayyy/click-it-to-ride/blob/main/README.md
+   *
+   *
+   *
+   * User stories:
+   * I need a car...I want to sell my car
+   * CITR can help. Search vehicles available or add your own listing for management
+   */
   /** ********DELIVERABLES END*******************/
 
+  // CAR constructor
   class Car {
     constructor(
       car_make,
@@ -182,9 +198,9 @@ addEventListener("DOMContentLoaded", () => {
   const menu = document.querySelector(".navbar");
   const header = document.querySelector("header");
   let currentCar;
-  let currentPage;
-  const carsPerPage = 9;
-  let carLot = [];
+  // let currentPage;
+  // const carsPerPage = 9;
+  const carLot = [];
   let isLoggedIn = false;
   const carsContainer = document.querySelector("#cars-container");
   const saleForm = document.querySelector("#sale-form");
@@ -260,6 +276,7 @@ addEventListener("DOMContentLoaded", () => {
   /** ********FETCH REQUESTS END*****************/
   /** ********SALE FORM************************/
 
+  // to add new listings to our car lot
   saleForm.addEventListener("submit", e => {
     validateForm(e);
     e.preventDefault();
@@ -340,20 +357,19 @@ addEventListener("DOMContentLoaded", () => {
       : header.classList.remove("bg-white");
   });
 
-  // look for the search form
+  // look for the search form SUBMIT listener
   search.addEventListener("submit", event => {
     event.preventDefault();
     window.location.href = "#cars";
     handleSearch(event);
   });
 
-  // next page button
+  // next page button CLICK listener
   document.querySelector("#next-cars").addEventListener("click", event => {
     rover
       .fetch(`${carsUrl}?_start=${currentCar.id}&_end=${currentCar.id + 9}`)
       .then(cars => {
         garbageCollector(carsContainer);
-
         const maxResults = cars.length >= 9 ? 9 : cars.length;
         for (let i = 0; i < maxResults; i++) {
           currentCar = cars[i];
@@ -362,13 +378,13 @@ addEventListener("DOMContentLoaded", () => {
       });
   });
 
-  // previous page button
+  // previous page button CLICK listener
   document.querySelector("#prev-cars").addEventListener("click", event => {
+    // this math keeps the button from attempting to access an array index less than 0
     const startAt = currentCar.id - 18 < 0 ? 0 : currentCar.id - 18;
     const endAt = startAt + 9;
     rover.fetch(`${carsUrl}?_end=${endAt}&_start=${startAt}`).then(cars => {
       garbageCollector(carsContainer);
-
       const maxResults = cars.length >= 9 ? 9 : cars.length;
       for (let i = 0; i < maxResults; i++) {
         currentCar = cars[i];
@@ -377,12 +393,14 @@ addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // update form SUBMIT listener
   updaterForm.addEventListener("submit", (event, car) => {
     validateForm(event);
     event.preventDefault();
-
+    // rehides the form modal
     document.querySelector("#modal_outer_frame").classList.add("hidden");
     if (event.submitter.id === "cancel-btn") {
+      // closes modal without fetch calls
       return false;
     } else {
       handleSave(event, car);
@@ -390,7 +408,7 @@ addEventListener("DOMContentLoaded", () => {
   });
 
   // image delete button
-  let imageDeleteButton = document.querySelector(
+  const imageDeleteButton = document.querySelector(
     "#sale-form-updater #image_delete_button",
   );
   imageDeleteButton.addEventListener("click", event => {
@@ -403,14 +421,16 @@ addEventListener("DOMContentLoaded", () => {
     document.querySelector("#year").value = "";
     document.querySelector("#make").value = "";
     document.querySelector("#model").value = "";
+    // after clear go out and get a clean array of cars
     rover.fetch(`${carsUrl}`).then(cars => initialize());
   });
 
   // login button
   const loginButton = document.querySelector("#login-btn");
   loginButton.addEventListener("click", () => {
+    // toggle the value
     isLoggedIn = !isLoggedIn;
-
+    // adjust the button wording to know if user logged in/out
     isLoggedIn ? (loginButton.value = "Logout") : (loginButton.value = "Login");
     document.querySelectorAll(".admin-button-div").forEach(div => {
       div.classList.toggle("hidden");
@@ -419,7 +439,6 @@ addEventListener("DOMContentLoaded", () => {
   /** ********EVENT LISTENERS END****************/
 
   /** ********FORM PROCESSING START**************/
-  // sale form processing and validation
 
   function validateForm(event) {
     event.preventDefault();
@@ -431,36 +450,35 @@ addEventListener("DOMContentLoaded", () => {
         // if invalid add red border class
         field.classList.remove("invalid");
       } else {
-        // if valid then remove
-        //doesn't match the right pattern
+        // doesn't match the right pattern
         field.validity.patternMismatch
           ? (document.querySelector(
               `#${field.id}-error`,
             ).textContent += `Entry doesn't match required pattern`)
           : "";
 
-        //number too low for range
+        // number too low for range
         field.validity.rangeUnderflow
           ? (document.querySelector(
               `#${field.id}-error`,
             ).textContent += `This number is below the acceptable range.`)
           : "";
 
-        //step mismatch
+        // step mismatch
         field.validity.tooShort
           ? (document.querySelector(
               `#${field.id}-error`,
             ).textContent += `The entry is not long enough.`)
           : "";
 
-        //too long
+        // too long
         field.validity.tooLong
           ? (document.querySelector(
               `#${field.id}-error`,
             ).textContent += `Entry is too long`)
           : "";
 
-        //invalid type
+        // invalid type
         field.validity.typeMismatch
           ? (document.querySelector(
               `#${field.id}-error`,
@@ -468,27 +486,28 @@ addEventListener("DOMContentLoaded", () => {
           : "";
         //   ? ""
 
-        //missing value
+        // missing value
         field.validity.valueMissing
           ? (document.querySelector(
               `#${field.id}-error`,
             ).textContent += `Field cannot be blank`)
           : "";
-        //display the error class with message
+        // display the error class with message
         document.querySelector(`#${field.id}-error`).classList.remove("hidden");
         field.classList.add("invalid");
       }
     });
-
+    //shut down the world if valid===false
     if (!form.checkValidity()) {
       event.preventDefault();
       event.stopImmediatePropagation();
     }
   }
+
   // handle input from search form
   function handleSearch(event) {
     event.preventDefault();
-
+    // take fuzzy search logic and go get cars
     rover.fetch(`${carsUrl}?q=${event.target.search.value}`).then(cars => {
       garbageCollector(carsContainer);
       for (let i = 0; i < 9; i++) {
@@ -499,37 +518,28 @@ addEventListener("DOMContentLoaded", () => {
   }
 
   function filterList(event) {
-    // only simple filtering right now, not looking at multiple values yet
-    // 'Chevrolet'
-
-    const filter =
-      event.target.id === "year"
-        ? "car_model_year"
-        : event.target.id === "make"
-        ? "car_make"
-        : "car_model";
-
-    // if make !== "" then make model array with .filter
-    // const params =
-    //   event.target.value === "" ? "" : `?${filter}=${event.target.value}`;
+    // see if year is already chosen
     const yearSelected = document.querySelector("#year").value;
     const yearFilter =
       document.querySelector("#year").value &&
       document.querySelector("#year").value !== ""
         ? `&car_model_year=${document.querySelector("#year").value}`
         : "";
+    // see if make is already chosen
     const makeSelected = document.querySelector("#make").value;
     const makeFilter =
       document.querySelector("#make").value &&
       document.querySelector("#make").value !== ""
         ? `&car_make=${document.querySelector("#make").value}`
         : "";
+    // see if model is already chosen
     const modelSelected = document.querySelector("#model").value;
     const modelFilter =
       document.querySelector("#model").value &&
       document.querySelector("#model").value !== ""
         ? `&car_model=${document.querySelector("#model").value}`
         : "";
+    // build out URL params string with non-empty values
     const params = `${yearFilter}${makeFilter}${modelFilter}`;
 
     // grab the filtered cars array and render the first 9
@@ -538,9 +548,12 @@ addEventListener("DOMContentLoaded", () => {
 
       // run garbageCollector on modelOptions array
       // now send to buildModelFilter function to rebuild options
+      // rebuild the drop-down filters based on selected attributes
       buildYearFilter(cars, yearSelected);
       buildMakeFilter(cars, makeSelected);
       buildModelFilter(cars, modelSelected);
+
+      // clean up in aisle 12
       garbageCollector(carsContainer);
       const maxResults = cars.length >= 9 ? 9 : cars.length;
       for (let i = 0; i < maxResults; i++) {
@@ -552,10 +565,8 @@ addEventListener("DOMContentLoaded", () => {
 
   // editing functionality
   function handleEdit(card, car) {
-    // there is no significance to fox socks except that it's something I remember and my daughter has been saying it
-
-    // updater form text values
-    // price
+    // there is no significance to fox socks except my daughter is obsessed with foxes
+    // load current price into edit form
     updaterForm.price.value = document.querySelector(
       `.card[data-id="${car.id}"] .price`,
     ).textContent;
@@ -584,7 +595,7 @@ addEventListener("DOMContentLoaded", () => {
     ).textContent;
 
     // transmission
-    let currentTransmission = document.querySelector(
+    const currentTransmission = document.querySelector(
       `.card[data-id="${car.id}"]> .transmission >.fox-socks`,
     ).textContent;
     updaterForm
@@ -592,7 +603,7 @@ addEventListener("DOMContentLoaded", () => {
       .setAttribute("selected", "selected");
 
     // fuel-type
-    let currentFuel = document.querySelector(
+    const currentFuel = document.querySelector(
       `.card[data-id="${car.id}"]> .fuel-type >.fox-socks`,
     ).textContent;
     updaterForm
@@ -605,17 +616,13 @@ addEventListener("DOMContentLoaded", () => {
     ).src;
 
     currentCar = car;
-
-    // update text on edit button to say "Save"
+    // unhide the form modal window
     document.querySelector("#modal_outer_frame").classList.remove("hidden");
-    // document.querySelector(
-    //   `.card[data-id="${car.id}"] #edit-button`,
-    // ).textContent = "Save";
   }
 
   // delete functionality
   function handleDelete(car) {
-    // WRITE THE DELETE FUNCTION HERE
+    // WRITE THE DELETE FUNCTION HERE - DONE!
     const card = document.querySelector(`.card[data-id="${car.id}"]`);
 
     rover.sell(`${carsUrl}/${car.id}`).then(car => {
@@ -629,8 +636,7 @@ addEventListener("DOMContentLoaded", () => {
 
     const card = document.querySelector(`.card[data-id="${currentCar.id}"]`);
 
-    // hide the input
-
+    // build our object to send with Rover
     const data = {
       car_make: event.target.make.value,
       car_model: event.target.model.value,
@@ -649,20 +655,20 @@ addEventListener("DOMContentLoaded", () => {
     rover
       .patch(`${carsUrl}/${currentCar.id}`, data)
       .then(car => {
-        updateCard(car);
+        updateCard(car); // make sure we update the card after db accepts it
       })
       .catch(err => {
         console.log(err);
       });
-    // send the response from the patch to updateCard()
   }
   /** ********FORM PROCESSING END****************/
 
   /** ********DOM RENDER FUNCTIONS START*********/
+
   // pull generated images from third party API
   function getImage(year, make, model, color) {
     const params = `modelYear=${year}&make=${make}&modelFamily=${model}&paintDescription=${color}`;
-    // console.log(imaginUrl + params);
+
     return imagin.image(`${imaginUrl}${params}`);
   }
 
@@ -700,13 +706,16 @@ addEventListener("DOMContentLoaded", () => {
     ).alt = `${car.car_model_year} ${car.car_make} ${car.car_model}`;
 
     // use imagin API to generate image for the car based on parameters
+    // if there is a user uploaded image, use that
     if (car.user_image_url && car.user_image_url !== "") {
       document.querySelector(`.card[data-id="${car.id}"] .car-image`).src =
         car.user_image_url;
     } else if (car.image) {
+      // if no user image check for previous imagin image
       document.querySelector(`.card[data-id="${car.id}"] .car-image`).src =
         car.image;
     } else {
+      //go out and get one and store in db for faster next render
       getImage(car.car_model_year, car.car_make, car.car_model, car.color).then(
         image => {
           document.querySelector(`.card[data-id="${car.id}"] .car-image`).src =
@@ -721,6 +730,7 @@ addEventListener("DOMContentLoaded", () => {
     currentCar = car;
   }
 
+  // the workhorse
   function renderCarCards(car) {
     // create elements
     // <!-- Card -->
@@ -872,9 +882,6 @@ addEventListener("DOMContentLoaded", () => {
     carsContainer.appendChild(carCard);
   }
 
-  function handleClick(card, element) {
-    console.log(element);
-  }
   /** ********DOM RENDER FUNCTIONS END***********/
 
   /** *********GENERAL FUNCTIONS START***********/
@@ -882,16 +889,20 @@ addEventListener("DOMContentLoaded", () => {
   // years filter from array of car_model_years
   function buildYearFilter(cars, filter) {
     const yearsFilter = document.querySelector("#year");
+    // clean up existing options so new ones aren't appending to the end
     garbageCollector(yearsFilter);
+    // use Set to get unique values
     const uniqueYears = [...new Set(cars.map(car => car.car_model_year))];
+    // sort descending order
     uniqueYears.sort((a, b) => b - a);
-
+    //ensure top option is populated empty
     const emptyOption = document.createElement("option");
     yearsFilter.append(emptyOption);
     uniqueYears.forEach(year => {
       const yearOption = document.createElement("option");
       yearOption.value = year;
       yearOption.textContent = year;
+      //check to see if this option is equal to any arguments to set it as selected
       if (
         (filter !== "" && yearOption.textContent === filter) ||
         uniqueYears.length === 1
@@ -947,127 +958,9 @@ addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // build select with options for fuel type of car being edited
-  const fuelOptions = currentFuelType => {
-    const fuelList = ["Gasoline", "Diesel", "Electric", "Hybrid"];
-    // select element for fuelOptions
-    const selectFuelType = document.createElement("select");
-    const fuelBuilder = fuelList.map(fuel => {
-      const option = document.createElement("option");
-      option.value = fuel;
-      option.textContent = fuel;
-      currentFuelType === fuel
-        ? option.setAttribute("selected", "selected")
-        : "";
-      selectFuelType.append(option);
-    });
-    selectFuelType.id = "select-fuel-type";
-    selectFuelType.classList.add("edit-inputs");
-    return selectFuelType;
-  };
-
-  // built select with transmission options for car being edited
-  const transmissionOptions = currentTransmission => {
-    const transmissionList = ["Automatic", "Manual"];
-    // select element for transmission
-    const selectTransmission = document.createElement("select");
-    const transmissionBuilder = transmissionList.map(transmission => {
-      const option = document.createElement("option");
-      option.value = transmission;
-      option.textContent = transmission;
-      currentTransmission === transmission
-        ? option.setAttribute("selected", "selected")
-        : "";
-      selectTransmission.append(option);
-    });
-    selectTransmission.id = "select-transmission";
-    selectTransmission.classList.add("edit-inputs");
-    return selectTransmission;
-  };
-
-  // built a new input for editing mileage
-  const mileageInput = currentMileage => {
-    const input = document.createElement("input");
-    input.type = "text";
-    input.value = currentMileage;
-    input.id = "mileage-input";
-    input.classList.add("edit-inputs");
-    return input;
-  };
-
-  // built a new input for editing price
-  const priceInput = currentPrice => {
-    const input = document.createElement("input");
-    input.type = "text";
-    input.classList.add("cars-text", "price");
-    input.textContent = currentPrice;
-    input.value = currentPrice;
-    input.id = "price-input";
-    input.classList.add("edit-inputs");
-    return input;
-  };
-
-  // built a new input for editing color
-  const colorInput = currentColor => {
-    const input = document.createElement("input");
-    input.type = "text";
-    input.value = currentColor;
-    input.id = "color-input";
-    input.classList.add("edit-inputs");
-    return input;
-  };
-
-  // allow the year make and model to be editable
-  const yearMakeModelInputs = (currentYear, currentMake, currentModel) => {
-    const yearInput = document.createElement("input");
-    yearInput.classList.add("car-title");
-    yearInput.type = "text";
-    yearInput.textContent = currentYear;
-    yearInput.value = currentYear;
-    yearInput.id = "year-input";
-    yearInput.classList.add("edit-inputs");
-
-    const makeInput = document.createElement("input");
-    makeInput.classList.add("car-title");
-    makeInput.type = "text";
-    makeInput.value = currentMake;
-    makeInput.textContent = currentMake;
-    makeInput.id = "make-input";
-    makeInput.classList.add("edit-inputs");
-
-    const modelInput = document.createElement("input");
-    modelInput.classList.add("car-title");
-    modelInput.type = "text";
-    modelInput.value = currentModel;
-    modelInput.textContent = currentModel;
-    modelInput.id = "model-input";
-    modelInput.classList.add("edit-inputs");
-
-    return [yearInput, makeInput, modelInput];
-  };
-
-  // built select with condition options for car being edited
-  const conditionOptions = currentCondition => {
-    const conditionList = ["New", "Used", "Certified Pre-Owned"];
-    // select element for conditions
-    const selectCondition = document.createElement("select");
-
-    const conditionBuilder = conditionList.map(condition => {
-      const option = document.createElement("option");
-      option.value = condition;
-      option.textContent = condition;
-
-      currentCondition === condition
-        ? option.setAttribute("selected", "selected")
-        : "";
-      selectCondition.append(option);
-    });
-    selectCondition.id = "select-condition";
-    selectCondition.classList.add("edit-inputs");
-    return selectCondition;
-  };
   // oscar the grouch cleaning up
   function garbageCollector(parent) {
+    // if the parent has kids, get rid of them
     while (parent.hasChildNodes()) {
       parent.removeChild(parent.firstChild);
     }
@@ -1079,8 +972,6 @@ addEventListener("DOMContentLoaded", () => {
   function initialize() {
     rover.fetch(`${carsUrl}`).then(cars => {
       garbageCollector(carsContainer);
-
-      // currentCar = cars[0];
 
       const maxResults = cars.length >= 9 ? 9 : cars.length;
       for (let i = 0; i < maxResults; i++) {
@@ -1101,12 +992,12 @@ addEventListener("DOMContentLoaded", () => {
         carLot.push(window["myCar" + i]);
         renderCarCards(cars[i]);
       }
-
+      // start off fresh with all options available in the db
       buildYearFilter(cars, "");
       buildMakeFilter(cars, "");
       buildModelFilter(cars, "");
     });
   }
-
+  // start your engines!
   initialize();
 });

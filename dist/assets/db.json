@@ -128,10 +128,10 @@
       "registration": "6396-URC",
       "car_make": "Subaru",
       "car_model": "Legacy",
-      "car_model_year": "2012",
+      "car_model_year": "2018",
       "color": "Crimson",
       "mileage": "26808",
-      "price": "66378.31",
+      "price": "12457",
       "transmission": "Manual",
       "fuel_type": "Diesel",
       "condition": "New",
@@ -407,7 +407,8 @@
       "fuel_type": "Diesel",
       "condition": "Used",
       "location": "San Francisco",
-      "id": 29
+      "id": 29,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2006&make=Subaru&modelFamily=Forester&paintDescription=Red"
     },
     {
       "registration": "6901-OXF",
@@ -526,7 +527,8 @@
       "fuel_type": "Diesel",
       "condition": "Used",
       "location": "Chicago",
-      "id": 37
+      "id": 37,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1990&make=Nissan&modelFamily=Maxima&paintDescription=Pink"
     },
     {
       "registration": "3954-MJO",
@@ -540,7 +542,8 @@
       "fuel_type": "Gasoline",
       "condition": "New",
       "location": "Boston",
-      "id": 38
+      "id": 38,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2009&make=Porsche&modelFamily=Cayenne&paintDescription=Crimson"
     },
     {
       "registration": "1115-FGZ",
@@ -584,7 +587,8 @@
       "fuel_type": "Electric",
       "condition": "New",
       "location": "Boston",
-      "id": 41
+      "id": 41,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1991&make=Mercedes-Benz&modelFamily=SL-Class&paintDescription=Violet"
     },
     {
       "registration": "9901-DYJ",
@@ -598,7 +602,8 @@
       "fuel_type": "Gasoline",
       "condition": "Certified Pre-Owned",
       "location": "San Francisco",
-      "id": 42
+      "id": 42,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1999&make=Saab&modelFamily=9-3&paintDescription=Blue"
     },
     {
       "registration": "0655-DCL",
@@ -657,7 +662,8 @@
       "fuel_type": "Electric",
       "condition": "Used",
       "location": "Los Angeles",
-      "id": 46
+      "id": 46,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1999&make=Mercedes-Benz&modelFamily=M-Class&paintDescription=Aquamarine"
     },
     {
       "registration": "0029-MPG",
@@ -686,7 +692,8 @@
       "fuel_type": "Diesel",
       "condition": "Used",
       "location": "Seattle",
-      "id": 48
+      "id": 48,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2008&make=Honda&modelFamily=S2000&paintDescription=Puce"
     },
     {
       "registration": "8011-GHB",
@@ -715,7 +722,8 @@
       "fuel_type": "Diesel",
       "condition": "New",
       "location": "Los Angeles",
-      "id": 50
+      "id": 50,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2008&make=Saab&modelFamily=9-5&paintDescription=Purple"
     },
     {
       "registration": "8156-FYZ",
@@ -744,7 +752,8 @@
       "fuel_type": "Electric",
       "condition": "New",
       "location": "Atlanta",
-      "id": 52
+      "id": 52,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2006&make=Hummer&modelFamily=H2%20SUT&paintDescription=Red"
     },
     {
       "registration": "2165-QWN",
@@ -758,7 +767,8 @@
       "fuel_type": "Gasoline",
       "condition": "New",
       "location": "Boston",
-      "id": 53
+      "id": 53,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2008&make=Nissan&modelFamily=Rogue&paintDescription=Fuscia"
     },
     {
       "registration": "1746-HPG",
@@ -772,7 +782,8 @@
       "fuel_type": "Electric",
       "condition": "Used",
       "location": "Los Angeles",
-      "id": 54
+      "id": 54,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2011&make=Mercedes-Benz&modelFamily=SLK-Class&paintDescription=Blue"
     },
     {
       "registration": "0071-OHU",
@@ -786,7 +797,8 @@
       "fuel_type": "Electric",
       "condition": "Certified Pre-Owned",
       "location": "Miami",
-      "id": 55
+      "id": 55,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1984&make=Volkswagen&modelFamily=Quantum&paintDescription=Goldenrod"
     },
     {
       "registration": "8784-MFG",
@@ -815,7 +827,8 @@
       "fuel_type": "Electric",
       "condition": "Used",
       "location": "Chicago",
-      "id": 57
+      "id": 57,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1995&make=Porsche&modelFamily=911&paintDescription=Purple"
     },
     {
       "registration": "0091-QSL",
@@ -873,7 +886,8 @@
       "fuel_type": "Diesel",
       "condition": "Used",
       "location": "Boston",
-      "id": 61
+      "id": 61,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1987&make=Volkswagen&modelFamily=Passat&paintDescription=Yellow"
     },
     {
       "registration": "6170-GAG",
@@ -902,7 +916,8 @@
       "fuel_type": "Hybrid",
       "condition": "Certified Pre-Owned",
       "location": "Houston",
-      "id": 63
+      "id": 63,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2008&make=Toyota&modelFamily=Sequoia&paintDescription=Purple"
     },
     {
       "registration": "5183-RIP",
@@ -916,7 +931,8 @@
       "fuel_type": "Hybrid",
       "condition": "Certified Pre-Owned",
       "location": "Seattle",
-      "id": 64
+      "id": 64,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2005&make=Jaguar&modelFamily=XK%20Series&paintDescription=Puce"
     },
     {
       "registration": "8102-JDC",
@@ -945,7 +961,8 @@
       "fuel_type": "Gasoline",
       "condition": "Used",
       "location": "Houston",
-      "id": 66
+      "id": 66,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2009&make=Toyota&modelFamily=Yaris&paintDescription=Orange"
     },
     {
       "registration": "4020-TBC",
@@ -959,7 +976,8 @@
       "fuel_type": "Diesel",
       "condition": "New",
       "location": "Los Angeles",
-      "id": 67
+      "id": 67,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2007&make=GMC&modelFamily=Sierra%203500&paintDescription=Crimson"
     },
     {
       "registration": "3823-JLI",
@@ -973,7 +991,8 @@
       "fuel_type": "Hybrid",
       "condition": "Certified Pre-Owned",
       "location": "New York",
-      "id": 68
+      "id": 68,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2006&make=Infiniti&modelFamily=G35&paintDescription=Turquoise"
     },
     {
       "registration": "7943-FED",
@@ -1277,7 +1296,8 @@
       "fuel_type": "Electric",
       "condition": "New",
       "location": "Dallas",
-      "id": 89
+      "id": 89,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2008&make=Pontiac&modelFamily=G8&paintDescription=Goldenrod"
     },
     {
       "registration": "8330-HQS",
@@ -6519,7 +6539,8 @@
       "fuel_type": "Hybrid",
       "condition": "Used",
       "location": "Miami",
-      "id": 458
+      "id": 458,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2008&make=BMW&modelFamily=M%20Roadster&paintDescription=Aquamarine"
     },
     {
       "registration": "8242-VRT",
@@ -10330,7 +10351,8 @@
       "fuel_type": "Gasoline",
       "condition": "Used",
       "location": "Boston",
-      "id": 729
+      "id": 729,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2008&make=BMW&modelFamily=X6&paintDescription=Yellow"
     },
     {
       "registration": "9081-MNH",
@@ -12139,7 +12161,8 @@
       "fuel_type": "Gasoline",
       "condition": "New",
       "location": "Dallas",
-      "id": 858
+      "id": 858,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2008&make=BMW&modelFamily=M6&paintDescription=Fuscia"
     },
     {
       "registration": "3198-ZFT",

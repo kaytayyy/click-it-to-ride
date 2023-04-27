@@ -126,13 +126,13 @@ img {
 }
 
 .home {
-  @apply m-auto w-full min-h-[640px] flex bg-no-repeat bg-cover bg-left xs:min-h-[500px] relative bg-[url("assets/image-unsplash.jpg")] md:bg-[url("assets/image-unsplash-mobile.png")] md:bg-contain;
+  @apply m-auto w-full min-h-[640px] md:min-h-[480px] flex bg-no-repeat bg-cover bg-left xs:min-h-[500px] relative bg-[url("assets/image-unsplash.jpg")] md:bg-[url("assets/image-unsplash-mobile.png")] md:bg-contain md:bg-top;
 
   /* background-image: url("assets/image-unsplash.jpg"); */
 }
 
 .home-text {
-  @apply lg:pl-8 pl-[90px] pt-[90px];
+  @apply lg:pl-8 pl-[90px] pt-[90px] md:pt-[70px];
 }
 
 .home-text h1 {
@@ -212,11 +212,11 @@ h6.attribution {
 }
 
 .cars-container {
-  @apply grid grid-cols-3 grid-flow-row lg:grid-cols-2 md:grid-cols-1 px-[20px] gap-[2rem] mt-[2rem];
+  @apply grid grid-cols-3 grid-flow-row lg:grid-cols-2 md:grid-cols-1 px-[20px] gap-[2rem] mt-[2rem] md:px-1;
 }
 
 .cars-container .card {
-  @apply flex-grow flex-shrink basis-64 relative md:max-w-lg md:mx-auto md:gap-1;
+  @apply flex-grow flex-shrink basis-64 relative md:max-w-2xl md:mx-auto md:gap-1;
 }
 
 #cars-container .card .car-image {
