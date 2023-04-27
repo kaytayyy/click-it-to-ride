@@ -308,6 +308,7 @@ addEventListener("DOMContentLoaded", () => {
   });
   const makeSelector = document.querySelector("#make");
   makeSelector.addEventListener("change", event => {
+    //redo model selector to match only models from selected make
     filterList(event);
   });
   const modelSelector = document.querySelector("#model");
@@ -411,6 +412,7 @@ addEventListener("DOMContentLoaded", () => {
 
   function filterList(event) {
     // only simple filtering right now, not looking at multiple values yet
+    console.log(event); //'Chevrolet'
 
     const filter =
       event.target.id === "year"
@@ -419,11 +421,18 @@ addEventListener("DOMContentLoaded", () => {
         ? "car_make"
         : "car_model";
 
+    //if make !== "" then make model array with .filter
     const params =
       event.target.value === "" ? "" : `?${filter}=${event.target.value}`;
 
     // grab the filtered cars array and render the first 9
     rover.fetch(`${carsUrl}${params}`).then(cars => {
+      let modelArray = cars.filter(car => (car.car_make = event.target.value));
+
+      //run garbageCollector on modelOptions array
+      garbageCollector(document.querySelector("#model"));
+      //now send to buildModelFilter function to rebuild options
+      buildModelFilter(modelArray);
       garbageCollector(carsContainer);
       const maxResults = cars.length >= 9 ? 9 : cars.length;
       for (let i = 0; i < maxResults; i++) {
@@ -784,6 +793,8 @@ addEventListener("DOMContentLoaded", () => {
     const modelFilter = document.querySelector("#model");
     const uniqueModels = [...new Set(cars.map(car => car.car_model))];
     uniqueModels.sort();
+    const emptyOption = document.createElement("option");
+    modelFilter.append(emptyOption);
     uniqueModels.forEach(model => {
       const modelOption = document.createElement("option");
       modelOption.value = model;

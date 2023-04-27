@@ -4,12 +4,12 @@
       "registration": "4102-VOK",
       "car_make": "Toyota",
       "car_model": "Camry",
-      "car_model_year": "2018",
+      "car_model_year": "2015",
       "color": "Black",
       "mileage": "35555",
       "price": "27150.98",
-      "transmission": "Automatic",
-      "fuel_type": "Gasoline",
+      "transmission": "Manual",
+      "fuel_type": "Electric",
       "condition": "Certified Pre-Owned",
       "location": "Dallas",
       "id": 1,
@@ -581,7 +581,8 @@
       "fuel_type": "Electric",
       "condition": "Used",
       "location": "San Francisco",
-      "id": 39
+      "id": 39,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2004&make=Cadillac&modelFamily=SRX&paintDescription=Maroon"
     },
     {
       "registration": "2312-VMD",
@@ -637,7 +638,8 @@
       "fuel_type": "Gasoline",
       "condition": "Certified Pre-Owned",
       "location": "Los Angeles",
-      "id": 43
+      "id": 43,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2003&make=Chevrolet&modelFamily=Avalanche%202500&paintDescription=Pink"
     },
     {
       "registration": "8458-NSC",
@@ -721,7 +723,8 @@
       "fuel_type": "Hybrid",
       "condition": "Certified Pre-Owned",
       "location": "Chicago",
-      "id": 49
+      "id": 49,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2009&make=Chevrolet&modelFamily=Suburban%201500&paintDescription=Aquamarine"
     },
     {
       "registration": "8264-NAF",
@@ -749,7 +752,8 @@
       "fuel_type": "Diesel",
       "condition": "Used",
       "location": "Dallas",
-      "id": 51
+      "id": 51,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1997&make=Buick&modelFamily=Regal&paintDescription=Maroon"
     },
     {
       "registration": "0162-PNY",
@@ -875,7 +879,8 @@
       "fuel_type": "Electric",
       "condition": "Certified Pre-Owned",
       "location": "Miami",
-      "id": 60
+      "id": 60,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2003&make=Chevrolet&modelFamily=Corvette&paintDescription=Aquamarine"
     },
     {
       "registration": "4811-OAE",
@@ -1183,7 +1188,8 @@
       "fuel_type": "Diesel",
       "condition": "New",
       "location": "New York",
-      "id": 82
+      "id": 82,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2001&make=Chevrolet&modelFamily=Suburban%201500&paintDescription=Maroon"
     },
     {
       "registration": "7042-BUS",
@@ -1407,7 +1413,8 @@
       "fuel_type": "Diesel",
       "condition": "Used",
       "location": "San Francisco",
-      "id": 98
+      "id": 98,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2001&make=Chevrolet&modelFamily=Lumina&paintDescription=Khaki"
     },
     {
       "registration": "3474-NXD",
@@ -1505,7 +1512,8 @@
       "fuel_type": "Gasoline",
       "condition": "Used",
       "location": "New York",
-      "id": 105
+      "id": 105,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2007&make=Chevrolet&modelFamily=Aveo&paintDescription=Mauv"
     },
     {
       "registration": "1369-NGI",
@@ -1771,7 +1779,8 @@
       "fuel_type": "Hybrid",
       "condition": "Used",
       "location": "New York",
-      "id": 124
+      "id": 124,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2010&make=GMC&modelFamily=Savana%203500&paintDescription=Indigo"
     },
     {
       "registration": "6768-GPS",
@@ -1785,7 +1794,8 @@
       "fuel_type": "Diesel",
       "condition": "Used",
       "location": "San Francisco",
-      "id": 125
+      "id": 125,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2007&make=Cadillac&modelFamily=Escalade%20EXT&paintDescription=Turquoise"
     },
     {
       "registration": "8415-HTK",
@@ -1911,7 +1921,8 @@
       "fuel_type": "Diesel",
       "condition": "Used",
       "location": "Los Angeles",
-      "id": 134
+      "id": 134,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1995&make=Chevrolet&modelFamily=Lumina&paintDescription=Fuscia"
     },
     {
       "registration": "8658-RBR",
@@ -2681,7 +2692,8 @@
       "fuel_type": "Diesel",
       "condition": "Used",
       "location": "Miami",
-      "id": 189
+      "id": 189,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2005&make=GMC&modelFamily=Yukon%20XL%202500&paintDescription=Pink"
     },
     {
       "registration": "6747-WQK",
@@ -2695,7 +2707,8 @@
       "fuel_type": "Hybrid",
       "condition": "New",
       "location": "Los Angeles",
-      "id": 190
+      "id": 190,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2012&make=GMC&modelFamily=Savana%201500&paintDescription=Teal"
     },
     {
       "registration": "6731-GZP",
@@ -2751,7 +2764,8 @@
       "fuel_type": "Diesel",
       "condition": "Certified Pre-Owned",
       "location": "Boston",
-      "id": 194
+      "id": 194,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1993&make=GMC&modelFamily=3500&paintDescription=Indigo"
     },
     {
       "registration": "7184-XQU",
@@ -3437,7 +3451,8 @@
       "fuel_type": "Hybrid",
       "condition": "Used",
       "location": "Chicago",
-      "id": 243
+      "id": 243,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2011&make=Cadillac&modelFamily=STS&paintDescription=Orange"
     },
     {
       "registration": "4711-PQQ",
@@ -3871,7 +3886,8 @@
       "fuel_type": "Electric",
       "condition": "New",
       "location": "Chicago",
-      "id": 274
+      "id": 274,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2011&make=GMC&modelFamily=Terrain&paintDescription=Indigo"
     },
     {
       "registration": "2169-BUQ",
@@ -4263,7 +4279,8 @@
       "fuel_type": "Hybrid",
       "condition": "Certified Pre-Owned",
       "location": "Chicago",
-      "id": 302
+      "id": 302,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2004&make=Buick&modelFamily=Century&paintDescription=Goldenrod"
     },
     {
       "registration": "7350-SPT",
@@ -4361,7 +4378,8 @@
       "fuel_type": "Electric",
       "condition": "Used",
       "location": "Houston",
-      "id": 309
+      "id": 309,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1984&make=Buick&modelFamily=Skyhawk&paintDescription=Goldenrod"
     },
     {
       "registration": "4341-JDW",
@@ -4501,7 +4519,8 @@
       "fuel_type": "Diesel",
       "condition": "New",
       "location": "Dallas",
-      "id": 319
+      "id": 319,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2007&make=Buick&modelFamily=Terraza&paintDescription=Puce"
     },
     {
       "registration": "2173-ABN",
@@ -4585,7 +4604,8 @@
       "fuel_type": "Hybrid",
       "condition": "Certified Pre-Owned",
       "location": "Seattle",
-      "id": 325
+      "id": 325,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1996&make=Buick&modelFamily=Century&paintDescription=Goldenrod"
     },
     {
       "registration": "4718-DOG",
@@ -4641,7 +4661,8 @@
       "fuel_type": "Hybrid",
       "condition": "Used",
       "location": "New York",
-      "id": 329
+      "id": 329,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2008&make=Cadillac&modelFamily=XLR-V&paintDescription=Yellow"
     },
     {
       "registration": "7900-JZB",
@@ -4851,7 +4872,8 @@
       "fuel_type": "Hybrid",
       "condition": "New",
       "location": "Boston",
-      "id": 344
+      "id": 344,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2008&make=Cadillac&modelFamily=XLR&paintDescription=Maroon"
     },
     {
       "registration": "4094-DNI",
@@ -5187,7 +5209,8 @@
       "fuel_type": "Diesel",
       "condition": "Certified Pre-Owned",
       "location": "Atlanta",
-      "id": 368
+      "id": 368,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2001&make=Cadillac&modelFamily=DeVille&paintDescription=Goldenrod"
     },
     {
       "registration": "1443-KQG",
@@ -5691,7 +5714,8 @@
       "fuel_type": "Gasoline",
       "condition": "New",
       "location": "Los Angeles",
-      "id": 404
+      "id": 404,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1992&make=Cadillac&modelFamily=Fleetwood&paintDescription=Turquoise"
     },
     {
       "registration": "0154-WDM",
@@ -5901,7 +5925,8 @@
       "fuel_type": "Gasoline",
       "condition": "Used",
       "location": "Boston",
-      "id": 419
+      "id": 419,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2009&make=Cadillac&modelFamily=CTS-V&paintDescription=Violet"
     },
     {
       "registration": "9348-DYW",
@@ -6377,7 +6402,8 @@
       "fuel_type": "Electric",
       "condition": "Used",
       "location": "San Francisco",
-      "id": 453
+      "id": 453,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2006&make=Cadillac&modelFamily=XLR&paintDescription=Mauv"
     },
     {
       "registration": "8015-FVV",
