@@ -3,7 +3,169 @@ addEventListener("DOMContentLoaded", () => {
 
   /** ********DELIVERABLES END*******************/
 
-  /** ********VARIABLE DECLARATION START*********/
+  class Car {
+    constructor(
+      car_make,
+      car_model,
+      car_model_year,
+      color,
+      mileage,
+      price,
+      transmission,
+      fuel_type,
+      condition,
+      id,
+      user_image_url,
+      image,
+    ) {
+      console.log("car factory start");
+      this.car_make = car_make;
+      this.car_model = car_model;
+      this.car_model_year = car_model_year;
+      this.color = color;
+      this.mileage = mileage;
+      this.price = price;
+      this.transmission = transmission;
+      this.fuel_type = fuel_type;
+      this.condition = condition;
+      this.id = id;
+      this.user_image_url = user_image_url;
+      this.image = image;
+      console.log("car factory end");
+
+      this.showMileage = () => console.log(this.mileage);
+      this.deleteListing = () => this.remove();
+    }
+    // getters
+
+    get carYear() {
+      // console.log(this.car_model_year);
+      return this.car_model_year;
+    }
+
+    get carMake() {
+      // console.log(this.car_make);
+      return this.car_make;
+    }
+
+    get carModel() {
+      // console.log(this.car_model);
+      return this.car_model;
+    }
+
+    get carColor() {
+      // console.log(this.color);
+      return this.color;
+    }
+
+    get carMileage() {
+      // console.log(this.mileage);
+      return this.mileage;
+    }
+
+    get carPrice() {
+      // console.log(this.price);
+      return this.price;
+    }
+
+    get carTransmission() {
+      // console.log(this.transmission);
+      return this.transmission;
+    }
+
+    get carFuelType() {
+      // console.log(this.fuel_type);
+      return this.fuel_type;
+    }
+
+    get carCondition() {
+      // console.log(this.condition);
+      return this.condition;
+    }
+
+    get carID() {
+      // console.log(this.carID);
+      return this.id;
+    }
+
+    get userImage() {
+      // console.log(this.user_image_url);
+      return this.user_image_url;
+    }
+
+    get apiImage() {
+      // console.log(this.apiImage);
+      return this.apiImage;
+    }
+
+    get yearMakeModel() {
+      return `${this.car_model_year} ${this.car_make} ${this.car_model}`;
+    }
+
+    // setters
+    set carYear(year) {
+      this.year = year;
+    }
+
+    set carMake(make) {
+      this.car_make = make;
+    }
+
+    set carModel(model) {
+      this.car_model = model;
+    }
+
+    set carColor(color) {
+      this.color = color;
+    }
+
+    set carMileage(mileage) {
+      this.mileage = mileage;
+    }
+
+    set carPrice(price) {
+      this.price = price;
+    }
+
+    set carTransmission(transmission) {
+      this.transmission = transmission;
+    }
+
+    set carFuelType(fuel_type) {
+      this.fuel_type = fuel_type;
+    }
+
+    set carCondition(condition) {
+      this.condition = condition;
+    }
+
+    set carID(id) {
+      this.id = id;
+    }
+
+    set userImage(user_image_url) {
+      this.user_image_url = user_image_url;
+    }
+
+    set apiImage(apiImage) {
+      this.apiImage = apiImage;
+    }
+    allDetails() {
+      this.year();
+      this.make();
+      this.model();
+      // this.color();
+      // this.mileage();
+      this.price();
+      this.transmission();
+      this.fuelType();
+      this.condition();
+      this.carID();
+    }
+  }
+
+  /*
+   * ********VARIABLE DECLARATION START*********/
 
   // https://{cdn-instance}.imagin.studio/{api-name}?customer={customer-key}&{query parameters}
   const imaginUrl = `https://cdn.imagin.studio/getImage?customer=${config.apikey}&`;
@@ -169,9 +331,9 @@ addEventListener("DOMContentLoaded", () => {
 
   // look for the search form
   search.addEventListener("submit", event => {
-    window.location.href="#cars"
-    handleSearch(event)
-    });
+    window.location.href = "#cars";
+    handleSearch(event);
+  });
 
   // next page button
   document.querySelector("#next-cars").addEventListener("click", event => {
@@ -424,15 +586,15 @@ addEventListener("DOMContentLoaded", () => {
     document.querySelector(
       `.card[data-id="${car.id}"] >.condition > h4`,
     ).textContent = car.condition;
-    //mileage
+    // mileage
     document.querySelector(
       `.card[data-id="${car.id}"] .mileage > h4`,
     ).textContent = car.mileage;
-    //transmission
+    // transmission
     document.querySelector(
       `.card[data-id="${car.id}"] .transmission > h4`,
     ).textContent = car.transmission;
-    //fuel type
+    // fuel type
     document.querySelector(
       `.card[data-id="${car.id}"] .fuel-type > h4`,
     ).textContent = car.fuel_type;
@@ -759,6 +921,22 @@ addEventListener("DOMContentLoaded", () => {
   function initialize() {
     rover.fetch(`${carsUrl}`).then(cars => {
       garbageCollector(carsContainer);
+
+      currentCar = cars[0];
+      const myCar1 = new Car(
+        currentCar.car_make,
+        currentCar.car_model,
+        currentCar.car_model_year,
+        currentCar.color,
+        currentCar.mileage,
+        currentCar.price,
+        currentCar.transmission,
+        currentCar.fuel_type,
+        currentCar.condition,
+        currentCar.id,
+        currentCar.user_image_url,
+        currentCar.image,
+      );
 
       const maxResults = cars.length >= 9 ? 9 : cars.length;
       for (let i = 0; i < maxResults; i++) {
