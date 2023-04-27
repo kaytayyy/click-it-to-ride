@@ -18,7 +18,7 @@ addEventListener("DOMContentLoaded", () => {
       user_image_url,
       image,
     ) {
-      console.log("car factory start");
+      // console.log("car factory start");
       this.car_make = car_make;
       this.car_model = car_model;
       this.car_model_year = car_model_year;
@@ -31,7 +31,7 @@ addEventListener("DOMContentLoaded", () => {
       this.id = id;
       this.user_image_url = user_image_url;
       this.image = image;
-      console.log("car factory end");
+      // console.log("car factory end");
     }
     // getters
 
@@ -178,9 +178,10 @@ addEventListener("DOMContentLoaded", () => {
   let currentCar;
   let currentPage;
   const carsPerPage = 9;
+  let carLot = [];
   // let isLoggedIn = false;
   const carsContainer = document.querySelector("#cars-container");
-
+  const updaterForm = document.querySelector("#sale-form-updater");
   /** ********VARIABLE DECLARATION END***********/
 
   /** ********FETCH REQUESTS START***************/
@@ -251,7 +252,7 @@ addEventListener("DOMContentLoaded", () => {
   };
   /** ********FETCH REQUESTS END*****************/
   /** ********SALE FORM************************/
-  const saleForm = document.getElementById("sale-form");
+  const saleForm = document.querySelector("#sale-form");
 
   saleForm.addEventListener("submit", e => {
     e.preventDefault();
@@ -333,6 +334,7 @@ addEventListener("DOMContentLoaded", () => {
 
   // look for the search form
   search.addEventListener("submit", event => {
+    event.preventDefault();
     window.location.href = "#cars";
     handleSearch(event);
   });
@@ -370,6 +372,18 @@ addEventListener("DOMContentLoaded", () => {
   /** ********EVENT LISTENERS END****************/
 
   /** ********FORM PROCESSING START**************/
+
+  updaterForm.addEventListener("submit", (event, car) => {
+    event.preventDefault();
+
+    console.log(event);
+    document.querySelector("#modal_outer_frame").classList.add("hidden");
+
+    if (event.target.id === "cancel-btn") {
+      return false;
+    }
+    handleSave(event, car);
+  });
   // handle input from search form
   function handleSearch(event) {
     event.preventDefault();
@@ -410,89 +424,66 @@ addEventListener("DOMContentLoaded", () => {
   // editing functionality
   function handleEdit(card, car) {
     // there is no significance to fox socks except that it's something I remember and my daughter has been saying it
-    const detailsToHide = document.querySelectorAll(
-      `.card[data-id="${car.id}"] .fox-socks`,
-    );
-    // hide all the details sections
-    detailsToHide.forEach(detail => detail.classList.add("hide-this"));
-    // render the input elements for update
-    // price
-    document
-      .querySelector(`.card[data-id="${car.id}"] img`)
-      .insertAdjacentElement(
-        "afterend",
-        priceInput(
-          document.querySelector(`.card[data-id="${car.id}"] .price`)
-            .textContent,
-        ),
-      );
+ 
+    //updater form text values
+    //price
+    updaterForm.price.value = document.querySelector(
+      `.card[data-id="${car.id}"] .price`,
+    ).textContent;
+    //year
+    updaterForm
+      .querySelector(`[value="${car.car_model_year}"]`)
+      .setAttribute("selected", "selected");
+    //make
+    updaterForm.make.value = car.car_make;
 
-    // year make model
-    const yearMakeModelDiv = document.querySelector(
-      `.card[data-id="${car.id}"] .car-title-div`,
-    );
-    Array.from(
-      yearMakeModelInputs(car.car_model_year, car.car_make, car.car_model),
-    ).forEach(input => {
-      yearMakeModelDiv.append(input);
-    });
+    //model
+    updaterForm.model.value = car.car_model;
 
-    // condition
-    document
-      .querySelector(`.card[data-id="${car.id}"] .condition`)
-      .append(
-        conditionOptions(
-          document.querySelector(
-            `.card[data-id="${car.id}"]> .condition >.fox-socks`,
-          ).textContent,
-        ),
-      );
-    // mileage
-    document
-      .querySelector(`.card[data-id="${car.id}"] .mileage`)
-      .append(
-        mileageInput(
-          document.querySelector(
-            `.card[data-id="${car.id}"]> .mileage >.fox-socks`,
-          ).textContent,
-        ),
-      );
-    // transmission
-    document
-      .querySelector(`.card[data-id="${car.id}"] .transmission`)
-      .append(
-        transmissionOptions(
-          document.querySelector(
-            `.card[data-id="${car.id}"]> .transmission >.fox-socks`,
-          ).textContent,
-        ),
-      );
-    // fueltype
-    document
-      .querySelector(`.card[data-id="${car.id}"] .fuel-type`)
-      .append(
-        fuelOptions(
-          document.querySelector(
-            `.card[data-id="${car.id}"]> .fuel-type >.fox-socks`,
-          ).textContent,
-        ),
-      );
-    // color
-    document
-      .querySelector(`.card[data-id="${car.id}"] .color`)
-      .append(
-        colorInput(
-          document.querySelector(
-            `.card[data-id="${car.id}"]> .color >.fox-socks`,
-          ).textContent,
-        ),
-      );
+    //color
+    updaterForm.color.value = document.querySelector(
+      `.card[data-id="${car.id}"]> .color >.fox-socks`,
+    ).textContent;
+    //condition
+    updaterForm
+      .querySelector(`[value="${car.condition}"]`)
+      .setAttribute("selected", "selected");
+
+    //mileage
+    updaterForm.mileage.value = document.querySelector(
+      `.card[data-id="${car.id}"]> .mileage >.fox-socks`,
+    ).textContent;
+
+    //transmission
+    let currentTransmission = document.querySelector(
+      `.card[data-id="${car.id}"]> .transmission >.fox-socks`,
+    ).textContent;
+    updaterForm
+      .querySelector(`[value="${currentTransmission}"]`)
+      .setAttribute("selected", "selected");
+
+    //fuel-type
+    let currentFuel = document.querySelector(
+      `.card[data-id="${car.id}"]> .fuel-type >.fox-socks`,
+    ).textContent;
+    updaterForm
+      .querySelector(`[value="${currentFuel}"]`)
+      .setAttribute("selected", "selected");
+
+    //imageUrl
+    updaterForm.user_image_url.value =
+      car.user_image_url && car.user_image_url !== "" ? car.user_image_url : "";
+
+    currentCar = car;
+ 
 
     // update text on edit button to say "Save"
-    document.querySelector(
-      `.card[data-id="${car.id}"] #edit-button`,
-    ).textContent = "Save";
+    document.querySelector("#modal_outer_frame").classList.remove("hidden");
+    // document.querySelector(
+    //   `.card[data-id="${car.id}"] #edit-button`,
+    // ).textContent = "Save";
   }
+
   // delete functionality
   function handleDelete(car) {
     // WRITE THE DELETE FUNCTION HERE
@@ -502,62 +493,34 @@ addEventListener("DOMContentLoaded", () => {
       card.remove();
     });
   }
+
   // PATCH func
-  function handleSave(carCard, car) {
-    const card = document.querySelector(`.card[data-id="${car.id}"]`);
+  function handleSave(event) {
+    event.preventDefault();
+
+    const card = document.querySelector(`.card[data-id="${currentCar.id}"]`);
 
     // hide the input
 
-    // unhide all the details sections
-    document
-      .querySelectorAll(`.card[data-id="${car.id}"] .fox-socks`)
-      .forEach(detail => {
-        detail.classList.toggle("hide-this");
-      });
-
     const data = {
-      car_make: document.querySelector(`.card[data-id="${car.id}"] #make-input`)
-        .value,
-      car_model: document.querySelector(
-        `.card[data-id="${car.id}"] #model-input`,
-      ).value,
-      car_model_year: document.querySelector(
-        `.card[data-id="${car.id}"] #year-input`,
-      ).value,
-      color: document.querySelector(`.card[data-id="${car.id}"] #color-input`)
-        .value,
-      mileage: document.querySelector(
-        `.card[data-id="${car.id}"] #mileage-input`,
-      ).value,
-      price: document.querySelector(`.card[data-id="${car.id}"] #price-input`)
-        .value,
-      transmission: document.querySelector(
-        `.card[data-id="${car.id}"] #select-transmission`,
-      ).value,
-      fuel_type: document.querySelector(
-        `.card[data-id="${car.id}"] #select-fuel-type`,
-      ).value,
-      condition: document.querySelector(
-        `.card[data-id="${car.id}"] #select-condition`,
-      ).value,
+      car_make: event.target.make.value,
+      car_model: event.target.model.value,
+      car_model_year: event.target.year.value,
+      color: event.target.color.value,
+      mileage: event.target.mileage.value,
+      price: event.target.price.value,
+      transmission: event.target.transmission.value,
+      fuel_type: event.target.fuel_type.value,
+      condition: event.target.condition.value,
+      user_image_url: event.target.user_image_url.value,
     };
-    document
-      .querySelectorAll(`.card[data-id="${car.id}"] .edit-inputs`)
-      .forEach(input => {
-        input.classList.toggle("hide-this");
-      });
-    // destroy the inputs
-    document
-      .querySelectorAll(`.card[data-id="${car.id}"] .edit-inputs`)
-      .forEach(input => {
-        input.remove();
-      });
+
     card.querySelector("#edit-button").textContent = "Edit";
     // WRITE PATCH FUNCTION HERE:
     rover
-      .patch(`${carsUrl}/${car.id}`, data)
+      .patch(`${carsUrl}/${currentCar.id}`, data)
       .then(car => {
-        currentCar = car;
+        console.log(car);
         updateCard(car);
       })
       .catch(err => {
@@ -576,6 +539,7 @@ addEventListener("DOMContentLoaded", () => {
   }
 
   function updateCard(car) {
+    console.log(car.id);
     // price lives in an h2 with class fox-socks
     document.querySelector(
       `.card[data-id="${car.id}"] h2.fox-socks`,
@@ -600,6 +564,9 @@ addEventListener("DOMContentLoaded", () => {
     document.querySelector(
       `.card[data-id="${car.id}"] .fuel-type > h4`,
     ).textContent = car.fuel_type;
+    document.querySelector(
+      `.card[data-id="${car.id}"] .color> h4`,
+    ).textContent = car.color;
     currentCar = car;
   }
 
@@ -724,7 +691,7 @@ addEventListener("DOMContentLoaded", () => {
     carEditButton.addEventListener("click", () => {
       carEditButton.textContent === "Edit"
         ? handleEdit(carCard, car)
-        : handleSave(carCard, car);
+        : handleSave(currentCar, car);
     });
     // append
     carAdminDiv.append(carEditButton, carDeleteButton);
@@ -925,24 +892,9 @@ addEventListener("DOMContentLoaded", () => {
       garbageCollector(carsContainer);
 
       currentCar = cars[0];
-      const myCar1 = new Car(
-        currentCar.car_make,
-        currentCar.car_model,
-        currentCar.car_model_year,
-        currentCar.color,
-        currentCar.mileage,
-        currentCar.price,
-        currentCar.transmission,
-        currentCar.fuel_type,
-        currentCar.condition,
-        currentCar.id,
-        currentCar.user_image_url,
-        currentCar.image,
-      );
-      myCar1.allDetails();
+
       const maxResults = cars.length >= 9 ? 9 : cars.length;
       for (let i = 0; i < maxResults; i++) {
-        currentCar = cars[i];
         window["myCar" + i] = new Car(
           currentCar.car_make,
           currentCar.car_model,
@@ -957,7 +909,7 @@ addEventListener("DOMContentLoaded", () => {
           currentCar.user_image_url,
           currentCar.image,
         );
-        window["myCar" + i].allDetails();
+        carLot.push(window["myCar" + i]);
         renderCarCards(cars[i]);
       }
 
