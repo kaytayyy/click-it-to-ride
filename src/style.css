@@ -131,7 +131,7 @@ img {
   @apply xs:contents;
 }
 
-figcaption {
+h6.attribution {
   @apply absolute bottom-0 left-[65%] text-[.85rem];
 }
 
@@ -315,7 +315,7 @@ figcaption {
 
 #sale-form .row,
 #sale-form-updater .row {
-  @apply text-gray-700 ml-0 mb-2 flex items-center;
+  @apply text-gray-700 ml-0 mb-1 flex items-center;
 }
 
 #sale-form .row .left,
@@ -357,7 +357,20 @@ figcaption {
   @apply text-[1.75rem] rounded-r-lg border-l-0 border-t
   border-r border-b pr-1 pt-1.5 items-center focus:outline-none;
 }
+small.error {
+  @apply w-2/3 ml-auto text-center p-0 text-[0.8rem] text-white bg-[#900] rounded-b-md rounded-bl-md;
+}
+small.error:active {
+  @apply p-[0.3em];
+}
+.row input.invalid,
+.row select.invalid {
+  @apply border-[#900] border-s-2;
+}
 
+.row input.invalid:focus {
+  @apply outline-none;
+}
 .about {
   @apply flex flex-wrap items-center justify-center gap-6 md:flex-col-reverse;
 }
