@@ -13,7 +13,7 @@
       "condition": "Certified Pre-Owned",
       "location": "Dallas",
       "id": 1,
-      "user_image_url": "https://lh3.googleusercontent.com/pw/AJFCJaXiQ65VowsIvUbhckeDTSK477nuj5vw4D2euThtU4M1H9NMQTh-Sz0NitCSwYgtvTnM3ejJ-WEfcEjT-32UCag5kUpL5Uqd0cAMq_TCD043g_pJx5HyC7RBKrbHfuf7EP4ZJ3MLYcEUMx_D-WRyWReu=w2366-h1774-s-no?authuser=0",
+      "user_image_url": "",
       "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2018&make=Toyota&modelFamily=Camry&paintDescription=Black"
     },
     {
@@ -21,7 +21,7 @@
       "car_make": "Mitsubishi",
       "car_model": "Lancer",
       "car_model_year": "2014",
-      "color": "Yellow",
+      "color": "Green",
       "mileage": "25500",
       "price": "15394.15",
       "transmission": "Automatic",
@@ -29,7 +29,8 @@
       "condition": "Used",
       "location": "Boston",
       "id": 2,
-      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2014&make=Mitsubishi&modelFamily=Lancer&paintDescription=Yellow"
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2014&make=Mitsubishi&modelFamily=Lancer&paintDescription=Yellow",
+      "user_image_url": ""
     },
     {
       "registration": "8488-HQY",
@@ -40,11 +41,12 @@
       "mileage": "20000",
       "price": "20000",
       "transmission": "Manual",
-      "fuel_type": "Diesel",
+      "fuel_type": "Electric",
       "condition": "Certified Pre-Owned",
       "location": "Atlanta",
       "id": 3,
-      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2005&make=Ford&modelFamily=Ranger&paintDescription=Crimson"
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2005&make=Ford&modelFamily=Ranger&paintDescription=Crimson",
+      "user_image_url": ""
     },
     {
       "registration": "1071-BEM",
