@@ -308,6 +308,7 @@ addEventListener("DOMContentLoaded", () => {
   });
   const makeSelector = document.querySelector("#make");
   makeSelector.addEventListener("change", event => {
+    //redo model selector to match only models from selected make
     filterList(event);
   });
   const modelSelector = document.querySelector("#model");
@@ -392,6 +393,15 @@ addEventListener("DOMContentLoaded", () => {
   imageDeleteButton.addEventListener("click", event => {
     document.querySelector("#sale-form-updater #image_url").value = "";
   });
+
+  //clearFilters button
+  const clearFiltersButton = document.querySelector(".filters #clearFilters");
+  clearFiltersButton.addEventListener("click", () => {
+    document.querySelector("#year").value = "";
+    document.querySelector("#make").value = "";
+    document.querySelector("#model").value = "";
+    rover.fetch(`${carsUrl}`).then(cars => initialize());
+  });
   /** ********EVENT LISTENERS END****************/
 
   /** ********FORM PROCESSING START**************/
@@ -411,6 +421,7 @@ addEventListener("DOMContentLoaded", () => {
 
   function filterList(event) {
     // only simple filtering right now, not looking at multiple values yet
+    //'Chevrolet'
 
     const filter =
       event.target.id === "year"
@@ -419,11 +430,38 @@ addEventListener("DOMContentLoaded", () => {
         ? "car_make"
         : "car_model";
 
-    const params =
-      event.target.value === "" ? "" : `?${filter}=${event.target.value}`;
+    //if make !== "" then make model array with .filter
+    // const params =
+    //   event.target.value === "" ? "" : `?${filter}=${event.target.value}`;
+    const yearSelected = document.querySelector("#year").value;
+    const yearFilter =
+      document.querySelector("#year").value &&
+      document.querySelector("#year").value !== ""
+        ? `&car_model_year=${document.querySelector("#year").value}`
+        : "";
+    const makeSelected = document.querySelector("#make").value;
+    const makeFilter =
+      document.querySelector("#make").value &&
+      document.querySelector("#make").value !== ""
+        ? `&car_make=${document.querySelector("#make").value}`
+        : "";
+    const modelSelected = document.querySelector("#model").value;
+    const modelFilter =
+      document.querySelector("#model").value &&
+      document.querySelector("#model").value !== ""
+        ? `&car_model=${document.querySelector("#model").value}`
+        : "";
+    const params = `${yearFilter}${makeFilter}${modelFilter}`;
 
     // grab the filtered cars array and render the first 9
-    rover.fetch(`${carsUrl}${params}`).then(cars => {
+    rover.fetch(`${carsUrl}?${params}`).then(cars => {
+      //let filterArray = cars.filter(car => (car.car_make = event.target.value));
+
+      //run garbageCollector on modelOptions array
+      //now send to buildModelFilter function to rebuild options
+      buildYearFilter(cars, yearSelected);
+      buildMakeFilter(cars, makeSelected);
+      buildModelFilter(cars, modelSelected);
       garbageCollector(carsContainer);
       const maxResults = cars.length >= 9 ? 9 : cars.length;
       for (let i = 0; i < maxResults; i++) {
@@ -553,7 +591,7 @@ addEventListener("DOMContentLoaded", () => {
     // price lives in an h2 with class fox-socks
     document.querySelector(
       `.card[data-id="${car.id}"] h2.fox-socks`,
-    ).textContent = car.price;
+    ).textContent = parseFloat(car.price).toFixed(2);
     // year make model live ni the car-title
     document.querySelector(
       `.card[data-id="${car.id}"] .car-title`,
@@ -627,15 +665,20 @@ addEventListener("DOMContentLoaded", () => {
           let data = {image: image.url};
           rover
             .patch(`${carsUrl}/${car.id}`, data)
-            .then(updated => console.log(updated));
+            .then(updated => console.log("success!"));
         },
       );
     }
 
     //  <!-- price container
+    const carPriceDiv = document.createElement("div");
+    carPriceDiv.classList.add("price-div");
+    const dollarSignIcon = document.createElement("i");
+    dollarSignIcon.classList.add("fa-solid", "fa-dollar-sign", "dollar-sign");
     const carPrice = document.createElement("h2");
     carPrice.classList.add("cars-text", "price", "fox-socks");
-    carPrice.textContent = `${car.price}`;
+    carPrice.textContent = `${parseFloat(car.price).toFixed(2)}`;
+    carPriceDiv.append(dollarSignIcon, carPrice);
 
     // <!-- DETAILS SECTION
     // year | make | model
@@ -733,7 +776,7 @@ addEventListener("DOMContentLoaded", () => {
 
     carCard.append(
       carImage,
-      carPrice,
+      carPriceDiv,
       carYearMakeModelDiv,
       carConditionDiv,
       carMileageDiv,
@@ -755,39 +798,69 @@ addEventListener("DOMContentLoaded", () => {
   /** *********GENERAL FUNCTIONS START***********/
 
   // years filter from array of car_model_years
-  function buildYearFilter(cars) {
+  function buildYearFilter(cars, filter) {
     const yearsFilter = document.querySelector("#year");
+    garbageCollector(yearsFilter);
     const uniqueYears = [...new Set(cars.map(car => car.car_model_year))];
     uniqueYears.sort((a, b) => b - a);
+
+    const emptyOption = document.createElement("option");
+    yearsFilter.append(emptyOption);
     uniqueYears.forEach(year => {
       const yearOption = document.createElement("option");
       yearOption.value = year;
       yearOption.textContent = year;
+      if (
+        (filter !== "" && yearOption.textContent === filter) ||
+        uniqueYears.length === 1
+      ) {
+        yearOption.setAttribute("selected", "selected");
+      }
       yearsFilter.append(yearOption);
     });
   }
   // build filter from array of car_make
-  function buildMakeFilter(cars) {
+  function buildMakeFilter(cars, filter) {
     const makeFilter = document.querySelector("#make");
+    garbageCollector(makeFilter);
     const uniqueMakes = [...new Set(cars.map(car => car.car_make))];
     uniqueMakes.sort();
+
+    const emptyOption = document.createElement("option");
+    makeFilter.append(emptyOption);
     uniqueMakes.forEach(make => {
       const makeOption = document.createElement("option");
       makeOption.value = make;
       makeOption.textContent = make;
+
+      if (
+        (filter !== "" && makeOption.textContent === filter) ||
+        uniqueMakes.length === 1
+      ) {
+        makeOption.setAttribute("selected", "selected");
+      }
       makeFilter.append(makeOption);
     });
   }
 
   // build filter from array of car_model
-  function buildModelFilter(cars) {
+  function buildModelFilter(cars, filter) {
     const modelFilter = document.querySelector("#model");
+    garbageCollector(modelFilter);
     const uniqueModels = [...new Set(cars.map(car => car.car_model))];
     uniqueModels.sort();
+    const emptyOption = document.createElement("option");
+    modelFilter.append(emptyOption);
     uniqueModels.forEach(model => {
       const modelOption = document.createElement("option");
       modelOption.value = model;
       modelOption.textContent = model;
+      if (
+        (filter !== "" && modelOption.textContent === filter) ||
+        uniqueModels.length === 1
+      ) {
+        modelOption.setAttribute("selected", "selected");
+      }
       modelFilter.append(modelOption);
     });
   }
@@ -947,10 +1020,9 @@ addEventListener("DOMContentLoaded", () => {
         renderCarCards(cars[i]);
       }
 
-      buildYearFilter(cars);
-      buildMakeFilter(cars);
-      buildModelFilter(cars);
-      console.log(carLot);
+      buildYearFilter(cars, "");
+      buildMakeFilter(cars, "");
+      buildModelFilter(cars, "");
     });
   }
 
