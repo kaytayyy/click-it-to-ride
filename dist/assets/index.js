@@ -427,12 +427,14 @@ addEventListener("DOMContentLoaded", () => {
 
     // grab the filtered cars array and render the first 9
     rover.fetch(`${carsUrl}${params}`).then(cars => {
-      let modelArray = cars.filter(car => (car.car_make = event.target.value));
+      //let filterArray = cars.filter(car => (car.car_make = event.target.value));
+      let filterArray = cars.filter(car => (car.car_model_year = event.target.value))
 
       //run garbageCollector on modelOptions array
-      garbageCollector(document.querySelector("#model"));
       //now send to buildModelFilter function to rebuild options
-      buildModelFilter(modelArray);
+      buildYearFilter(filterArray);
+      buildMakeFilter(filterArray);
+      buildModelFilter(filterArray);
       garbageCollector(carsContainer);
       const maxResults = cars.length >= 9 ? 9 : cars.length;
       for (let i = 0; i < maxResults; i++) {
@@ -766,8 +768,11 @@ addEventListener("DOMContentLoaded", () => {
   // years filter from array of car_model_years
   function buildYearFilter(cars) {
     const yearsFilter = document.querySelector("#year");
+    garbageCollector(yearsFilter)
     const uniqueYears = [...new Set(cars.map(car => car.car_model_year))];
     uniqueYears.sort((a, b) => b - a);
+    const emptyOption = document.createElement("option");
+    makeFilter.append(emptyOption)
     uniqueYears.forEach(year => {
       const yearOption = document.createElement("option");
       yearOption.value = year;
@@ -778,8 +783,11 @@ addEventListener("DOMContentLoaded", () => {
   // build filter from array of car_make
   function buildMakeFilter(cars) {
     const makeFilter = document.querySelector("#make");
+    garbageCollector(makeFilter);
     const uniqueMakes = [...new Set(cars.map(car => car.car_make))];
     uniqueMakes.sort();
+    const emptyOption = document.createElement("option");
+    makeFilter.append(emptyOption)
     uniqueMakes.forEach(make => {
       const makeOption = document.createElement("option");
       makeOption.value = make;
@@ -791,6 +799,7 @@ addEventListener("DOMContentLoaded", () => {
   // build filter from array of car_model
   function buildModelFilter(cars) {
     const modelFilter = document.querySelector("#model");
+    garbageCollector(modelFilter)
     const uniqueModels = [...new Set(cars.map(car => car.car_model))];
     uniqueModels.sort();
     const emptyOption = document.createElement("option");
