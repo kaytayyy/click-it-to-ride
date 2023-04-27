@@ -527,6 +527,10 @@ video {
   margin-right: auto;
 }
 
+.flex{
+  display: flex;
+}
+
 .hidden{
   display: none;
 }
@@ -1185,7 +1189,6 @@ figcaption{
 }
 
 .admin-button-div{
-  display: flex;
   justify-content: space-between;
   gap: 1rem;
 }

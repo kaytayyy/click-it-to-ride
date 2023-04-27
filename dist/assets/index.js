@@ -184,7 +184,7 @@ addEventListener("DOMContentLoaded", () => {
   let currentPage;
   const carsPerPage = 9;
   let carLot = [];
-  // let isLoggedIn = false;
+  let isLoggedIn = false;
   const carsContainer = document.querySelector("#cars-container");
   const updaterForm = document.querySelector("#sale-form-updater");
   /** ********VARIABLE DECLARATION END***********/
@@ -401,6 +401,17 @@ addEventListener("DOMContentLoaded", () => {
     document.querySelector("#make").value = "";
     document.querySelector("#model").value = "";
     rover.fetch(`${carsUrl}`).then(cars => initialize());
+  });
+
+  //login button
+  const loginButton = document.querySelector("#login-btn");
+  loginButton.addEventListener("click", () => {
+    isLoggedIn = !isLoggedIn;
+    console.log(isLoggedIn);
+    isLoggedIn ? (loginButton.value = "Logout") : (loginButton.value = "Login");
+    document.querySelectorAll(".admin-button-div").forEach(div => {
+      div.classList.toggle("hidden");
+    });
   });
   /** ********EVENT LISTENERS END****************/
 
@@ -755,7 +766,7 @@ addEventListener("DOMContentLoaded", () => {
     const carEditButton = document.createElement("button");
     const carDeleteButton = document.createElement("button");
     // populate
-    carAdminDiv.classList.add("admin-button-div");
+    carAdminDiv.classList.add("admin-button-div", "flex");
     carEditButton.id = "edit-button";
     carDeleteButton.id = "delete-button";
     carEditButton.classList.add("admin-btn");
@@ -770,6 +781,9 @@ addEventListener("DOMContentLoaded", () => {
         ? handleEdit(carCard, car)
         : handleSave(currentCar, car);
     });
+    isLoggedIn //true -currently false
+      ? carAdminDiv.classList.remove("hidden")
+      : carAdminDiv.classList.add("hidden");
     // append
     carAdminDiv.append(carEditButton, carDeleteButton);
     // append to DOM
