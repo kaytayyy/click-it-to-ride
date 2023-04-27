@@ -378,7 +378,6 @@ addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
 
     document.querySelector("#modal_outer_frame").classList.add("hidden");
-    console.log(event);
     if (event.submitter.id === "cancel-btn") {
       return false;
     } else {
@@ -484,8 +483,9 @@ addEventListener("DOMContentLoaded", () => {
       .setAttribute("selected", "selected");
 
     //imageUrl
-    updaterForm.user_image_url.value =
-      car.user_image_url && car.user_image_url !== "" ? car.user_image_url : "";
+    updaterForm.user_image_url.value = document.querySelector(
+      `.card[data-id="${car.id}"] .car-image`,
+    ).src;
 
     currentCar = car;
 
