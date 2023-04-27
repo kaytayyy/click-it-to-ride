@@ -32,9 +32,6 @@ addEventListener("DOMContentLoaded", () => {
       this.user_image_url = user_image_url;
       this.image = image;
       console.log("car factory end");
-
-      this.showMileage = () => console.log(this.mileage);
-      this.deleteListing = () => this.remove();
     }
     // getters
 
@@ -95,7 +92,7 @@ addEventListener("DOMContentLoaded", () => {
 
     get apiImage() {
       // console.log(this.apiImage);
-      return this.apiImage;
+      return this.image;
     }
 
     get yearMakeModel() {
@@ -148,19 +145,24 @@ addEventListener("DOMContentLoaded", () => {
     }
 
     set apiImage(apiImage) {
-      this.apiImage = apiImage;
+      this.image = apiImage;
     }
+
     allDetails() {
-      this.year();
-      this.make();
-      this.model();
-      // this.color();
-      // this.mileage();
-      this.price();
-      this.transmission();
-      this.fuelType();
-      this.condition();
-      this.carID();
+      console.log(
+        this.id,
+        this.car_model_year,
+        this.car_make,
+        this.car_model,
+        this.mileage,
+        this.price,
+        this.transmission,
+        this.fuel_type,
+        this.color,
+        this.condition,
+        this.user_image_url,
+        this.apiImage,
+      );
     }
   }
 
@@ -937,10 +939,25 @@ addEventListener("DOMContentLoaded", () => {
         currentCar.user_image_url,
         currentCar.image,
       );
-
+      myCar1.allDetails();
       const maxResults = cars.length >= 9 ? 9 : cars.length;
       for (let i = 0; i < maxResults; i++) {
         currentCar = cars[i];
+        window["myCar" + i] = new Car(
+          currentCar.car_make,
+          currentCar.car_model,
+          currentCar.car_model_year,
+          currentCar.color,
+          currentCar.mileage,
+          currentCar.price,
+          currentCar.transmission,
+          currentCar.fuel_type,
+          currentCar.condition,
+          currentCar.id,
+          currentCar.user_image_url,
+          currentCar.image,
+        );
+        window["myCar" + i].allDetails();
         renderCarCards(cars[i]);
       }
 
