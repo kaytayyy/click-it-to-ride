@@ -435,8 +435,13 @@ addEventListener("DOMContentLoaded", () => {
       const year = document.querySelector("#sale-form #year-input").value;
 
       if (!isRequired(year)) {
-        showMessage(document.querySelector("#sale-form #error-year"),"Year is required");
-      } else {showValid(year)}
+        showErrors(
+          document.querySelector("#sale-form #error-year"),
+          "Year is required",
+        );
+      } else {
+        showValid(year);
+      }
     };
 
     const showErrors = (field, message) => {
