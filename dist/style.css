@@ -567,13 +567,23 @@ video {
 
 /* html::-webkit-scrollbar {
 
+  
+
 @apply w-2 bg-transparent;
+
+  
 
 }
 
+  
+
 html::-webkit-scrollbar-thumb {
 
+  
+
 @apply rounded-[5rem];
+
+  
 
 } */
 
@@ -603,9 +613,15 @@ header .shadow{
 
 /*.shadow #search-icon {
 
+  
+
 @apply text-[#2E282A];
 
+  
+
 }
+
+  
 
 */
 
@@ -1001,6 +1017,12 @@ h6.attribution{
   gap: 1.25rem;
 }
 
+@media (max-width: 767px){
+  #page-nav{
+    gap: 0.25rem;
+  }
+}
+
 .cars{
   display: grid;
   grid-auto-flow: row;
@@ -1309,9 +1331,25 @@ h6.attribution{
   --tw-ring-color: rgb(234 233 233 / var(--tw-ring-opacity));
 }
 
+@media (max-width: 767px){
+  .nav-button{
+    margin-right: 0px;
+    margin-top: 0.25rem;
+    width: 75px;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+}
+
 /* #modal_overlay {
+
 f
+
 @apply bg-slate-800 bg-opacity-50justify-center items-center absolute top-0 right-0 bottom-0 left-0 hidden ;
+
+  
 
 } */
 

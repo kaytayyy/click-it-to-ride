@@ -14,13 +14,23 @@
 
 /* html::-webkit-scrollbar {
 
+  
+
 @apply w-2 bg-transparent;
+
+  
 
 }
 
+  
+
 html::-webkit-scrollbar-thumb {
 
+  
+
 @apply rounded-[5rem];
+
+  
 
 } */
 
@@ -38,9 +48,15 @@ header .shadow {
 
 /*.shadow #search-icon {
 
+  
+
 @apply text-[#2E282A];
 
+  
+
 }
+
+  
 
 */
 
@@ -162,6 +178,7 @@ h6.attribution {
 .filters select {
   @apply border-2;
 }
+
 .filters #make {
   @apply w-[150px] md:w-[225px];
 }
@@ -177,6 +194,7 @@ h6.attribution {
 .filters #clearFilters {
   @apply text-xl leading-none hover:scale-105 md:mt-4;
 }
+
 .pagination {
   @apply flex flex-col justify-center mt-4 items-center align-middle text-[1.2rem];
 }
@@ -186,7 +204,7 @@ h6.attribution {
 }
 
 #page-nav {
-  @apply flex gap-5;
+  @apply flex gap-5 md:gap-1;
 }
 
 .cars {
@@ -263,12 +281,16 @@ h6.attribution {
 }
 
 .nav-button {
-  @apply text-white text-2xl w-[150px] bg-[#2E282A] hover:bg-[#2F282A] focus:outline-none focus:ring-4 focus:ring-[#6c6869] font-medium rounded-md px-2.5 py-2.5 text-center mr-2 mt-2 dark:focus:ring-[#eae9e9];
+  @apply text-white text-2xl w-[150px] bg-[#2E282A] hover:bg-[#2F282A] focus:outline-none focus:ring-4 focus:ring-[#6c6869] font-medium rounded-md px-2.5 py-2.5 text-center mr-2 mt-2 dark:focus:ring-[#eae9e9] md:px-1 md:py-1 md:mr-0 md:mt-1 md:w-[75px];
 }
 
 /* #modal_overlay {
+
 f
+
 @apply bg-slate-800 bg-opacity-50justify-center items-center absolute top-0 right-0 bottom-0 left-0 hidden ;
+
+  
 
 } */
 
@@ -353,16 +375,21 @@ f
 #sale-form-updater .row .right #image_url {
   @apply border-r-0 rounded-r-none rounded-l-lg pr-0 focus:outline-none;
 }
+
 #sale-form-updater .row .right #image_delete_button {
   @apply text-[1.75rem] rounded-r-lg border-l-0 border-t
-  border-r border-b pr-1 pt-1.5 items-center focus:outline-none;
+
+border-r border-b pr-1 pt-1.5 items-center focus:outline-none;
 }
+
 small.error {
   @apply w-2/3 ml-auto text-center p-0 text-[0.8rem] text-white bg-[#900] rounded-b-md rounded-bl-md;
 }
+
 small.error:active {
   @apply p-[0.3em];
 }
+
 .row input.invalid,
 .row select.invalid {
   @apply border-[#900] border-s-2;
@@ -371,6 +398,7 @@ small.error:active {
 .row input.invalid:focus {
   @apply outline-none;
 }
+
 .about {
   @apply flex flex-wrap items-center justify-center gap-6 lg:flex-row-reverse md:flex-col-reverse;
 }
