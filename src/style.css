@@ -255,7 +255,7 @@ figcaption {
 }
 
 .admin-button-div {
-  @apply flex gap-4 justify-between;
+  @apply gap-4 justify-between;
 }
 
 .admin-btn {
