@@ -160,9 +160,23 @@ figcaption {
 }
 
 .filters select {
-  @apply border-2 w-fit;
+  @apply border-2;
+}
+.filters #make {
+  @apply w-[150px];
 }
 
+.filters #model {
+  @apply w-[225px];
+}
+
+.filters #year {
+  @apply w-[75px];
+}
+
+.filters #clearFilters {
+  @apply text-xl leading-none hover:scale-105;
+}
 .pagination {
   @apply flex flex-col justify-center mt-4 items-center align-middle text-[1.2rem];
 }
@@ -203,8 +217,8 @@ figcaption {
   @apply absolute top-[225px] right-7 z-10 hover:scale-105;
 }
 
-.cars-container .cars-text {
-  @apply absolute top-8 text-[1rem] p-2 rounded-lg bg-slate-100 text-[#2E282A] hover:text-slate-100 hover:bg-[#072AC8];
+.cars-container .price-div {
+  @apply absolute top-8 text-[1.2rem] p-2 rounded-lg bg-slate-100 text-[#2E282A] hover:text-slate-100 hover:bg-[#072AC8] flex leading-none gap-1;
 }
 
 .cars-container input.cars-text {
@@ -241,11 +255,11 @@ figcaption {
 }
 
 .admin-button-div {
-  @apply flex gap-4 justify-between;
+  @apply gap-4 justify-between;
 }
 
 .admin-btn {
-  @apply text-white w-full bg-[#2E282A] hover:bg-[#2F282A] focus:outline-none focus:ring-4 focus:ring-[#6c6869] font-medium rounded-md text-sm px-2.5 py-2.5 text-center mr-2 mt-2 dark:focus:ring-[#eae9e9];
+  @apply text-white w-full bg-[#2E282A] hover:bg-[#2F282A] focus:outline-none focus:ring-4 focus:ring-[#6c6869] font-medium rounded-md text-sm px-2.5 py-2.5 text-center mt-2 dark:focus:ring-[#eae9e9];
 }
 
 .nav-button {
