@@ -171,6 +171,8 @@ addEventListener("DOMContentLoaded", () => {
     }
   }
 
+
+
   /*
    * ********VARIABLE DECLARATION START*********/
 
