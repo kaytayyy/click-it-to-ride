@@ -245,7 +245,7 @@ figcaption {
 }
 
 .admin-btn {
-  @apply text-white w-full bg-[#2E282A] hover:bg-[#2F282A] focus:outline-none focus:ring-4 focus:ring-[#6c6869] font-medium rounded-md text-sm px-2.5 py-2.5 text-center mr-2 mt-2 dark:focus:ring-[#eae9e9];
+  @apply text-white w-full bg-[#2E282A] hover:bg-[#2F282A] focus:outline-none focus:ring-4 focus:ring-[#6c6869] font-medium rounded-md text-sm px-2.5 py-2.5 text-center mt-2 dark:focus:ring-[#eae9e9];
 }
 
 .nav-button {
