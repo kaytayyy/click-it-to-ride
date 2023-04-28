@@ -935,7 +935,12 @@ addEventListener("DOMContentLoaded", () => {
       makeFilter.append(makeOption);
     });
   }
-
+  // speech recognition for search
+  if ("webkitSpeechRecognition" in window) {
+    // Speech Recognition Stuff goes here
+  } else {
+    console.log("Speech Recognition Not Available");
+  }
   // build filter from array of car_model
   function buildModelFilter(cars, filter) {
     const modelFilter = document.querySelector("#model");
