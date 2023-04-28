@@ -4,16 +4,16 @@
       "registration": "4102-VOK",
       "car_make": "Toyota",
       "car_model": "Camry",
-      "car_model_year": "2015",
+      "car_model_year": "2018",
       "color": "Black",
       "mileage": "35555",
       "price": "27150.98",
-      "transmission": "Manual",
-      "fuel_type": "Electric",
+      "transmission": "Automatic",
+      "fuel_type": "Gasoline",
       "condition": "Certified Pre-Owned",
       "location": "Dallas",
       "id": 1,
-      "user_image_url": "https://file.kelleybluebookimages.com/kbb/base/evox/StJ/12104/2018-Toyota-Camry-front-angle4-low_12104_090_640x480.jpg",
+      "user_image_url": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2018&make=Toyota&modelFamily=Camry&paintDescription=Black",
       "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2018&make=Toyota&modelFamily=Camry&paintDescription=Black"
     },
     {
@@ -9860,7 +9860,8 @@
       "fuel_type": "Electric",
       "condition": "Certified Pre-Owned",
       "location": "Boston",
-      "id": 694
+      "id": 694,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2009&make=Audi&modelFamily=A4&paintDescription=Maroon"
     },
     {
       "registration": "8110-WKR",
