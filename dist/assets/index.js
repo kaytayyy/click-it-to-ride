@@ -506,9 +506,11 @@ addEventListener("DOMContentLoaded", () => {
 
   // handle input from search form
   function handleSearch(event) {
+    console.log(event);
     event.preventDefault();
     // take fuzzy search logic and go get cars
-    rover.fetch(`${carsUrl}?q=${event.target.search.value}`).then(cars => {
+    let searchArray = event.target.search.value.replace(" ", "&");
+    rover.fetch(`${carsUrl}?q=${searchArray}`).then(cars => {
       garbageCollector(carsContainer);
       for (let i = 0; i < 9; i++) {
         currentCar = cars[i];
@@ -662,6 +664,64 @@ addEventListener("DOMContentLoaded", () => {
       });
   }
   /** ********FORM PROCESSING END****************/
+  /** !SuperSpecialAdvancedDeliverable/
+ *  
+ * 
+/*********************/
+
+  // speech recognition for search
+  if ("webkitSpeechRecognition" in window) {
+    // Speech Recognition Stuff goes here
+    const searchForm = document.querySelector("#search-form");
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = "en-US";
+    recognition.interimResults = true;
+
+    recognition.addEventListener("result", event => {
+      //transcript
+      const transcript = event.results[0][0].transcript;
+
+      // set the value of text input field to the transcript
+
+      document.querySelector("#search").value = transcript;
+    });
+    recognition.addEventListener("end", recognition.start);
+
+    const voiceSearchButton = document.querySelector("#search-voice");
+    // const voiceStopButton = document.querySelector("#search-voice-stop");
+    voiceSearchButton.addEventListener("click", () => {
+      if (voiceSearchButton.classList.contains("fa-microphone")) {
+        recognition.start();
+        voiceSearchButton.classList.replace(
+          "fa-microphone",
+          "fa-microphone-slash",
+        );
+      } else {
+        recognition.stop();
+        voiceSearchButton.classList.replace(
+          "fa-microphone-slash",
+          "fa-microphone",
+        );
+        const searchTerm = document.querySelector("#search").value;
+        let searchArray = searchTerm.replace(" ", "&");
+        rover.fetch(`${carsUrl}?q=${searchArray}`).then(cars => {
+          garbageCollector(carsContainer);
+          for (let i = 0; i < 9; i++) {
+            currentCar = cars[i];
+            renderCarCards(cars[i]);
+          }
+        });
+        searchTerm.value = "";
+      }
+    });
+
+    // function search() {
+    //   const searchTerm = document.querySelector("#search").value;
+    //   // call ajax function to send searchTerm to the server and fetch search results
+    // }
+  } else {
+    console.log("Speech Recognition Not Available");
+  }
 
   /** ********DOM RENDER FUNCTIONS START*********/
 
@@ -935,12 +995,7 @@ addEventListener("DOMContentLoaded", () => {
       makeFilter.append(makeOption);
     });
   }
-  // speech recognition for search
-  if ("webkitSpeechRecognition" in window) {
-    // Speech Recognition Stuff goes here
-  } else {
-    console.log("Speech Recognition Not Available");
-  }
+
   // build filter from array of car_model
   function buildModelFilter(cars, filter) {
     const modelFilter = document.querySelector("#model");

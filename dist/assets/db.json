@@ -1123,7 +1123,8 @@
       "fuel_type": "Diesel",
       "condition": "Used",
       "location": "Los Angeles",
-      "id": 77
+      "id": 77,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1992&make=Toyota&modelFamily=Celica&paintDescription=Purple"
     },
     {
       "registration": "5064-YGR",
@@ -1239,7 +1240,8 @@
       "fuel_type": "Hybrid",
       "condition": "Used",
       "location": "Miami",
-      "id": 85
+      "id": 85,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1996&make=Honda&modelFamily=Prelude&paintDescription=Maroon"
     },
     {
       "registration": "3190-JFE",
@@ -1370,7 +1372,8 @@
       "fuel_type": "Gasoline",
       "condition": "Used",
       "location": "Miami",
-      "id": 94
+      "id": 94,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2004&make=Toyota&modelFamily=Tacoma%20Xtra&paintDescription=Puce"
     },
     {
       "registration": "2682-ATV",
@@ -1573,7 +1576,8 @@
       "fuel_type": "Electric",
       "condition": "Certified Pre-Owned",
       "location": "Boston",
-      "id": 108
+      "id": 108,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2011&make=Toyota&modelFamily=TundraMax&paintDescription=Mauv"
     },
     {
       "registration": "2299-WCA",
@@ -1900,7 +1904,8 @@
       "fuel_type": "Diesel",
       "condition": "New",
       "location": "Chicago",
-      "id": 131
+      "id": 131,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1986&make=Toyota&modelFamily=MR2&paintDescription=Puce"
     },
     {
       "registration": "9593-FJX",
@@ -2154,7 +2159,8 @@
       "fuel_type": "Hybrid",
       "condition": "Certified Pre-Owned",
       "location": "San Francisco",
-      "id": 149
+      "id": 149,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1997&make=Honda&modelFamily=Civic&paintDescription=Red"
     },
     {
       "registration": "5561-GKV",
@@ -2598,7 +2604,8 @@
       "fuel_type": "Diesel",
       "condition": "Certified Pre-Owned",
       "location": "New York",
-      "id": 180
+      "id": 180,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1999&make=Honda&modelFamily=Accord&paintDescription=Violet"
     },
     {
       "registration": "5286-QYS",
@@ -2684,7 +2691,8 @@
       "fuel_type": "Electric",
       "condition": "Used",
       "location": "Dallas",
-      "id": 186
+      "id": 186,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2008&make=Honda&modelFamily=Civic&paintDescription=Yellow"
     },
     {
       "registration": "8647-DQC",
@@ -2786,7 +2794,8 @@
       "fuel_type": "Gasoline",
       "condition": "Certified Pre-Owned",
       "location": "Chicago",
-      "id": 193
+      "id": 193,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1994&make=Toyota&modelFamily=Paseo&paintDescription=Crimson"
     },
     {
       "registration": "6025-FMF",
@@ -2921,15 +2930,17 @@
       "registration": "2584-EZS",
       "car_make": "Honda",
       "car_model": "del Sol",
-      "car_model_year": 1993,
+      "car_model_year": "1993",
       "color": "Orange",
-      "mileage": 27583,
-      "price": 82081.67,
-      "transmission": "Manual",
+      "mileage": "27583",
+      "price": "10000",
+      "transmission": "Automatic",
       "fuel_type": "Diesel",
       "condition": "New",
       "location": "Chicago",
-      "id": 203
+      "id": 203,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1993&make=Honda&modelFamily=del%20Sol&paintDescription=Orange",
+      "user_image_url": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=1993&make=Honda&modelFamily=del%20Sol&paintDescription=Orange"
     },
     {
       "registration": "5666-BZN",
@@ -7527,7 +7538,8 @@
       "fuel_type": "Diesel",
       "condition": "New",
       "location": "New York",
-      "id": 528
+      "id": 528,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2012&make=Toyota&modelFamily=Yaris&paintDescription=Violet"
     },
     {
       "registration": "8620-KBS",
@@ -9353,7 +9365,8 @@
       "fuel_type": "Gasoline",
       "condition": "Used",
       "location": "San Francisco",
-      "id": 658
+      "id": 658,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2009&make=Toyota&modelFamily=Yaris&paintDescription=Maroon"
     },
     {
       "registration": "5586-LCE",
@@ -9409,7 +9422,8 @@
       "fuel_type": "Hybrid",
       "condition": "New",
       "location": "Miami",
-      "id": 662
+      "id": 662,
+      "image": "https://cdn.imagin.studio/getImage?customer=usfi-student&modelYear=2011&make=Toyota&modelFamily=Camry%20Hybrid&paintDescription=Crimson"
     },
     {
       "registration": "9585-RXF",
