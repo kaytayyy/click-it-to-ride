@@ -120,7 +120,12 @@ img {
 
   transition: 0.4s;
 }
-
+#search-form {
+  @apply flex;
+}
+#search-voice {
+  @apply items-center text-3xl my-auto pr-4 md:text-xl;
+}
 #search {
   @apply w-full md:p-[15px] p-[20px] border-none outline-none bg-transparent text-[1rem] xs:p-[11px];
 }
